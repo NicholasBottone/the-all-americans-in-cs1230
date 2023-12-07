@@ -1,0 +1,371 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'raytracer.cpp'
+**
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.5.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include <QtCore/qmetatype.h>
+
+#if __has_include(<QtCore/qtmochelpers.h>)
+#include <QtCore/qtmochelpers.h>
+#else
+QT_BEGIN_MOC_NAMESPACE
+#endif
+
+
+#include <memory>
+
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'raytracer.cpp' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 68
+#error "This file was generated using the moc from 6.5.2. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+#ifndef Q_CONSTINIT
+#define Q_CONSTINIT
+#endif
+
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
+namespace {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSIntersectWorkerENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSIntersectWorkerENDCLASS = QtMocHelpers::stringData(
+    "IntersectWorker",
+    "data",
+    "",
+    "intersectData",
+    "s",
+    "finished"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSIntersectWorkerENDCLASS_t {
+    uint offsetsAndSizes[12];
+    char stringdata0[16];
+    char stringdata1[5];
+    char stringdata2[1];
+    char stringdata3[14];
+    char stringdata4[2];
+    char stringdata5[9];
+};
+#define QT_MOC_LITERAL(ofs, len) \
+    uint(sizeof(qt_meta_stringdata_CLASSIntersectWorkerENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSIntersectWorkerENDCLASS_t qt_meta_stringdata_CLASSIntersectWorkerENDCLASS = {
+    {
+        QT_MOC_LITERAL(0, 15),  // "IntersectWorker"
+        QT_MOC_LITERAL(16, 4),  // "data"
+        QT_MOC_LITERAL(21, 0),  // ""
+        QT_MOC_LITERAL(22, 13),  // "intersectData"
+        QT_MOC_LITERAL(36, 1),  // "s"
+        QT_MOC_LITERAL(38, 8)   // "finished"
+    },
+    "IntersectWorker",
+    "data",
+    "",
+    "intersectData",
+    "s",
+    "finished"
+};
+#undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
+} // unnamed namespace
+
+Q_CONSTINIT static const uint qt_meta_data_CLASSIntersectWorkerENDCLASS[] = {
+
+ // content:
+      11,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       2,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       2,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    1,   26,    2, 0x06,    1 /* Public */,
+       5,    0,   29,    2, 0x06,    3 /* Public */,
+
+ // signals: parameters
+    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void,
+
+       0        // eod
+};
+
+Q_CONSTINIT const QMetaObject IntersectWorker::staticMetaObject = { {
+    QMetaObject::SuperData::link<QThread::staticMetaObject>(),
+    qt_meta_stringdata_CLASSIntersectWorkerENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSIntersectWorkerENDCLASS,
+    qt_static_metacall,
+    nullptr,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSIntersectWorkerENDCLASS_t,
+        // Q_OBJECT / Q_GADGET
+        QtPrivate::TypeAndForceComplete<IntersectWorker, std::true_type>,
+        // method 'data'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const intersectData &, std::false_type>,
+        // method 'finished'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
+    >,
+    nullptr
+} };
+
+void IntersectWorker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        auto *_t = static_cast<IntersectWorker *>(_o);
+        (void)_t;
+        switch (_id) {
+        case 0: _t->data((*reinterpret_cast< std::add_pointer_t<intersectData>>(_a[1]))); break;
+        case 1: _t->finished(); break;
+        default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 0:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< intersectData >(); break;
+            }
+            break;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (IntersectWorker::*)(const intersectData & );
+            if (_t _q_method = &IntersectWorker::data; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (IntersectWorker::*)();
+            if (_t _q_method = &IntersectWorker::finished; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
+                return;
+            }
+        }
+    }
+}
+
+const QMetaObject *IntersectWorker::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *IntersectWorker::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSIntersectWorkerENDCLASS.stringdata0))
+        return static_cast<void*>(this);
+    return QThread::qt_metacast(_clname);
+}
+
+int IntersectWorker::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QThread::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void IntersectWorker::data(const intersectData & _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void IntersectWorker::finished()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+namespace {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSIntersectControllerENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSIntersectControllerENDCLASS = QtMocHelpers::stringData(
+    "IntersectController",
+    "operate",
+    "",
+    "intersectRoutineArgs",
+    "a",
+    "addIntersectionPoint",
+    "intersectData",
+    "s"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSIntersectControllerENDCLASS_t {
+    uint offsetsAndSizes[16];
+    char stringdata0[20];
+    char stringdata1[8];
+    char stringdata2[1];
+    char stringdata3[21];
+    char stringdata4[2];
+    char stringdata5[21];
+    char stringdata6[14];
+    char stringdata7[2];
+};
+#define QT_MOC_LITERAL(ofs, len) \
+    uint(sizeof(qt_meta_stringdata_CLASSIntersectControllerENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSIntersectControllerENDCLASS_t qt_meta_stringdata_CLASSIntersectControllerENDCLASS = {
+    {
+        QT_MOC_LITERAL(0, 19),  // "IntersectController"
+        QT_MOC_LITERAL(20, 7),  // "operate"
+        QT_MOC_LITERAL(28, 0),  // ""
+        QT_MOC_LITERAL(29, 20),  // "intersectRoutineArgs"
+        QT_MOC_LITERAL(50, 1),  // "a"
+        QT_MOC_LITERAL(52, 20),  // "addIntersectionPoint"
+        QT_MOC_LITERAL(73, 13),  // "intersectData"
+        QT_MOC_LITERAL(87, 1)   // "s"
+    },
+    "IntersectController",
+    "operate",
+    "",
+    "intersectRoutineArgs",
+    "a",
+    "addIntersectionPoint",
+    "intersectData",
+    "s"
+};
+#undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
+} // unnamed namespace
+
+Q_CONSTINIT static const uint qt_meta_data_CLASSIntersectControllerENDCLASS[] = {
+
+ // content:
+      11,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       2,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       1,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    1,   26,    2, 0x06,    1 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       5,    1,   29,    2, 0x0a,    3 /* Public */,
+
+ // signals: parameters
+    QMetaType::Void, 0x80000000 | 3,    4,
+
+ // slots: parameters
+    QMetaType::Void, 0x80000000 | 6,    7,
+
+       0        // eod
+};
+
+Q_CONSTINIT const QMetaObject IntersectController::staticMetaObject = { {
+    QMetaObject::SuperData::link<QObject::staticMetaObject>(),
+    qt_meta_stringdata_CLASSIntersectControllerENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSIntersectControllerENDCLASS,
+    qt_static_metacall,
+    nullptr,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSIntersectControllerENDCLASS_t,
+        // Q_OBJECT / Q_GADGET
+        QtPrivate::TypeAndForceComplete<IntersectController, std::true_type>,
+        // method 'operate'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<intersectRoutineArgs, std::false_type>,
+        // method 'addIntersectionPoint'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const intersectData &, std::false_type>
+    >,
+    nullptr
+} };
+
+void IntersectController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        auto *_t = static_cast<IntersectController *>(_o);
+        (void)_t;
+        switch (_id) {
+        case 0: _t->operate((*reinterpret_cast< std::add_pointer_t<intersectRoutineArgs>>(_a[1]))); break;
+        case 1: _t->addIntersectionPoint((*reinterpret_cast< std::add_pointer_t<intersectData>>(_a[1]))); break;
+        default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 1:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< intersectData >(); break;
+            }
+            break;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (IntersectController::*)(intersectRoutineArgs );
+            if (_t _q_method = &IntersectController::operate; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 0;
+                return;
+            }
+        }
+    }
+}
+
+const QMetaObject *IntersectController::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *IntersectController::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSIntersectControllerENDCLASS.stringdata0))
+        return static_cast<void*>(this);
+    return QObject::qt_metacast(_clname);
+}
+
+int IntersectController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void IntersectController::operate(intersectRoutineArgs _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+QT_WARNING_POP

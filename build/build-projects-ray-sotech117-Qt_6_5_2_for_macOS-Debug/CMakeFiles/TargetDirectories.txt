@@ -1,0 +1,15 @@
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/projects_ray.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/edit_cache.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/rebuild_cache.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/list_install_components.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/install.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/install/local.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/install/strip.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/projects_ray_autogen_timestamp_deps.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/CMakeFiles/projects_ray_autogen.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/edit_cache.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/rebuild_cache.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/list_install_components.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/install.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/install/local.dir
+/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/install/strip.dir

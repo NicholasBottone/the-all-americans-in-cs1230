@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="projects_ray"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\Qt\;CMake Files\..\..\..\..\Qt\6.5.2\;CMake Files\..\..\..\..\Qt\6.5.2\macos\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\;CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\;CMake Files\glm\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="projects_ray">
+				<Option output="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/projects_ray" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_FORCE_SWIZZLE"/>
+					<Add option="-DQT_CONCURRENT_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_NO_DEBUG"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_XML_LIB"/>
+					<Add directory="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+					<Add directory="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117"/>
+					<Add directory="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/projects_ray_autogen/include"/>
+					<Add directory="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtConcurrent.framework/Headers"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtConcurrent.framework"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtCore.framework/Headers"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtCore.framework"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/mkspecs/macx-clang"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/include"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtGui.framework/Headers"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtGui.framework"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtXml.framework/Headers"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtXml.framework"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 projects_ray"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="projects_ray/fast">
+				<Option output="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/projects_ray" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_FORCE_SWIZZLE"/>
+					<Add option="-DQT_CONCURRENT_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_NO_DEBUG"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_XML_LIB"/>
+					<Add directory="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+					<Add directory="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117"/>
+					<Add directory="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/projects_ray_autogen/include"/>
+					<Add directory="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtConcurrent.framework/Headers"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtConcurrent.framework"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtCore.framework/Headers"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtCore.framework"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/mkspecs/macx-clang"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/include"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtGui.framework/Headers"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtGui.framework"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtXml.framework/Headers"/>
+					<Add directory="/Users/sotech117/Qt/6.5.2/macos/lib/QtXml.framework"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 projects_ray/fast"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="projects_ray_autogen">
+				<Option working_dir="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 projects_ray_autogen"/>
+					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/cmake-build-rel-cs2230/projects_ray_autogen/mocs_compilation.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/accelerate/bvh.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/accelerate/bvh.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/accelerate/kdtree.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/accelerate/kdtree.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/accelerate/myqtconcurrent.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/accelerate/myqthreads.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/aliasing/filter.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/aliasing/supersample.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/camera/camera.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/camera/camera.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/illuminate/illuminate.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/illuminate/reflect.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/illuminate/shadow.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/intersect/intersect.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/intersect/normals.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/main.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/raytracer/raytracer.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/raytracer/raytracer.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/raytracer/raytracescene.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/raytracer/raytracescene.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/texture/texture.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/utils/raytracerutils.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/utils/rgba.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/utils/scenedata.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/utils/scenefilereader.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/utils/scenefilereader.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/utils/sceneparser.cpp">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/src/utils/sceneparser.h">
+			<Option target="projects_ray"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/FindWrapAtomic.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/FindWrapOpenGL.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Dependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/Qt6VersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtFeature.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtFeatureCommon.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicAppleHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicPluginHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicTargetHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicTestHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicToolHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Concurrent/Qt6ConcurrentAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Concurrent/Qt6ConcurrentConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Concurrent/Qt6ConcurrentConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Concurrent/Qt6ConcurrentConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Concurrent/Qt6ConcurrentDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Concurrent/Qt6ConcurrentTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Concurrent/Qt6ConcurrentTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Concurrent/Qt6ConcurrentVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Concurrent\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CorePlugins.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6CoreVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinBluetoothPermissionPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCalendarPermissionPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinContactsPermissionPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinLocationPermissionPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/Qt6QDarwinMicrophonePermissionPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Core/QtInstallPaths.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiPlugins.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6GuiVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QCocoaIntegrationPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QGifPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QGifPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QGifPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QGifPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QICOPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QICOPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QICOPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QICOPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QJpegPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QJpegPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QJpegPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QJpegPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QSvgIconPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QSvgIconPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QSvgPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QSvgPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QSvgPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QSvgPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBus/Qt6DBusVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBus\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6DBusTools\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/../../../../Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\Qt\6.5.2\macos\lib\cmake\Qt6Xml\"/>
+		</Unit>
+		<Unit filename="/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\glm\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

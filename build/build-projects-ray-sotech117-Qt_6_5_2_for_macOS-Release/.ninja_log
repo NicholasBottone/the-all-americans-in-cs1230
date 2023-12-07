@@ -1,0 +1,15 @@
+# ninja log v5
+653	2399	1698992251363882251	CMakeFiles/projects_ray.dir/src/raytracer/raytracer.cpp.o	a5cf1624d1fe034d
+6	650	1698992249619685092	/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Release/projects_ray_autogen/timestamp	793c7587e54292b5
+630	1711	1698986708105167982	CMakeFiles/projects_ray.dir/src/main.cpp.o	6dee853238b891e0
+1	118	1698992342163084766	build.ninja	a2451afb9a6c091f
+2399	2504	1698992251472647593	projects_ray	e2739a31b3b034a6
+631	2214	1698986708608217713	CMakeFiles/projects_ray.dir/src/utils/scenefilereader.cpp.o	8b931b434b32e096
+631	977	1698986707372408428	CMakeFiles/projects_ray.dir/src/camera/camera.cpp.o	6769faff494fff9d
+631	1398	1698986707792906165	CMakeFiles/projects_ray.dir/src/utils/sceneparser.cpp.o	d2d604361a46dfe0
+631	1183	1698986707577996954	CMakeFiles/projects_ray.dir/src/utils/kdtree.cpp.o	30bceba93143190a
+6	650	1698992249619685092	/Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Release/projects_ray_autogen/mocs_compilation.cpp	793c7587e54292b5
+46	73	1698981614595865662	CMakeFiles/projects_ray.dir/projects_ray_autogen/mocs_compilation.cpp.o	58276561be003748
+631	1036	1698986707431632335	CMakeFiles/projects_ray.dir/src/raytracer/raytracescene.cpp.o	d77b86b690971577
+6	650	1698992249619685092	projects_ray_autogen/mocs_compilation.cpp	793c7587e54292b5
+6	650	1698992249619685092	projects_ray_autogen/timestamp	793c7587e54292b5
