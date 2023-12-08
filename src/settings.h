@@ -5,8 +5,13 @@
 
 struct Settings {
     std::string sceneFilePath;
-    float w = 1;
-    
+    float xy = 0.f;
+    float z = 0.f;
+    float xz = 0.f;
+    float yz = 0.f;
+    float xw = 0.f;
+    float yw = 0.f;
+    float zw = 0.f;
 };
 
 

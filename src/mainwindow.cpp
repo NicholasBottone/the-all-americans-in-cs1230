@@ -25,8 +25,25 @@ void MainWindow::initialize() {
     QFont font;
     font.setPointSize(12);
     font.setBold(true);
-    QLabel *w_label = new QLabel(); // Width label
-    w_label->setText("W value:");
+    QLabel *xy_label = new QLabel(); // XY label
+    xy_label->setText("XY value:");
+    xy_label->setFont(font);
+    QLabel *xz_label = new QLabel(); // XZ label
+    xz_label->setText("XZ value:");
+    xz_label->setFont(font);
+    QLabel *xw_label = new QLabel(); // XW label
+    xw_label->setText("XW value:");
+    xw_label->setFont(font);
+    QLabel *yz_label = new QLabel(); // YZ label
+    yz_label->setText("YZ value:");
+    yz_label->setFont(font);
+    QLabel *yw_label = new QLabel(); // YW label
+    yw_label->setText("YW value:");
+    yw_label->setFont(font);
+    QLabel *zw_label = new QLabel(); // ZW label
+    zw_label->setText("ZW value:");
+    zw_label->setFont(font);
+    
 
     // Create file uploader for scene file
     uploadFile = new QPushButton();
@@ -35,33 +52,148 @@ void MainWindow::initialize() {
     saveImage = new QPushButton();
     saveImage->setText(QStringLiteral("Save image"));
 
-    QGroupBox *wLayout = new QGroupBox(); // horizonal w slider alignment
-    QHBoxLayout *lw = new QHBoxLayout();
+    QGroupBox *xyLayout = new QGroupBox(); // horizonal w slider alignment
+    QHBoxLayout *lxy = new QHBoxLayout();
 
-    wSlider = new QSlider(Qt::Orientation::Horizontal); // W value slider
-    wSlider->setTickInterval(1);
-    wSlider->setMinimum(1);
-    wSlider->setMaximum(100);
-    wSlider->setValue(1);
+    xySlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
+    xySlider->setTickInterval(1);
+    xySlider->setMinimum(-1000);
+    xySlider->setMaximum(1000);
+    xySlider->setValue(0);
 
-    wBox = new QDoubleSpinBox();
-    wBox->setMinimum(0.01f);
-    wBox->setMaximum(1.f);
-    wBox->setSingleStep(0.01f);
-    wBox->setValue(0.01f);
+    xyBox = new QDoubleSpinBox();
+    xyBox->setMinimum(-10.0f);
+    xyBox->setMaximum(10.f);
+    xyBox->setSingleStep(0.1f);
+    xyBox->setValue(0.f);
 
-    lw->addWidget(wSlider);
-    lw->addWidget(wBox);
-    wLayout->setLayout(lw);
+    lxy->addWidget(xySlider);
+    lxy->addWidget(xyBox);
+    xyLayout->setLayout(lxy);
+
+    // XZ Slider
+    QGroupBox *xzLayout = new QGroupBox(); // horizonal w slider alignment
+    QHBoxLayout *lxz = new QHBoxLayout();
+
+    xzSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
+    xzSlider->setTickInterval(1);
+    xzSlider->setMinimum(-1000);
+    xzSlider->setMaximum(1000);
+    xzSlider->setValue(0);
+
+    xzBox = new QDoubleSpinBox();
+    xzBox->setMinimum(-10.0f);
+    xzBox->setMaximum(10.f);
+    xzBox->setSingleStep(0.1f);
+    xzBox->setValue(0.f);
+
+    lxz->addWidget(xzSlider);
+    lxz->addWidget(xzBox);
+    xzLayout->setLayout(lxz);
+
+    // XW Slider
+    QGroupBox *xwLayout = new QGroupBox(); // horizonal w slider alignment
+    QHBoxLayout *lxw = new QHBoxLayout();
+
+    xwSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
+    xwSlider->setTickInterval(1);
+    xwSlider->setMinimum(-1000);
+    xwSlider->setMaximum(1000);
+    xwSlider->setValue(0);
+
+    xwBox = new QDoubleSpinBox();
+    xwBox->setMinimum(-10.0f);
+    xwBox->setMaximum(10.f);
+    xwBox->setSingleStep(0.1f);
+    xwBox->setValue(0.f);
+
+    lxw->addWidget(xwSlider);
+    lxw->addWidget(xwBox);
+    xwLayout->setLayout(lxw);
+
+    // YZ Slider
+    QGroupBox *yzLayout = new QGroupBox(); // horizonal w slider alignment
+    QHBoxLayout *lyz = new QHBoxLayout();
+
+    yzSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
+    yzSlider->setTickInterval(1);
+    yzSlider->setMinimum(-1000);
+    yzSlider->setMaximum(1000);
+    yzSlider->setValue(0);
+
+    yzBox = new QDoubleSpinBox();
+    yzBox->setMinimum(-10.0f);
+    yzBox->setMaximum(10.f);
+    yzBox->setSingleStep(0.1f);
+    yzBox->setValue(0.f);
+
+    lyz->addWidget(yzSlider);
+    lyz->addWidget(yzBox);
+    yzLayout->setLayout(lyz);
+
+    // YW Slider
+    QGroupBox *ywLayout = new QGroupBox(); // horizonal w slider alignment
+    QHBoxLayout *lyw = new QHBoxLayout();
+    
+    ywSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
+    ywSlider->setTickInterval(1);
+    ywSlider->setMinimum(-1000);
+    ywSlider->setMaximum(1000);
+    ywSlider->setValue(0);
+
+    ywBox = new QDoubleSpinBox();
+    ywBox->setMinimum(-10.0f);
+    ywBox->setMaximum(10.f);
+    ywBox->setSingleStep(0.1f);
+    ywBox->setValue(100.f);
+
+    lyw->addWidget(ywSlider);
+    lyw->addWidget(ywBox);
+    ywLayout->setLayout(lyw);
+
+    // ZW Slider
+    QGroupBox *zwLayout = new QGroupBox(); // horizonal w slider alignment
+    QHBoxLayout *lzw = new QHBoxLayout();
+
+    zwSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
+    zwSlider->setTickInterval(1);
+    zwSlider->setMinimum(-1000);
+    zwSlider->setMaximum(1000);
+    zwSlider->setValue(0);
+
+    zwBox = new QDoubleSpinBox();
+    zwBox->setMinimum(-10.0f);
+    zwBox->setMaximum(10.f);
+    zwBox->setSingleStep(0.1f);
+    zwBox->setValue(100.f);
+
+    lzw->addWidget(zwSlider);
+    lzw->addWidget(zwBox);
+    zwLayout->setLayout(lzw);
 
     vLayout->addWidget(uploadFile);
     vLayout->addWidget(saveImage);
-    vLayout->addWidget(w_label);
-    vLayout->addWidget(wLayout);
+    vLayout->addWidget(xy_label);
+    vLayout->addWidget(xyLayout);
+    vLayout->addWidget(xz_label);
+    vLayout->addWidget(xzLayout);
+    vLayout->addWidget(xw_label);
+    vLayout->addWidget(xwLayout);
+    vLayout->addWidget(yz_label);
+    vLayout->addWidget(yzLayout);
+    vLayout->addWidget(yw_label);
+    vLayout->addWidget(ywLayout);
+    vLayout->addWidget(zw_label);
+    vLayout->addWidget(zwLayout);
 
     connectUIElements();
 
-    onValChangeWBox(0.01f);
+    onValChangexyBox(0.0f);
+    onValChangexzBox(0.0f);
+    onValChangexwBox(0.0f);
+    onValChangeyzBox(0.0f);
+    onValChangeywBox(0.0f);
+    onValChangezwBox(0.0f);
 }
 
 void MainWindow::finish() {
@@ -72,7 +204,12 @@ void MainWindow::finish() {
 void MainWindow::connectUIElements() {
     connectUploadFile();
     connectSaveImage();
-    connectW();
+    connectxy();
+    connectxz();
+    connectxw();
+    connectyz();
+    connectyw();
+    connectzw();
 }
 
 void MainWindow::connectUploadFile() {
@@ -83,10 +220,40 @@ void MainWindow::connectSaveImage() {
     connect(saveImage, &QPushButton::clicked, this, &MainWindow::onSaveImage);
 }
 
-void MainWindow::connectW() {
-    connect(wSlider, &QSlider::valueChanged, this, &MainWindow::onValChangeWSlider);
-    connect(wBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
-            this, &MainWindow::onValChangeWBox);
+void MainWindow::connectxy() {
+    connect(xySlider, &QSlider::valueChanged, this, &MainWindow::onValChangexySlider);
+    connect(xyBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+            this, &MainWindow::onValChangexyBox);
+}
+
+void MainWindow::connectxz() {
+    connect(xzSlider, &QSlider::valueChanged, this, &MainWindow::onValChangexzSlider);
+    connect(xzBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+            this, &MainWindow::onValChangexzBox);
+}
+
+void MainWindow::connectxw() {
+    connect(xwSlider, &QSlider::valueChanged, this, &MainWindow::onValChangexwSlider);
+    connect(xwBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+            this, &MainWindow::onValChangexwBox);
+}
+
+void MainWindow::connectyz() {
+    connect(yzSlider, &QSlider::valueChanged, this, &MainWindow::onValChangeyzSlider);
+    connect(yzBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+            this, &MainWindow::onValChangeyzBox);
+}
+
+void MainWindow::connectyw() {
+    connect(ywSlider, &QSlider::valueChanged, this, &MainWindow::onValChangeywSlider);
+    connect(ywBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+            this, &MainWindow::onValChangeywBox);
+}
+
+void MainWindow::connectzw() {
+    connect(zwSlider, &QSlider::valueChanged, this, &MainWindow::onValChangezwSlider);
+    connect(zwBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+            this, &MainWindow::onValChangezwBox);
 }
 
 void MainWindow::onUploadFile() {
@@ -132,16 +299,86 @@ void MainWindow::onSaveImage() {
 //    realtime->saveViewportImage(filePath.toStdString());
 }
 
-void MainWindow::onValChangeWSlider(int newValue) {
+void MainWindow::onValChangexySlider(int newValue) {
     //wSlider->setValue(newValue);
-    wBox->setValue(newValue/100.f);
-    settings.w = wBox->value();
+    xyBox->setValue(newValue/100.f);
+    settings.xy = xyBox->value();
     rayTracer->settingsChanged(imageLabel);
 }
 
-void MainWindow::onValChangeWBox(double newValue) {
-    wSlider->setValue(int(newValue*100.f));
+void MainWindow::onValChangexyBox(double newValue) {
+    xySlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
-    settings.w = wBox->value();
+    settings.xy = xyBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangexzSlider(int newValue) {
+    //wSlider->setValue(newValue);
+    xzBox->setValue(newValue/100.f);
+    settings.xz = xzBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangexzBox(double newValue) {
+    xzSlider->setValue(int(newValue*100.f));
+    //wBox->setValue(newValue);
+    settings.xz = xzBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangexwSlider(int newValue) {
+    //wSlider->setValue(newValue);
+    xwBox->setValue(newValue/100.f);
+    settings.xw = xwBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangexwBox(double newValue) {
+    xwSlider->setValue(int(newValue*100.f));
+    //wBox->setValue(newValue);
+    settings.xw = xwBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangeyzSlider(int newValue) {
+    //wSlider->setValue(newValue);
+    yzBox->setValue(newValue/100.f);
+    settings.yz = yzBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangeyzBox(double newValue) {
+    yzSlider->setValue(int(newValue*100.f));
+    //wBox->setValue(newValue);
+    settings.yz = yzBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangeywSlider(int newValue) {
+    //wSlider->setValue(newValue);
+    ywBox->setValue(newValue/100.f);
+    settings.yw = ywBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangeywBox(double newValue) {
+    ywSlider->setValue(int(newValue*100.f));
+    //wBox->setValue(newValue);
+    settings.yw = ywBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangezwSlider(int newValue) {
+    //wSlider->setValue(newValue);
+    zwBox->setValue(newValue/100.f);
+    settings.zw = zwBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangezwBox(double newValue) {
+    zwSlider->setValue(int(newValue*100.f));
+    //wBox->setValue(newValue);
+    settings.zw = zwBox->value();
     rayTracer->settingsChanged(imageLabel);
 }
