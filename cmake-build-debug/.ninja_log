@@ -36,3 +36,9 @@
 2277	3074	1702062978573573842	CMakeFiles/projects_ray.dir/projects_ray_autogen/mocs_compilation.cpp.o	75d01056e19b5cdd
 1934	3161	1702062978659402142	CMakeFiles/projects_ray.dir/src/raytracer/raytracer.cpp.o	78383fd2d33d7c09
 2190	3283	1702062978781768457	CMakeFiles/projects_ray.dir/src/main.cpp.o	18bcd3026e919fd3
+7	34	1702063494707727424	projects_ray_autogen/timestamp	d580242d2b9854b3
+7	34	1702063494707727424	projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
+7	34	1702063494707727424	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/timestamp	d580242d2b9854b3
+7	34	1702063494707727424	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
+37	1002	1702063495670965252	CMakeFiles/projects_ray.dir/src/utils/scenefilereader.cpp.o	41959d435611c983
+1002	1148	1702063495820276807	projects_ray	69591c53d0e17f8e
