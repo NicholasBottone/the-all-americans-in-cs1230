@@ -42,7 +42,7 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
                 float z = (imageDepth - scene.height()/2.f) * viewplaneHeight / scene.height();
                 float camera4dDepth = 1;
 
-                glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(0.f), camera.getViewMatrix(), camera.getTranslationVector());
+                glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(x, y, z, 0.f), camera.getViewMatrix(), camera.getTranslationVector());
                 glm::vec4 dWorld = glm::vec4(0.f, 0.f, 0.f, -1.f);
 
                 // get the pixel color
