@@ -63,7 +63,7 @@ add_executable(${PROJECT_NAME}
         src/accelerate/kdtree.h
         src/accelerate/bvh.cpp
         src/accelerate/bvh.h
-        src/4dvecops/vectoroperations.cpp
+        src/4dvecops/vec4operations.cpp
         src/4dvecops/rotations4d.cpp
 )
 
