@@ -447,17 +447,23 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
     // Parse the camera data
     if (cameradata["position"].isArray()) {
         QJsonArray position = cameradata["position"].toArray();
-        if (position.size() != 3) {
-            std::cout << "cameraData position must have 3 elements" << std::endl;
+        if (position.size() != 3 && position.size() != 4) {
+            std::cout << "cameraData position must have 3-4 elements" << std::endl;
             return false;
         }
-        if (!position[0].isDouble() || !position[1].isDouble() || !position[2].isDouble()) {
+        if (!position[0].isDouble() || !position[1].isDouble() || !position[2].isDouble() || (position.size() == 4 && !position[3].isDouble())) {
             std::cout << "cameraData position must be a floating-point value" << std::endl;
             return false;
         }
         m_cameraData.pos.x = position[0].toDouble();
         m_cameraData.pos.y = position[1].toDouble();
         m_cameraData.pos.z = position[2].toDouble();
+        if (position.size() == 4) {
+            m_cameraData.pos.w = position[3].toDouble();
+        }
+        else {
+            m_cameraData.pos.w = 1.f;
+        }
     }
     else {
         std::cout << "cameraData position must be an array" << std::endl;
@@ -466,17 +472,23 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
 
     if (cameradata["up"].isArray()) {
         QJsonArray up = cameradata["up"].toArray();
-        if (up.size() != 3) {
-            std::cout << "cameraData up must have 3 elements" << std::endl;
+        if (up.size() != 3 && up.size() != 4) {
+            std::cout << "cameraData up must have 3-4 elements" << std::endl;
             return false;
         }
-        if (!up[0].isDouble() || !up[1].isDouble() || !up[2].isDouble()) {
+        if (!up[0].isDouble() || !up[1].isDouble() || !up[2].isDouble() || (up.size() == 4 && !up[3].isDouble())) {
             std::cout << "cameraData up must be a floating-point value" << std::endl;
             return false;
         }
         m_cameraData.up.x = up[0].toDouble();
         m_cameraData.up.y = up[1].toDouble();
         m_cameraData.up.z = up[2].toDouble();
+        if (up.size() == 4) {
+            m_cameraData.up.w = up[3].toDouble();
+        }
+        else {
+            m_cameraData.up.w = 1.f;
+        }
     }
     else {
         std::cout << "cameraData up must be an array" << std::endl;
@@ -516,17 +528,23 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
     if (cameradata.contains("look")) {
         if (cameradata["look"].isArray()) {
             QJsonArray look = cameradata["look"].toArray();
-            if (look.size() != 3) {
-                std::cout << "cameraData look must have 3 elements" << std::endl;
+            if (look.size() != 3 && look.size() != 4) {
+                std::cout << "cameraData look must have 3-4 elements" << std::endl;
                 return false;
             }
-            if (!look[0].isDouble() || !look[1].isDouble() || !look[2].isDouble()) {
+            if (!look[0].isDouble() || !look[1].isDouble() || !look[2].isDouble() || (look.size() == 4 && !look[3].isDouble())) {
                 std::cout << "cameraData look must be a floating-point value" << std::endl;
                 return false;
             }
             m_cameraData.look.x = look[0].toDouble();
             m_cameraData.look.y = look[1].toDouble();
             m_cameraData.look.z = look[2].toDouble();
+            if (look.size() == 4) {
+                m_cameraData.look.w = look[3].toDouble();
+            }
+            else {
+                m_cameraData.look.w = 1.f;
+            }
         }
         else {
             std::cout << "cameraData look must be an array" << std::endl;
@@ -536,17 +554,23 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
     else if (cameradata.contains("focus")) {
         if (cameradata["focus"].isArray()) {
             QJsonArray focus = cameradata["focus"].toArray();
-            if (focus.size() != 3) {
-                std::cout << "cameraData focus must have 3 elements" << std::endl;
+            if (focus.size() != 3 && focus.size() != 4) {
+                std::cout << "cameraData focus must have 3-4 elements" << std::endl;
                 return false;
             }
-            if (!focus[0].isDouble() || !focus[1].isDouble() || !focus[2].isDouble()) {
+            if (!focus[0].isDouble() || !focus[1].isDouble() || !focus[2].isDouble() || (focus.size() == 4 && !focus[3].isDouble())) {
                 std::cout << "cameraData focus must be a floating-point value" << std::endl;
                 return false;
             }
             m_cameraData.look.x = focus[0].toDouble();
             m_cameraData.look.y = focus[1].toDouble();
             m_cameraData.look.z = focus[2].toDouble();
+            if (focus.size() == 4) {
+                m_cameraData.look.w = focus[3].toDouble();
+            }
+            else {
+                m_cameraData.look.w = 1.f;
+            }
         }
         else {
             std::cout << "cameraData focus must be an array" << std::endl;
