@@ -25,6 +25,10 @@ RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
 
 // updated to use 4D
 void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
+    if (m_enableParallelism) {
+        renderParallel(imageData, scene);
+    }
+
     // naive rendering
     Camera camera = scene.getCamera();
     float cameraDepth = 1.f;
