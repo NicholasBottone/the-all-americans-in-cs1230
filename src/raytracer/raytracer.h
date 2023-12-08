@@ -9,6 +9,7 @@
 #include <QOpenGLWidget>
 #include <QLabel>
 #include <QElapsedTimer>
+#include <unordered_map>
 
 // A forward declaration for the RaytraceScene class
 
