@@ -1,5 +1,5 @@
 #include "raytracer/raytracer.h"
-#include "4dvecops/vec4ops.h"
+#include "vec4ops/vec4ops.h"
 
 glm::mat4 Vec4Ops::getRotationMatrix4XY(
         float angleRadians) {

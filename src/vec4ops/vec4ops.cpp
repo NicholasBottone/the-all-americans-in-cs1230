@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include "vec4ops.h"
+#include "settings.h"
 
 // vector operations on 4d vectors,
 // reference: https://hollasch.github.io/ray4/Four-Space_Visualization_of_4D_Objects.html#chapter5
@@ -36,6 +37,16 @@ glm::mat4 Vec4Ops::getViewMatrix4(
         glm::vec4 upVector,
         glm::vec4 lookVector) {
 
+    // rotation matrices for each plane
+    glm::mat4 rotMatrixXY = getRotationMatrix4XY(glm::radians(settings.xy));
+    glm::mat4 rotMatrixXZ = getRotationMatrix4XZ(glm::radians(settings.xz));
+    glm::mat4 rotMatrixYZ = getRotationMatrix4YZ(glm::radians(settings.yz));
+    glm::mat4 rotMatrixXW = getRotationMatrix4XW(glm::radians(settings.xw));
+    glm::mat4 rotMatrixYW = getRotationMatrix4YW(glm::radians(settings.yw));
+    glm::mat4 rotMatrixZW = getRotationMatrix4ZW(glm::radians(settings.zw));
+
+    glm::mat4 combinedRotationMatrix = rotMatrixXY * rotMatrixYZ * rotMatrixXZ * rotMatrixXW * rotMatrixYW * rotMatrixZW;
+
     // calculate e3 basis vector, the transformation col of view matrix
     if (glm::distance(fromPoint, toPoint) < 0.0001f) {
         throw std::runtime_error("fromPoint and toPoint are the same");
@@ -59,6 +70,18 @@ glm::mat4 Vec4Ops::getViewMatrix4(
     // calculate e0 basis vector, the 4d orthogonal vector to the other 3 bases
     glm::vec4 e0 = cross4(e3, e2, e1);
     e0 = glm::normalize(e0);
+
+    // Apply the combined rotation matrix to the view basis vectors
+    e0 = combinedRotationMatrix * e0;
+    e1 = combinedRotationMatrix * e1;
+    e2 = combinedRotationMatrix * e2;
+    e3 = combinedRotationMatrix * e3;
+
+    // Normalizing might be necessary after applying the rotation
+    e0 = glm::normalize(e0);
+    e1 = glm::normalize(e1);
+    e2 = glm::normalize(e2);
+    e3 = glm::normalize(e3);
 
     return {e2, e1, e0, e3};
 }

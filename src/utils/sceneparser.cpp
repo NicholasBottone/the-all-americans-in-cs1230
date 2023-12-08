@@ -1,6 +1,6 @@
 #include "sceneparser.h"
 #include "scenefilereader.h"
-#include "4dvecops/vec4ops.h"
+#include "vec4ops/vec4ops.h"
 #include <glm/gtx/transform.hpp>
 #include <QImage>
 #include <iostream>
