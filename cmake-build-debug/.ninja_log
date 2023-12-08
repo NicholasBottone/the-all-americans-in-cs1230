@@ -1,14 +1,14 @@
 # ninja log v5
-1	163	1702063806513858336	build.ninja	34bb77e754b05480
 37	1002	1702063495670965252	CMakeFiles/projects_ray.dir/src/utils/scenefilereader.cpp.o	41959d435611c983
+1	163	1702065805502556826	build.ninja	34bb77e754b05480
 1129	1843	1702062977342546570	CMakeFiles/projects_ray.dir/src/4dvecops/rotations4d.cpp.o	ce6e3c7f960de866
 1220	1963	1702062977461615794	CMakeFiles/projects_ray.dir/src/intersect/intersect.cpp.o	46167bd837be2b2a
-7	34	1702063494707727424	projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
 1153	1904	1702062977403040871	CMakeFiles/projects_ray.dir/src/illuminate/reflect.cpp.o	63ef5fb7afacbb32
+7	34	1702063494707727424	projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
 7	34	1702063494707727424	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/timestamp	d580242d2b9854b3
 389	1129	1702062976626800433	CMakeFiles/projects_ray.dir/src/utils/raytracerutils.cpp.o	6d0b760a9c84856a
-7	34	1702063494707727424	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
 389	1124	1702062976621998218	CMakeFiles/projects_ray.dir/src/accelerate/myqthreads.cpp.o	e51322a1e2833898
+7	34	1702063494707727424	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
 1215	1995	1702062977494482428	CMakeFiles/projects_ray.dir/src/illuminate/illuminate.cpp.o	1e4b595f9246a14f
 1002	1148	1702063495820276807	projects_ray	69591c53d0e17f8e
 389	1153	1702062976653549225	CMakeFiles/projects_ray.dir/src/4dvecops/vec4operations.cpp.o	d05a5fd3c2f1f4c4
@@ -17,10 +17,10 @@
 389	1194	1702062976692855035	CMakeFiles/projects_ray.dir/src/aliasing/supersample.cpp.o	829a155a1ffac273
 1194	1944	1702062977443687058	CMakeFiles/projects_ray.dir/src/illuminate/shadow.cpp.o	643a1e808e96cec
 389	1220	1702062976719809368	CMakeFiles/projects_ray.dir/src/aliasing/filter.cpp.o	c1cad78d9998b2c4
-1995	2884	1702062978382551338	CMakeFiles/projects_ray.dir/src/mainwindow.cpp.o	96d8c110d02a09df
 1124	1934	1702062977432980500	CMakeFiles/projects_ray.dir/src/accelerate/bvh.cpp.o	a8cce28f179d7603
-1706	2503	1702062978000706958	CMakeFiles/projects_ray.dir/src/utils/sceneparser.cpp.o	d9e1b1ef9f57a97a
+1995	2884	1702062978382551338	CMakeFiles/projects_ray.dir/src/mainwindow.cpp.o	96d8c110d02a09df
 1944	2276	1702062977776055279	CMakeFiles/projects_ray.dir/src/camera/camera.cpp.o	9f825ee08bf53b36
+1706	2503	1702062978000706958	CMakeFiles/projects_ray.dir/src/utils/sceneparser.cpp.o	d9e1b1ef9f57a97a
 1963	2190	1702062977691669565	CMakeFiles/projects_ray.dir/src/settings.cpp.o	7c89207347735849
 1934	3161	1702062978659402142	CMakeFiles/projects_ray.dir/src/raytracer/raytracer.cpp.o	78383fd2d33d7c09
 1150	1837	1702062977336494519	CMakeFiles/projects_ray.dir/src/4dvecops/transform4d.cpp.o	edbb1aa44772a316

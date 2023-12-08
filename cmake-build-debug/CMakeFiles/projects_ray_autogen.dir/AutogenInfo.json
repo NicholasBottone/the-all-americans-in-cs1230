@@ -392,12 +392,6 @@
 	"HEADERS" : 
 	[
 		[
-			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/vec4ops.h",
-			"MU",
-			"SDN2X6DTVW/moc_vec4ops.cpp",
-			null
-		],
-		[
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/accelerate/bvh.h",
 			"MU",
 			"IKADTU3N3M/moc_bvh.cpp",
@@ -467,6 +461,12 @@
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/utils/sceneparser.h",
 			"MU",
 			"VSCBVMNR7M/moc_sceneparser.cpp",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/vec4ops.h",
+			"MU",
+			"YL3NGBB5K6/moc_vec4ops.cpp",
 			null
 		]
 	],
@@ -548,21 +548,6 @@
 	"SETTINGS_FILE" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/CMakeFiles/projects_ray_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[
-			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/rotations4d.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/transform4d.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/vec4ops.cpp",
-			"MU",
-			null
-		],
 		[
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/accelerate/bvh.cpp",
 			"MU",
@@ -665,6 +650,21 @@
 		],
 		[
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/utils/sceneparser.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/rotations4d.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/transform4d.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/vec4ops.cpp",
 			"MU",
 			null
 		]
