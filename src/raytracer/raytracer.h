@@ -165,8 +165,7 @@ public:
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
 
-    glm::mat4 getRotationMatrix4(float angleRadiansXY, float angleRadiansYZ, float angleRadiansZX, float angleRadiansXW,
-                                 float angleRadiansYW, float angleRadiansZW);
+    glm::mat4 getRotationMatrix4(float angle, glm::vec3 axis3, glm::vec3 axisW);
 signals:
     void xyRotationChanged(float value);
     void xzRotationChanged(float value);

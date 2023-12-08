@@ -1,5 +1,6 @@
 #include "sceneparser.h"
 #include "scenefilereader.h"
+#include "4dvecops/vec4ops.h"
 #include <glm/gtx/transform.hpp>
 #include <QImage>
 #include <iostream>
@@ -39,16 +40,13 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
         switch (t->type)
         {
         case TransformationType::TRANSFORMATION_TRANSLATE:
-            currentCTM *= glm::translate(glm::vec3(t->translate));
-            currentTranslation4d *= glm::vec4(t->translate); // TODO
+            SceneParser::translate4(currentTranslation4d, t->translate);
             break;
         case TransformationType::TRANSFORMATION_SCALE:
-            currentCTM *= glm::scale(glm::vec3(t->scale));
-            currentTranslation4d *= glm::vec4(t->scale); // TODO
+            SceneParser::scale4(currentTranslation4d, t->scale);
             break;
         case TransformationType::TRANSFORMATION_ROTATE:
-            currentCTM *= glm::rotate(t->angle, glm::vec3(t->rotate[0], t->rotate[1], t->rotate[2]));
-            // TODO: 4d rotation
+            currentCTM *= SceneParser::getRotationMatrix4(t->angle, t->rotate3, t->rotateW);
             break;
         case TransformationType::TRANSFORMATION_MATRIX:
             currentCTM *= glm::mat4(t->matrix);
@@ -68,7 +66,7 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
             ctm: currentCTM,
             translation4d: currentTranslation4d,
             inverseCTM: glm::inverse(currentCTM),
-            inverseTranslation4d: glm::inverse(currentTranslation4d)
+            inverseTranslation4d: -currentTranslation4d,
         };
         shapes->push_back(rsd);
     }
@@ -114,7 +112,7 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
     }
 
     for (auto child : currentNode->children) {
-        initTree(child, shapes, lights, currentCTM);
+        initTree(child, shapes, lights, currentCTM, currentTranslation4d);
     }
 
 }
@@ -139,8 +137,50 @@ bool SceneParser::parse(std::string filepath, RenderData &renderData) {
     renderData.shapes.clear();
     renderData.lights.clear();
     auto currentCTM = glm::mat4(1.0f);
+    auto currentTranslation4d = glm::vec4(0.0f);
 
-    initTree(root, &renderData.shapes, &renderData.lights, currentCTM);
+    initTree(root, &renderData.shapes, &renderData.lights, currentCTM, currentTranslation4d);
 
     return true;
+}
+
+glm::mat4 SceneParser::getRotationMatrix4(
+        float angle,
+        glm::vec3 axis3,
+        glm::vec3 axisW) {
+    // start with the normal rotation from the normal 3d axes
+    if (axis3.x > 0)
+        return Vec4Ops::getRotationMatrix4XY(angle);
+    else if (axis3.y > 0)
+        return Vec4Ops::getRotationMatrix4YZ(angle);
+    else if (axis3.z > 0)
+        return Vec4Ops::getRotationMatrix4ZX(angle);
+    else if (axisW.x > 0)
+        return Vec4Ops::getRotationMatrix4XW(angle);
+    else if (axisW.y > 0)
+        return Vec4Ops::getRotationMatrix4YW(angle);
+    else if (axisW.z > 0)
+        return Vec4Ops::getRotationMatrix4ZW(angle);
+    else
+        throw std::runtime_error("invalid axis");
+}
+
+void SceneParser::translate4(
+        glm::vec4 &v1,
+        glm::vec4 v2
+        ) {
+    v1.x += v2.x;
+    v1.y += v2.y;
+    v1.z += v2.z;
+    v1.w += v2.w;
+}
+
+void SceneParser::scale4(
+        glm::vec4 &v1,
+        glm::vec4 v2
+        ) {
+    v1.x *= v2.x;
+    v1.y *= v2.y;
+    v1.z *= v2.z;
+    v1.w *= v2.w;
 }

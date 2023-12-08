@@ -358,7 +358,7 @@ build projects_ray_autogen/timestamp projects_ray_autogen/mocs_compilation.cpp |
 #############################################
 # Phony custom command for CMakeFiles/projects_ray_autogen_timestamp_deps
 
-build CMakeFiles/projects_ray_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/projects_ray_autogen_timestamp_deps: phony /Users/sotech117/Qt/6.5.2/macos/./libexec/uic /Users/sotech117/Qt/6.5.2/macos/./libexec/moc
+build CMakeFiles/projects_ray_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/projects_ray_autogen_timestamp_deps: phony /Users/sotech117/Qt/6.5.2/macos/./libexec/moc /Users/sotech117/Qt/6.5.2/macos/./libexec/uic
 
 
 #############################################

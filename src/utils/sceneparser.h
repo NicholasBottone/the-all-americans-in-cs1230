@@ -30,4 +30,10 @@ public:
     // @param renderData  On return, this will contain the metadata of the loaded scene.
     // @return            A boolean value indicating whether the parse was successful.
     static bool parse(std::string filepath, RenderData &renderData);
+
+    static glm::mat4 getRotationMatrix4(float angle, glm::vec3 axis3, glm::vec3 axisW);
+
+    static void translate4(glm::vec4 &v1, glm::vec4 v2);
+
+    static void scale4(glm::vec4 &v1, glm::vec4 v2);
 };

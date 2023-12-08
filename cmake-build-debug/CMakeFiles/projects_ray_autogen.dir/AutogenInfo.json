@@ -392,9 +392,9 @@
 	"HEADERS" : 
 	[
 		[
-			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/transform4d.h",
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/vec4ops.h",
 			"MU",
-			"SDN2X6DTVW/moc_transform4d.cpp",
+			"SDN2X6DTVW/moc_vec4ops.cpp",
 			null
 		],
 		[
