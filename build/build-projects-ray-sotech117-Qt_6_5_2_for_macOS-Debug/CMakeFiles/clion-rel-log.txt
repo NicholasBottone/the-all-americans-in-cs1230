@@ -1,4 +1,0 @@
-Cannot generate into /Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Debug
-This directory is already used for 'cs2230' profile
-
-Please either delete it manually or select another generation directory

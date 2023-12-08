@@ -447,17 +447,23 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
     // Parse the camera data
     if (cameradata["position"].isArray()) {
         QJsonArray position = cameradata["position"].toArray();
-        if (position.size() != 3) {
-            std::cout << "cameraData position must have 3 elements" << std::endl;
+        if (position.size() != 3 && position.size() != 4) {
+            std::cout << "cameraData position must have 3-4 elements" << std::endl;
             return false;
         }
-        if (!position[0].isDouble() || !position[1].isDouble() || !position[2].isDouble()) {
+        if (!position[0].isDouble() || !position[1].isDouble() || !position[2].isDouble() || (position.size() == 4 && !position[3].isDouble())) {
             std::cout << "cameraData position must be a floating-point value" << std::endl;
             return false;
         }
         m_cameraData.pos.x = position[0].toDouble();
         m_cameraData.pos.y = position[1].toDouble();
         m_cameraData.pos.z = position[2].toDouble();
+        if (position.size() == 4) {
+            m_cameraData.pos.w = position[3].toDouble();
+        }
+        else {
+            m_cameraData.pos.w = 1.f;
+        }
     }
     else {
         std::cout << "cameraData position must be an array" << std::endl;
@@ -466,17 +472,23 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
 
     if (cameradata["up"].isArray()) {
         QJsonArray up = cameradata["up"].toArray();
-        if (up.size() != 3) {
-            std::cout << "cameraData up must have 3 elements" << std::endl;
+        if (up.size() != 3 && up.size() != 4) {
+            std::cout << "cameraData up must have 3-4 elements" << std::endl;
             return false;
         }
-        if (!up[0].isDouble() || !up[1].isDouble() || !up[2].isDouble()) {
+        if (!up[0].isDouble() || !up[1].isDouble() || !up[2].isDouble() || (up.size() == 4 && !up[3].isDouble())) {
             std::cout << "cameraData up must be a floating-point value" << std::endl;
             return false;
         }
         m_cameraData.up.x = up[0].toDouble();
         m_cameraData.up.y = up[1].toDouble();
         m_cameraData.up.z = up[2].toDouble();
+        if (up.size() == 4) {
+            m_cameraData.up.w = up[3].toDouble();
+        }
+        else {
+            m_cameraData.up.w = 1.f;
+        }
     }
     else {
         std::cout << "cameraData up must be an array" << std::endl;
@@ -516,17 +528,23 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
     if (cameradata.contains("look")) {
         if (cameradata["look"].isArray()) {
             QJsonArray look = cameradata["look"].toArray();
-            if (look.size() != 3) {
-                std::cout << "cameraData look must have 3 elements" << std::endl;
+            if (look.size() != 3 && look.size() != 4) {
+                std::cout << "cameraData look must have 3-4 elements" << std::endl;
                 return false;
             }
-            if (!look[0].isDouble() || !look[1].isDouble() || !look[2].isDouble()) {
+            if (!look[0].isDouble() || !look[1].isDouble() || !look[2].isDouble() || (look.size() == 4 && !look[3].isDouble())) {
                 std::cout << "cameraData look must be a floating-point value" << std::endl;
                 return false;
             }
             m_cameraData.look.x = look[0].toDouble();
             m_cameraData.look.y = look[1].toDouble();
             m_cameraData.look.z = look[2].toDouble();
+            if (look.size() == 4) {
+                m_cameraData.look.w = look[3].toDouble();
+            }
+            else {
+                m_cameraData.look.w = 1.f;
+            }
         }
         else {
             std::cout << "cameraData look must be an array" << std::endl;
@@ -536,17 +554,23 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
     else if (cameradata.contains("focus")) {
         if (cameradata["focus"].isArray()) {
             QJsonArray focus = cameradata["focus"].toArray();
-            if (focus.size() != 3) {
-                std::cout << "cameraData focus must have 3 elements" << std::endl;
+            if (focus.size() != 3 && focus.size() != 4) {
+                std::cout << "cameraData focus must have 3-4 elements" << std::endl;
                 return false;
             }
-            if (!focus[0].isDouble() || !focus[1].isDouble() || !focus[2].isDouble()) {
+            if (!focus[0].isDouble() || !focus[1].isDouble() || !focus[2].isDouble() || (focus.size() == 4 && !focus[3].isDouble())) {
                 std::cout << "cameraData focus must be a floating-point value" << std::endl;
                 return false;
             }
             m_cameraData.look.x = focus[0].toDouble();
             m_cameraData.look.y = focus[1].toDouble();
             m_cameraData.look.z = focus[2].toDouble();
+            if (focus.size() == 4) {
+                m_cameraData.look.w = focus[3].toDouble();
+            }
+            else {
+                m_cameraData.look.w = 1.f;
+            }
         }
         else {
             std::cout << "cameraData focus must be an array" << std::endl;
@@ -638,11 +662,11 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         }
 
         QJsonArray translateArray = object["translate"].toArray();
-        if (translateArray.size() != 4) {
-            std::cout << "group translate must have 4 elements" << std::endl;
+        if (translateArray.size() != 4 && translateArray.size() != 3) {
+            std::cout << "group translate must have 3-4 elements" << std::endl;
             return false;
         }
-        if (!translateArray[0].isDouble() || !translateArray[1].isDouble() || !translateArray[2].isDouble() || !translateArray[3].isDouble()) {
+        if (!translateArray[0].isDouble() || !translateArray[1].isDouble() || !translateArray[2].isDouble() || (translateArray.size() == 4 && !translateArray[3].isDouble())) {
             std::cout << "group translate must contain floating-point values" << std::endl;
             return false;
         }
@@ -652,7 +676,8 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         translation->translate.x = translateArray[0].toDouble();
         translation->translate.y = translateArray[1].toDouble();
         translation->translate.z = translateArray[2].toDouble();
-        translation->translate.w = translateArray[3].toDouble();
+        if (translateArray.size() == 4)
+            translation->translate.w = translateArray[3].toDouble();
 
         node->transformations.push_back(translation);
     }
@@ -665,11 +690,11 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         }
 
         QJsonArray rotateArray = object["rotate"].toArray();
-        if (rotateArray.size() != 7) {
-            std::cout << "group rotate must have 7 elements" << std::endl;
+        if (rotateArray.size() != 7 && rotateArray.size() != 4) {
+            std::cout << "group rotate must have 4 or 7 elements" << std::endl;
             return false;
         }
-        if (!rotateArray[0].isDouble() || !rotateArray[1].isDouble() || !rotateArray[2].isDouble() || !rotateArray[3].isDouble() || !rotateArray[4].isDouble() || !rotateArray[5].isDouble() || !rotateArray[6].isDouble()) {
+        if (!rotateArray[0].isDouble() || !rotateArray[1].isDouble() || !rotateArray[2].isDouble() || !rotateArray[3].isDouble() || (rotateArray.size() == 7 && (!rotateArray[4].isDouble() || !rotateArray[5].isDouble() || !rotateArray[6].isDouble()))) {
             std::cout << "group rotate must contain floating-point values" << std::endl;
             return false;
         }
@@ -679,10 +704,16 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         rotation->rotate3.x = rotateArray[0].toDouble();
         rotation->rotate3.y = rotateArray[1].toDouble();
         rotation->rotate3.z = rotateArray[2].toDouble();
-        rotation->rotateW.x = rotateArray[3].toDouble();
-        rotation->rotateW.y = rotateArray[4].toDouble();
-        rotation->rotateW.z = rotateArray[5].toDouble();
-        rotation->angle = rotateArray[6].toDouble() * M_PI / 180.f;
+        if (rotateArray.size() == 7) {
+            rotation->rotateW.x = rotateArray[4].toDouble();
+            rotation->rotateW.y = rotateArray[5].toDouble();
+            rotation->rotateW.z = rotateArray[6].toDouble();
+        } else {
+            rotation->rotateW.x = 0;
+            rotation->rotateW.y = 0;
+            rotation->rotateW.z = 0;
+        }
+        rotation->angle = rotateArray[(rotateArray.size() == 7) ? 3 : 6].toDouble() * M_PI / 180.f;
 
         node->transformations.push_back(rotation);
     }
@@ -695,11 +726,11 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         }
 
         QJsonArray scaleArray = object["scale"].toArray();
-        if (scaleArray.size() != 4) {
-            std::cout << "group scale must have 4 elements" << std::endl;
+        if (scaleArray.size() != 4 && scaleArray.size() != 3) {
+            std::cout << "group scale must have 3-4 elements" << std::endl;
             return false;
         }
-        if (!scaleArray[0].isDouble() || !scaleArray[1].isDouble() || !scaleArray[2].isDouble() || !scaleArray[3].isDouble()) {
+        if (!scaleArray[0].isDouble() || !scaleArray[1].isDouble() || !scaleArray[2].isDouble() || (scaleArray.size() == 4 && !scaleArray[3].isDouble())) {
             std::cout << "group scale must contain floating-point values" << std::endl;
             return false;
         }
@@ -709,7 +740,8 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         scale->scale.x = scaleArray[0].toDouble();
         scale->scale.y = scaleArray[1].toDouble();
         scale->scale.z = scaleArray[2].toDouble();
-        scale->scale.w = scaleArray[3].toDouble();
+        if (scaleArray.size() == 4)
+            scale->scale.w = scaleArray[3].toDouble();
 
         node->transformations.push_back(scale);
     }
@@ -722,8 +754,8 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         }
 
         QJsonArray matrixArray = object["matrix"].toArray();
-        if (matrixArray.size() != 5) {
-            std::cout << "group matrix must be 5x5" << std::endl;
+        if (matrixArray.size() != 5 && matrixArray.size() != 4) {
+            std::cout << "group matrix must be 4x4 or 5x5" << std::endl;
             return false;
         }
 
@@ -742,8 +774,8 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
             }
 
             QJsonArray rowArray = row.toArray();
-            if (rowArray.size() != 5) {
-                std::cout << "group matrix must be 5x5" << std::endl;
+            if (rowArray.size() != 5 && rowArray.size() != 4) {
+                std::cout << "group matrix must be 4x4 or 5x5" << std::endl;
                 return false;
             }
 

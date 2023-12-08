@@ -43,7 +43,7 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
             SceneParser::translate4(currentTranslation4d, t->translate);
             break;
         case TransformationType::TRANSFORMATION_SCALE:
-            SceneParser::scale4(currentTranslation4d, t->scale);
+            SceneParser::scale4(currentCTM, t->scale);
             break;
         case TransformationType::TRANSFORMATION_ROTATE:
             currentCTM *= SceneParser::getRotationMatrix4(t->angle, t->rotate3, t->rotateW);
@@ -62,11 +62,11 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
     for(auto primitive : currentNode->primitives) {
         // primitive->material.textureData = loadTextureFromFile(QString::fromStdString(primitive->material.textureMap.filename));
         RenderShapeData rsd = {
-            primitive: *primitive,
-            ctm: currentCTM,
-            translation4d: currentTranslation4d,
-            inverseCTM: glm::inverse(currentCTM),
-            inverseTranslation4d: -currentTranslation4d,
+            .primitive = *primitive,
+            .ctm = currentCTM,
+            .translation4d = currentTranslation4d,
+            .inverseCTM = glm::inverse(currentCTM),
+            .inverseTranslation4d = -currentTranslation4d,
         };
         shapes->push_back(rsd);
     }
@@ -176,11 +176,11 @@ void SceneParser::translate4(
 }
 
 void SceneParser::scale4(
-        glm::vec4 &v1,
-        glm::vec4 v2
+        glm::mat4 &m,
+        glm::vec4 v
         ) {
-    v1.x *= v2.x;
-    v1.y *= v2.y;
-    v1.z *= v2.z;
-    v1.w *= v2.w;
+    m[0][0] *= v.x;
+    m[1][1] *= v.y;
+    m[2][2] *= v.z;
+    m[3][3] *= v.w;
 }

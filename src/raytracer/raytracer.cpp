@@ -7,7 +7,7 @@
 #include "mainwindow.h"
 #include <QKeyEvent>
 #include <QTimerEvent>
-
+#include "vec4ops/vec4ops.h"
 
 // RayTracer::RayTracer(const Config &config) : m_config(config) {}
 RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
@@ -23,13 +23,8 @@ RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
 
 }
 
+// updated to use 4D
 void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
-    if(m_enableParallelism)
-    {
-        renderParallel(imageData, scene);
-        return;
-    }
-
     // naive rendering
     Camera camera = scene.getCamera();
     float cameraDepth = 1.f;
@@ -39,21 +34,30 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
 
     for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
         for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
-            float xCameraSpace = viewplaneWidth *
-                                 (-.5f + (imageCol + .5f) / scene.width());
-            float yCameraSpace = viewplaneHeight *
-                                 (-.5f + (imageRow + .5f) / scene.height());
+            // FIXME: for now, use height as depth
+            for (int imageDepth = 0; imageDepth < scene.height(); imageDepth++) {
+                // compute the ray
+                float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
+                float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
+                float z = (imageDepth - scene.height()/2.f) * viewplaneHeight / scene.height();
+                float camera4dDepth = 1;
 
-            glm::vec4 pixelDirCamera{xCameraSpace, -yCameraSpace, -cameraDepth, 0.f}; //w=0 for dir
-            glm::vec4 eyeCamera{0.f, 0.f, 0.f, 1.f}; // w=1.f for point
+                glm::vec4 pCamera =
+                glm::vec4 pWorld = Vec4Ops::transformPoint4(camera.getvec4(x, y, z, camera4dDepth);
+                glm::vec4 dWorld = glm::vec4(0.f, 0.f, -1.f, 0.f);
 
-            // convert to world space
-            glm::vec4 pWorld = camera.getInverseViewMatrix() * eyeCamera;
-            glm::vec4 dWorld = glm::normalize(camera.getInverseViewMatrix() * pixelDirCamera);
+                // get the pixel color
+                glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
 
-            // cast ray!
-            glm::vec4 pixel = getPixelFromRay(pWorld, dWorld, scene);
-            imageData[imageRow * scene.width() + imageCol] = toRGBA(pixel);
+                // set the pixel color
+                int index = imageRow * scene.width() + imageCol;
+                imageData[index] = RGBA{
+                    (std::uint8_t) (pixelColor.r * 255.f),
+                    (std::uint8_t) (pixelColor.g * 255.f),
+                    (std::uint8_t) (pixelColor.b * 255.f),
+                    (std::uint8_t) (pixelColor.a * 255.f)
+                };
+            }
         }
     }
 }

@@ -1,4 +1,0 @@
-"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/ninja/mac/ninja" -DCMAKE_PREFIX_PATH=/Users/sotech117/Qt/6.5.2/macos/lib/cmake -G Ninja -S /Users/sotech117/Documents/master/graphics/projects-ray-sotech117 -B /Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Release
--- Configuring done (0.2s)
--- Generating done (0.0s)
--- Build files have been written to: /Users/sotech117/Documents/master/graphics/projects-ray-sotech117/build/build-projects-ray-sotech117-Qt_6_5_2_for_macOS-Release
