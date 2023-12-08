@@ -34,21 +34,25 @@ TextureData loadTextureFromFile(const QString &file) {
 }
 
 // helper to handle recursive creation of tree
-void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std::vector<SceneLightData> *lights, glm::mat4 currentCTM) {
+void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std::vector<SceneLightData> *lights, glm::mat4 currentCTM, glm::vec4 currentTranslation4d) {
     for (auto t : currentNode->transformations) {
         switch (t->type)
         {
         case TransformationType::TRANSFORMATION_TRANSLATE:
-            currentCTM *= glm::translate(glm::vec3(t->translate[0], t->translate[1], t->translate[2]));
+            currentCTM *= glm::translate(glm::vec3(t->translate));
+            currentTranslation4d *= glm::vec4(t->translate); // TODO
             break;
         case TransformationType::TRANSFORMATION_SCALE:
-            currentCTM *= glm::scale(glm::vec3(t->scale[0], t->scale[1], t->scale[2]));
+            currentCTM *= glm::scale(glm::vec3(t->scale));
+            currentTranslation4d *= glm::vec4(t->scale); // TODO
             break;
         case TransformationType::TRANSFORMATION_ROTATE:
             currentCTM *= glm::rotate(t->angle, glm::vec3(t->rotate[0], t->rotate[1], t->rotate[2]));
+            // TODO: 4d rotation
             break;
         case TransformationType::TRANSFORMATION_MATRIX:
             currentCTM *= glm::mat4(t->matrix);
+            currentTranslation4d *= glm::vec4(t->matrixRight4d); // TODO
             break;
         default:
             std::cout << "Invalid transformation type" << std::endl;
@@ -59,7 +63,13 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
 
     for(auto primitive : currentNode->primitives) {
         // primitive->material.textureData = loadTextureFromFile(QString::fromStdString(primitive->material.textureMap.filename));
-        RenderShapeData rsd = {*primitive, currentCTM, glm::inverse(currentCTM)};
+        RenderShapeData rsd = {
+            primitive: *primitive,
+            ctm: currentCTM,
+            translation4d: currentTranslation4d,
+            inverseCTM: glm::inverse(currentCTM),
+            inverseTranslation4d: glm::inverse(currentTranslation4d)
+        };
         shapes->push_back(rsd);
     }
 
