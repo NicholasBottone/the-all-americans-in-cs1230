@@ -1,9 +1,10 @@
-#include "raytracer/raytracer.h"
+#include <stdexcept>
+#include "vec4ops.h"
 
 // vector operations on 4d vectors,
 // reference: https://hollasch.github.io/ray4/Four-Space_Visualization_of_4D_Objects.html#chapter5
 
-glm::vec4 cross4(
+glm::vec4 Vec4Ops::cross4(
         glm::vec4 u,
         glm::vec4 v,
         glm::vec4 w) {
@@ -23,13 +24,13 @@ glm::vec4 cross4(
     return result;
 }
 
-glm::vec4 dot4(
+glm::vec4 Vec4Ops::dot4(
         glm::vec4 u,
         glm::vec4 v) {
     return {u[0] * v[0], u[1] * v[1], u[2] * v[2], u[3] * v[3]};
 }
 
-glm::mat4 getViewMatrix4(
+glm::mat4 Vec4Ops::getViewMatrix4(
         glm::vec4 fromPoint,
         glm::vec4 toPoint,
         glm::vec4 upVector,

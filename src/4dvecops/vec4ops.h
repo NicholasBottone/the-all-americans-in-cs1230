@@ -26,6 +26,12 @@ public:
 
     static glm::vec4 inverseTransformPoint4(glm::vec4 point4, glm::mat4 inverseTransformDirectionMatrix,
                                      glm::vec4 inverseTranslationPointVector);
+
+    static glm::vec4 cross4(glm::vec4 u, glm::vec4 v, glm::vec4 w);
+
+    static glm::vec4 dot4(glm::vec4 u, glm::vec4 v);
+
+    static glm::mat4 getViewMatrix4(glm::vec4 fromPoint, glm::vec4 toPoint, glm::vec4 upVector, glm::vec4 lookVector);
 };
 
 #endif //PROJECTS_RAY_VEC4OPS_H
