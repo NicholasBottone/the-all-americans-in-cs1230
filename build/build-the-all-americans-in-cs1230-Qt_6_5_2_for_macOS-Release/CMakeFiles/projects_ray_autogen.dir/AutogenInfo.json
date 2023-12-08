@@ -620,6 +620,11 @@
 	"SOURCES" : 
 	[
 		[
+			"/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/vectoroperations.cpp",
+			"MU",
+			null
+		],
+		[
 			"/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/bvh.cpp",
 			"MU",
 			null
