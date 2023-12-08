@@ -65,6 +65,7 @@ add_executable(${PROJECT_NAME}
         src/accelerate/bvh.h
         src/4dvecops/vec4operations.cpp
         src/4dvecops/rotations4d.cpp
+        src/4dvecops/transform4d.cpp
 )
 
 # GLM: this creates its library and allows you to `#include "glm/..."`
