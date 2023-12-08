@@ -45,5 +45,8 @@ private:
 
     float m_focalLength;
     float m_aperture;
+
+    glm::vec4 m_translationVector;
+    glm::vec4 m_inverseTranslationVector;
 };
 

@@ -14,6 +14,7 @@ struct Settings {
     float zw = 0.f;
     float rotation = 1.f;
     bool negative = false;
+    float w = 0.f;
 };
 
 
