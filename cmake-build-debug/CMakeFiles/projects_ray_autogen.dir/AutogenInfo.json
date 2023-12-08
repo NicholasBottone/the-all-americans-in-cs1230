@@ -297,7 +297,94 @@
 		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlTargets.cmake",
 		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlTargets-relwithdebinfo.cmake",
 		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlAdditionalTargetInfo.cmake",
-		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlVersionlessTargets.cmake"
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Xml/Qt6XmlVersionlessTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigVersion.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Config.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigExtras.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Targets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6VersionlessTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtFeature.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtFeatureCommon.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCXXCompilerFlag.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicAppleHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicPluginHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicTargetHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicTestHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicToolHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeFindDependencyMacro.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Dependencies.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeFindDependencyMacro.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeFindDependencyMacro.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTargetInfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-relwithdebinfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6WidgetsPlugins.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6QMacStylePluginConfig.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeFindDependencyMacro.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6QMacStylePluginTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6QMacStylePluginTargets-relwithdebinfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6Widgets/Qt6QMacStylePluginAdditionalTargetInfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigVersion.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Config.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6ConfigExtras.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Targets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6VersionlessTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtFeature.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtFeatureCommon.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCXXCompilerFlag.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicAppleHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicPluginHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicTargetHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicTestHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicToolHelpers.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeFindDependencyMacro.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6/Qt6Dependencies.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersion.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersionImpl.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfig.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeFindDependencyMacro.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsDependencies.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersion.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersionImpl.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfig.cmake",
+		"/Users/sotech117/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeFindDependencyMacro.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLDependencies.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLTargets-relwithdebinfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLAdditionalTargetInfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLVersionlessTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets-relwithdebinfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsAdditionalTargetInfo.cmake",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsVersionlessTargets.cmake"
 	],
 	"CMAKE_SOURCE_DIR" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230",
 	"DEP_FILE" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/deps",
@@ -305,9 +392,9 @@
 	"HEADERS" : 
 	[
 		[
-			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/vectoroperations.h",
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/transform4d.h",
 			"MU",
-			"SDN2X6DTVW/moc_vectoroperations.cpp",
+			"SDN2X6DTVW/moc_transform4d.cpp",
 			null
 		],
 		[
@@ -329,6 +416,12 @@
 			null
 		],
 		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/mainwindow.h",
+			"MU",
+			"UVLADIE3JM/moc_mainwindow.cpp",
+			null
+		],
+		[
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/raytracer/raytracer.h",
 			"MU",
 			"SKZFJBACJG/moc_raytracer.cpp",
@@ -338,6 +431,18 @@
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/raytracer/raytracescene.h",
 			"MU",
 			"SKZFJBACJG/moc_raytracescene.cpp",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/settings.h",
+			"MU",
+			"UVLADIE3JM/moc_settings.cpp",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/utils/aspectratiowidget/aspectratiowidget.hpp",
+			"MU",
+			"OWQMYEJWPR/moc_aspectratiowidget.cpp",
 			null
 		],
 		[
@@ -374,6 +479,9 @@
 		"QT_CONCURRENT_LIB",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
+		"QT_OPENGLWIDGETS_LIB",
+		"QT_OPENGL_LIB",
+		"QT_WIDGETS_LIB",
 		"QT_XML_LIB"
 	],
 	"MOC_DEPEND_FILTERS" : 
@@ -394,10 +502,16 @@
 		"/Users/sotech117/Qt/6.5.2/macos/lib/QtCore.framework",
 		"/Users/sotech117/Qt/6.5.2/macos/mkspecs/macx-clang",
 		"/Users/sotech117/Qt/6.5.2/macos/include",
-		"/Users/sotech117/Qt/6.5.2/macos/lib/QtGui.framework/Headers",
-		"/Users/sotech117/Qt/6.5.2/macos/lib/QtGui.framework",
 		"/Users/sotech117/Qt/6.5.2/macos/lib/QtXml.framework/Headers",
 		"/Users/sotech117/Qt/6.5.2/macos/lib/QtXml.framework",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/QtGui.framework/Headers",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/QtGui.framework",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/QtWidgets.framework/Headers",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/QtWidgets.framework",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/QtOpenGLWidgets.framework/Headers",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/QtOpenGLWidgets.framework",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/QtOpenGL.framework/Headers",
+		"/Users/sotech117/Qt/6.5.2/macos/lib/QtOpenGL.framework",
 		"/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1",
 		"/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include",
 		"/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include",
@@ -428,14 +542,24 @@
 	"PARALLEL" : 10,
 	"PARSE_CACHE_FILE" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/CMakeFiles/projects_ray_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/Users/sotech117/Qt/6.5.2/macos/./libexec/moc",
-	"QT_UIC_EXECUTABLE" : "",
+	"QT_UIC_EXECUTABLE" : "/Users/sotech117/Qt/6.5.2/macos/./libexec/uic",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 5,
 	"SETTINGS_FILE" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/CMakeFiles/projects_ray_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/vectoroperations.cpp",
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/rotations4d.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/transform4d.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/vec4operations.cpp",
 			"MU",
 			null
 		],
@@ -505,12 +629,22 @@
 			null
 		],
 		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/raytracer/raytracer.cpp",
 			"MU",
 			null
 		],
 		[
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/raytracer/raytracescene.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/settings.cpp",
 			"MU",
 			null
 		],
