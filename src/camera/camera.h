@@ -16,8 +16,8 @@ public:
     // You might also want to define another function that return the inverse of the view matrix.
     glm::mat4 getViewMatrix() const;
     glm::mat4 getInverseViewMatrix() const;
-    glm::vec3 getTranslationVector() const;
-    glm::vec3 getInverseTranslationVector() const;
+    glm::vec4 getTranslationVector() const;
+    glm::vec4 getInverseTranslationVector() const;
 
     // Returns the aspect ratio of the camera.
     float getAspectRatio() const;

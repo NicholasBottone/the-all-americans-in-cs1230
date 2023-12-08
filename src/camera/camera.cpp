@@ -26,11 +26,11 @@ glm::mat4 Camera::getInverseViewMatrix() const {
     return m_inverseViewMatrix;
 }
 
-glm::vec3 Camera::getTranslationVector() const {
+glm::vec4 Camera::getTranslationVector() const {
     return m_translationVector;
 }
 
-glm::vec3 Camera::getInverseTranslationVector() const {
+glm::vec4 Camera::getInverseTranslationVector() const {
     return m_inverseTranslationVector;
 }
 

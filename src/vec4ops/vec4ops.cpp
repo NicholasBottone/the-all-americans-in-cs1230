@@ -39,7 +39,7 @@ glm::mat4 Vec4Ops::getViewMatrix4(
 
     // rotation matrices for each plane
     glm::mat4 rotMatrixXY = getRotationMatrix4XY(glm::radians(settings.xy));
-    glm::mat4 rotMatrixXZ = getRotationMatrix4XZ(glm::radians(settings.xz));
+    glm::mat4 rotMatrixXZ = getRotationMatrix4ZX(glm::radians(settings.xz));
     glm::mat4 rotMatrixYZ = getRotationMatrix4YZ(glm::radians(settings.yz));
     glm::mat4 rotMatrixXW = getRotationMatrix4XW(glm::radians(settings.xw));
     glm::mat4 rotMatrixYW = getRotationMatrix4YW(glm::radians(settings.yw));
