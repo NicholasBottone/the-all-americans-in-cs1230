@@ -35,5 +35,5 @@ public:
 
     static void translate4(glm::vec4 &v1, glm::vec4 v2);
 
-    static void scale4(glm::vec4 &v1, glm::vec4 v2);
+    static void scale4(glm::mat4 &m, glm::vec4 v);
 };
