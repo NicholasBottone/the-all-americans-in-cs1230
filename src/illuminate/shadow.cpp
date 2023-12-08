@@ -11,7 +11,7 @@ bool RayTracer::isShadowed(
     directionFromIntersectionToLight = glm::normalize(directionFromIntersectionToLight);
 
      // acceleration causes "bad jaggies" so we disable it for now
-    if (m_config.enableAcceleration)
+    if (m_enableAcceleration)
     {
         RenderShapeData shapeData;
         auto pBias = intersectionWorld + .001f * directionFromIntersectionToLight;

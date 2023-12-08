@@ -18,6 +18,8 @@ find_package(Qt6 REQUIRED COMPONENTS Concurrent)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(Qt6 REQUIRED COMPONENTS Gui)
 find_package(Qt6 REQUIRED COMPONENTS Xml)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS OpenGLWidgets)
 
 # Allows you to include files from within those directories, without prefixing their filepaths
 include_directories(src)
@@ -27,6 +29,10 @@ add_definitions(-DGLM_FORCE_SWIZZLE)
 # Specifies .cpp and .h files to be passed to the compiler
 add_executable(${PROJECT_NAME}
   src/main.cpp
+  src/mainwindow.cpp
+  src/mainwindow.h
+  src/settings.h
+  src/settings.cpp
   
   src/camera/camera.cpp
   src/raytracer/raytracer.cpp
@@ -40,6 +46,7 @@ add_executable(${PROJECT_NAME}
   src/utils/rgba.h
   src/utils/scenedata.h
   src/utils/scenefilereader.h
+  src/utils/aspectratiowidget/aspectratiowidget.hpp
   src/utils/sceneparser.h
         src/intersect/intersect.cpp
         src/illuminate/illuminate.cpp
@@ -64,8 +71,10 @@ add_subdirectory(glm)
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt::Concurrent
     Qt::Core
-    Qt::Gui
     Qt::Xml
+    Qt::Gui
+    Qt::Widgets
+    Qt::OpenGLWidgets
 )
 
 # Set this flag to silence warnings on Windows

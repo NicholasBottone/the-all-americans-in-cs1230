@@ -3,16 +3,19 @@
 #include <iostream>
 #include "raytracer.h"
 #include "raytracescene.h"
+#include "settings.h"
+#include "mainwindow.h"
 
 //struct Ray {
 //    glm::vec3 p;
 //    glm::vec3 d;
 //};
 
-RayTracer::RayTracer(const Config &config) : m_config(config) {}
+// RayTracer::RayTracer(const Config &config) : m_config(config) {}
+RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {}
 
 void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
-    if(m_config.enableParallelism)
+    if(m_enableParallelism)
     {
         renderParallel(imageData, scene);
         return;
@@ -53,7 +56,7 @@ glm::vec4 RayTracer::getPixelFromRay(
     const RayTraceScene &scene,
     int depth)
 {
-    if (depth > m_config.maxRecursiveDepth)
+    if (depth > m_maxRecursiveDepth)
     {
         return glm::vec4(0.f);
     }
@@ -63,7 +66,7 @@ glm::vec4 RayTracer::getPixelFromRay(
     glm::vec4 closestIntersectionWorld;
     RenderShapeData intersectedShape;
 
-    if (m_config.enableAcceleration)
+    if (m_enableAcceleration)
     {
         float tWorld = traverseBVH(pWorld, dWorld, intersectedShape, scene.m_bvh);
         if (tWorld == FINF)
@@ -148,3 +151,52 @@ glm::vec4 RayTracer::secondaryRays(glm::vec4 pWorld, glm::vec4 dWorld, RayTraceS
 
     return illumination / (float) TIMES;
 }
+
+void RayTracer::sceneChanged(QLabel* imageLabel) {
+    // RenderData metaData;
+    
+    bool success = SceneParser::parse(settings.sceneFilePath, m_metaData);
+
+    if (!success) {
+        std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
+        return;
+    }
+
+    int width = 576;
+    int height = 432;
+
+    // render the scene
+    QImage image = QImage(width, height, QImage::Format_RGBX8888);
+    image.fill(Qt::black);
+    RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+
+    
+
+    // RayTracer raytracer{ rtConfig };
+
+    RayTraceScene rtScene{ width, height, m_metaData };
+    this->render(data, rtScene);
+
+    QImage flippedImage = image.mirrored(false, false);
+    // make the image larger
+    flippedImage = flippedImage.scaled(2*width, 2*height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
+}
+
+void RayTracer::settingsChanged(QLabel* imageLabel) {
+    int width = 576;
+    int height = 432;
+
+    QImage image = QImage(width, height, QImage::Format_RGBX8888);
+    image.fill(Qt::black);
+    RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+
+    RayTraceScene rtScene{ width, height, m_metaData };
+    this->render(data, rtScene);
+
+    QImage flippedImage = image.mirrored(false, false);
+    flippedImage = flippedImage.scaled(2*width, 2*height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
+}
+
+

@@ -1,13 +1,13 @@
 
 #include <QList>
 #include <QtConcurrent>
-#include "raytracer/raytracer.h"
+#include "../raytracer/raytracer.h"
 
 struct pixelRoutineArgs {
     glm::vec4 pCamera;
     glm::vec4 dCamera;
     const RayTraceScene &scene;
-    RayTracer rt;
+    RayTracer *rt;
 };
 static RGBA pixelRoutine(pixelRoutineArgs args);
 
@@ -28,12 +28,13 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
 
             glm::vec4 pixelDirCamera{xCameraSpace, -yCameraSpace, -cameraDepth, 0.f}; //w=0 for dir
             glm::vec4 eyeCamera{0.f, 0.f, 0.f, 1.f}; // w=1.f for point
-            l.append({
-                             eyeCamera,   // eye
-                             pixelDirCamera,  // direction
-                             scene,
-                             *this
-                     });
+            pixelRoutineArgs args{
+                    eyeCamera,
+                    pixelDirCamera,
+                    scene,
+                    this
+            };
+            l.append(args);
 
         }
     }
@@ -44,7 +45,7 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
         imageData[index++] = p;
     }
 
-    if (m_config.enableAntiAliasing)
+    if (m_enableAntiAliasing)
     {
         filterBlur(imageData, scene.width(), scene.height());
     }
@@ -63,18 +64,18 @@ RGBA pixelRoutine(pixelRoutineArgs args)
     glm::vec4 pWorld = inv * eyeCamera;
     glm::vec4 dWorld = glm::normalize(inv * pixelDirCamera);
 
-    if (rt.m_config.enableDepthOfField)
+    if (rt->m_enableDepthOfField)
     {
         // if we're doing depth of field, we need to shoot multiple rays, see camera.cpp
-        return RayTracer::toRGBA(rt.secondaryRays(pWorld, dWorld, scene));
+        return RayTracer::toRGBA(rt->secondaryRays(pWorld, dWorld, scene));
     }
-    if (rt.m_config.enableSuperSample)
+    if (rt->m_enableSuperSample)
     {
         // if we're doing super sampling, we need to shoot multiple rays, see raytracer.cpp
-        return rt.superSample(eyeCamera, pixelDirCamera, scene);
+        return rt->superSample(eyeCamera, pixelDirCamera, scene);
     }
 
     // shoot ray!
-    RGBA pixel = RayTracer::toRGBA(rt.getPixelFromRay(pWorld, dWorld, scene, 0));
+    RGBA pixel = RayTracer::toRGBA(rt->getPixelFromRay(pWorld, dWorld, scene, 0));
     return pixel;
 }

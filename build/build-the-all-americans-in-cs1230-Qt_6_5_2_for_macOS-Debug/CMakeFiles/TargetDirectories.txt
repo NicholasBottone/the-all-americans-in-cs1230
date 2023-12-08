@@ -1,0 +1,15 @@
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/projects_ray.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/edit_cache.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/rebuild_cache.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/list_install_components.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/install.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/install/local.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/install/strip.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/projects_ray_autogen_timestamp_deps.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/CMakeFiles/projects_ray_autogen.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/edit_cache.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/rebuild_cache.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/list_install_components.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/install.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/install/local.dir
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Debug/glm/CMakeFiles/install/strip.dir

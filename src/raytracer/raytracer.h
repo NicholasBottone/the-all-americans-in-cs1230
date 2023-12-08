@@ -6,6 +6,8 @@
 #include "raytracescene.h"
 #include "accelerate/kdtree.h"
 #include "accelerate/bvh.h"
+#include <QOpenGLWidget>
+#include <QLabel>
 
 // A forward declaration for the RaytraceScene class
 
@@ -31,12 +33,12 @@ struct Config {
     bool onlyRenderNormals   = false;
 };
 
-class RayTracer
+class RayTracer : public QWidget
 {
 public:
     // constructor for the config
-    explicit RayTracer(const Config &config);
-    const Config &m_config;
+    RayTracer(QWidget *parent = nullptr);
+//     const Config &m_config;
 
     // Renders the scene synchronously.
     // The ray-tracer will render the scene and fill imageData in-place.
@@ -136,5 +138,23 @@ public:
 
     // depth of field
     glm::vec4 secondaryRays(glm::vec4 pWorld, glm::vec4 dWorld, RayTraceScene &scene);
+
+    // Old m_config
+
+    bool m_enableShadow        = true;
+    bool m_enableReflection    = true;
+    bool m_enableRefraction    = false;
+    bool m_enableTextureMap    = false;
+    bool m_enableAcceleration  = true;
+    bool m_enableParallelism   = true;
+    int m_maxRecursiveDepth   = 4;
+    bool m_enableAntiAliasing = false;
+    bool m_enableDepthOfField  = false;
+    bool m_enableSuperSample   = false;
+
+    void sceneChanged(QLabel* imageLabel);
+    void settingsChanged(QLabel* imageLabel);
+    RenderData m_metaData;
+        
 };
 
