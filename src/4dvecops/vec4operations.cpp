@@ -33,7 +33,7 @@ glm::mat4 getViewMatrix4(
         glm::vec4 fromPoint,
         glm::vec4 toPoint,
         glm::vec4 upVector,
-        glm::vec4 overVector) {
+        glm::vec4 lookVector) {
 
     // calculate e3 basis vector, the transformation col of view matrix
     if (glm::distance(fromPoint, toPoint) < 0.0001f) {
@@ -42,14 +42,14 @@ glm::mat4 getViewMatrix4(
     glm::vec4 e3 = glm::normalize(fromPoint - toPoint);
 
     // calculate e2 basis vector, from the combinatory cross of up and over with e3
-    glm::vec4 e2 = cross4(upVector, overVector, e3);
+    glm::vec4 e2 = cross4(upVector, lookVector, e3);
     e2 = glm::normalize(e2);
     if (glm::distance(e2, glm::vec4{0, 0, 0, 1}) < 0.0001f) {
         throw std::runtime_error("invalid up vector");
     }
 
     // calculate e1 basis vector, from the cross of only the over vector
-    glm::vec4 e1 = cross4(overVector, e3, e2);
+    glm::vec4 e1 = cross4(lookVector, e3, e2);
     e1 = glm::normalize(e1);
     if (glm::distance(e1, glm::vec4{0, 0, 0, 1}) < 0.0001f) {
         throw std::runtime_error("invalid over vector");
