@@ -8,10 +8,6 @@
 #include <QKeyEvent>
 #include <QTimerEvent>
 
-//struct Ray {
-//    glm::vec3 p;
-//    glm::vec3 d;
-//};
 
 // RayTracer::RayTracer(const Config &config) : m_config(config) {}
 RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
@@ -25,8 +21,6 @@ RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
     m_keyMap[Qt::Key_5]       = false;
     m_keyMap[Qt::Key_6]       = false;
 
-    // m_timer = startTimer(1000/60);
-    // m_elapsedTimer.start();
 }
 
 void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
@@ -185,9 +179,6 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
     image.fill(Qt::black);
     RGBA *data = reinterpret_cast<RGBA *>(image.bits());
 
-    
-
-    // RayTracer raytracer{ rtConfig };
 
     RayTraceScene rtScene{ width, height, m_metaData };
     this->render(data, rtScene);
@@ -273,102 +264,9 @@ void RayTracer::keyPressEvent(QKeyEvent *event) {
         }
         emit zwRotationChanged(settings.zw);
     }
-
-    
-    // std::cout << "key done" << std::endl;
-
-    // int width = 576;
-    // int height = 432;
-
-    // QImage image = QImage(width, height, QImage::Format_RGBX8888);
-    // image.fill(Qt::black);
-    // RGBA *data = reinterpret_cast<RGBA *>(image.bits());
-
-    // RayTraceScene rtScene{ width, height, m_metaData };
-    // this->render(data, rtScene);
-
-    // std::cout << "done rendering" << std::endl;
-
-    // QImage flippedImage = image.mirrored(false, false);
-    // flippedImage = flippedImage.scaled(2*width, 2*height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-    // m_imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
 }
 
 void RayTracer::keyReleaseEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = false;
 }
-
-// void RayTracer::timerEvent(QTimerEvent *event) {
-//     int elapsedms   = m_elapsedTimer.elapsed();
-//     float deltaTime = elapsedms * 0.001f;
-//     m_elapsedTimer.restart();
-
-//     if (m_keyMap[Qt::Key_1]) {
-//         if (settings.negative) {
-//             settings.xy -= settings.rotation;
-//         } else  {
-//             settings.xy += settings.rotation;
-//         }
-//         emit xyRotationChanged(settings.xy);
-//     }
-
-//     if (m_keyMap[Qt::Key_2]) {
-//         if (settings.negative) {
-//             settings.xz -= settings.rotation;
-//         } else  {
-//             settings.xz += settings.rotation;
-//         }
-//         emit xzRotationChanged(settings.xz);
-//     }
-
-//     if (m_keyMap[Qt::Key_3]) {
-//         if (settings.negative) {
-//             settings.xw -= settings.rotation;
-//         } else  {
-//             settings.xw += settings.rotation;
-//         }
-//         emit xwRotationChanged(settings.xw);
-//     }
-
-//     if (m_keyMap[Qt::Key_4]) {
-//         if (settings.negative) {
-//             settings.yz -= settings.rotation;
-//         } else  {
-//             settings.yz += settings.rotation;
-//         }
-//         emit yzRotationChanged(settings.yz);
-//     }
-
-//     if (m_keyMap[Qt::Key_5]) {
-//         if (settings.negative) {
-//             settings.yw -= settings.rotation;
-//         } else  {
-//             settings.yw += settings.rotation;
-//         }
-//         emit ywRotationChanged(settings.yw);
-//     }
-
-//     if (m_keyMap[Qt::Key_6]) {
-//         if (settings.negative) {
-//             settings.zw -= settings.rotation;
-//         } else  {
-//             settings.zw += settings.rotation;
-//         }
-//         emit zwRotationChanged(settings.zw);
-//     }
-
-//     int width = 576;
-//     int height = 432;
-
-//     QImage image = QImage(width, height, QImage::Format_RGBX8888);
-//     image.fill(Qt::black);
-//     RGBA *data = reinterpret_cast<RGBA *>(image.bits());
-
-//     RayTraceScene rtScene{ width, height, m_metaData };
-//     this->render(data, rtScene);
-
-//     QImage flippedImage = image.mirrored(false, false);
-//     flippedImage = flippedImage.scaled(2*width, 2*height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-//     m_imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
-// }
 

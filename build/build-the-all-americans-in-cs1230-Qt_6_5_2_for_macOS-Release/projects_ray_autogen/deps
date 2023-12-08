@@ -767,7 +767,10 @@ projects_ray_autogen/timestamp: \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/glm/vec3.hpp \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/glm/vec4.hpp \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/glm/vector_relational.hpp \
-	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/vectoroperations.cpp \
+	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/rotations4d.cpp \
+	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/transform4d.cpp \
+	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/vec4operations.cpp \
+	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/vec4ops.h \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/bvh.cpp \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/bvh.h \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/kdtree.cpp \

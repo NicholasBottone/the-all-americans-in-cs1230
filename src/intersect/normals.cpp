@@ -74,6 +74,15 @@ glm::vec3 getCubeNormal(
     return glm::vec3(0.f);
 }
 
+glm::vec4 getSphereNormal(
+        glm::vec4 intersectPointObject)
+{
+    return {2.f * intersectPointObject.x,
+            2.f * intersectPointObject.y,
+            2.f * intersectPointObject.z, 
+            2.f * intersectPointObject.w};
+}
+
 glm::vec3 RayTracer::getNormal(
         glm::vec4 intersectPointObject,
         const RenderShapeData& shape,
@@ -83,7 +92,8 @@ glm::vec3 RayTracer::getNormal(
     {
         case PrimitiveType::PRIMITIVE_SPHERE:
             // gradient in object space for sphere is 2x, 2y, 2z
-            return 2.f * intersectPointObject;
+            // return 2.f * intersectPointObject;
+            return getSphereNormal(intersectPointObject);
         case PrimitiveType::PRIMITIVE_CONE:
             return getConeNormal(intersectPointObject);
         case PrimitiveType::PRIMITIVE_CYLINDER:

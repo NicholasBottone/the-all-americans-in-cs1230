@@ -468,6 +468,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/vec4ops.h",
+			"MU",
+			"SDN2X6DTVW/moc_vec4ops.cpp",
+			null
+		],
+		[
 			"/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/bvh.h",
 			"MU",
 			"IKADTU3N3M/moc_bvh.cpp",
@@ -620,7 +626,17 @@
 	"SOURCES" : 
 	[
 		[
-			"/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/vectoroperations.cpp",
+			"/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/rotations4d.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/transform4d.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/vec4operations.cpp",
 			"MU",
 			null
 		],
