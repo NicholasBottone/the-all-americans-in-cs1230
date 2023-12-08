@@ -155,6 +155,8 @@ public:
     void sceneChanged(QLabel* imageLabel);
     void settingsChanged(QLabel* imageLabel);
     RenderData m_metaData;
-        
+
+    glm::mat4 getRotationMatrix4(float angleRadiansXY, float angleRadiansYZ, float angleRadiansZX, float angleRadiansXW,
+                                 float angleRadiansYW, float angleRadiansZW);
 };
 

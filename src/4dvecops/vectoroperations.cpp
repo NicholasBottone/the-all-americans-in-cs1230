@@ -28,3 +28,36 @@ glm::vec4 dot4(
         glm::vec4 v) {
     return {u[0] * v[0], u[1] * v[1], u[2] * v[2], u[3] * v[3]};
 }
+
+glm::mat4 getViewMatrix4(
+        glm::vec4 fromPoint,
+        glm::vec4 toPoint,
+        glm::vec4 upVector,
+        glm::vec4 overVector) {
+
+    // calculate e3 basis vector, the transformation col of view matrix
+    if (glm::distance(fromPoint, toPoint) < 0.0001f) {
+        throw std::runtime_error("fromPoint and toPoint are the same");
+    }
+    glm::vec4 e3 = glm::normalize(fromPoint - toPoint);
+
+    // calculate e2 basis vector, from the combinatory cross of up and over with e3
+    glm::vec4 e2 = cross4(upVector, overVector, e3);
+    e2 = glm::normalize(e2);
+    if (glm::distance(e2, glm::vec4{0, 0, 0, 1}) < 0.0001f) {
+        throw std::runtime_error("invalid up vector");
+    }
+
+    // calculate e1 basis vector, from the cross of only the over vector
+    glm::vec4 e1 = cross4(overVector, e3, e2);
+    e1 = glm::normalize(e1);
+    if (glm::distance(e1, glm::vec4{0, 0, 0, 1}) < 0.0001f) {
+        throw std::runtime_error("invalid over vector");
+    }
+
+    // calculate e0 basis vector, the 4d orthogonal vector to the other 3 bases
+    glm::vec4 e0 = cross4(e3, e2, e1);
+    e0 = glm::normalize(e0);
+
+    return {e2, e1, e0, e3};
+}
