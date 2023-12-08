@@ -62,11 +62,11 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
     for(auto primitive : currentNode->primitives) {
         // primitive->material.textureData = loadTextureFromFile(QString::fromStdString(primitive->material.textureMap.filename));
         RenderShapeData rsd = {
-            primitive: *primitive,
-            ctm: currentCTM,
-            translation4d: currentTranslation4d,
-            inverseCTM: glm::inverse(currentCTM),
-            inverseTranslation4d: -currentTranslation4d,
+            .primitive = *primitive,
+            .ctm = currentCTM,
+            .translation4d = currentTranslation4d,
+            .inverseCTM = glm::inverse(currentCTM),
+            .inverseTranslation4d = -currentTranslation4d,
         };
         shapes->push_back(rsd);
     }
