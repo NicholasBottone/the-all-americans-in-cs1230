@@ -905,7 +905,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/4dvecops/vec4operations.cpp",
+			"path" : "src/4dvecops/vec4ops.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

@@ -21,6 +21,11 @@ public:
     static glm::mat4 getRotationMatrix4YW(float angleRadians);
 
     static glm::mat4 getRotationMatrix4ZW(float angleRadians);
+
+    glm::vec4 transformPoint4(glm::vec4 point4, glm::mat4 transformDirectionMatrix, glm::vec4 translationPointVector);
+
+    glm::vec4 inverseTransformPoint4(glm::vec4 point4, glm::mat4 inverseTransformDirectionMatrix,
+                                     glm::vec4 inverseTranslationPointVector);
 };
 
 #endif //PROJECTS_RAY_VEC4OPS_H
