@@ -8,6 +8,7 @@
 #include "accelerate/bvh.h"
 #include <QOpenGLWidget>
 #include <QLabel>
+#include <QElapsedTimer>
 
 // A forward declaration for the RaytraceScene class
 
@@ -35,6 +36,7 @@ struct Config {
 
 class RayTracer : public QWidget
 {
+        Q_OBJECT
 public:
     // constructor for the config
     RayTracer(QWidget *parent = nullptr);
@@ -154,7 +156,24 @@ public:
 
     void sceneChanged(QLabel* imageLabel);
     void settingsChanged(QLabel* imageLabel);
+    
     RenderData m_metaData;
-        
+    std::unordered_map<Qt::Key, bool> m_keyMap;
+    QElapsedTimer m_elapsedTimer;  
+    QLabel* m_imageLabel;
+
+    void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
+//     void timerEvent(QTimerEvent *event) override;
+
+    int m_timer; 
+    void init();
+signals:
+    void xyRotationChanged(float value);
+    void xzRotationChanged(float value);
+    void xwRotationChanged(float value);
+    void yzRotationChanged(float value);
+    void ywRotationChanged(float value);
+    void zwRotationChanged(float value);
 };
 

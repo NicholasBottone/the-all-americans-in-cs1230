@@ -43,6 +43,10 @@ void MainWindow::initialize() {
     QLabel *zw_label = new QLabel(); // ZW label
     zw_label->setText("ZW value:");
     zw_label->setFont(font);
+
+    QLabel *rotation_label = new QLabel(); // Rotation label
+    rotation_label->setText("Rotation value:");
+    rotation_label->setFont(font);
     
 
     // Create file uploader for scene file
@@ -57,14 +61,14 @@ void MainWindow::initialize() {
 
     xySlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
     xySlider->setTickInterval(1);
-    xySlider->setMinimum(-1000);
-    xySlider->setMaximum(1000);
+    xySlider->setMinimum(-36000);
+    xySlider->setMaximum(36000);
     xySlider->setValue(0);
 
     xyBox = new QDoubleSpinBox();
-    xyBox->setMinimum(-10.0f);
-    xyBox->setMaximum(10.f);
-    xyBox->setSingleStep(0.1f);
+    xyBox->setMinimum(-360.0f);
+    xyBox->setMaximum(360.f);
+    xyBox->setSingleStep(1.f);
     xyBox->setValue(0.f);
 
     lxy->addWidget(xySlider);
@@ -77,14 +81,14 @@ void MainWindow::initialize() {
 
     xzSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
     xzSlider->setTickInterval(1);
-    xzSlider->setMinimum(-1000);
-    xzSlider->setMaximum(1000);
+    xzSlider->setMinimum(-36000);
+    xzSlider->setMaximum(36000);
     xzSlider->setValue(0);
 
     xzBox = new QDoubleSpinBox();
-    xzBox->setMinimum(-10.0f);
-    xzBox->setMaximum(10.f);
-    xzBox->setSingleStep(0.1f);
+    xzBox->setMinimum(-360.0f);
+    xzBox->setMaximum(360.f);
+    xzBox->setSingleStep(1.f);
     xzBox->setValue(0.f);
 
     lxz->addWidget(xzSlider);
@@ -97,14 +101,14 @@ void MainWindow::initialize() {
 
     xwSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
     xwSlider->setTickInterval(1);
-    xwSlider->setMinimum(-1000);
-    xwSlider->setMaximum(1000);
+    xwSlider->setMinimum(-36000);
+    xwSlider->setMaximum(36000);
     xwSlider->setValue(0);
 
     xwBox = new QDoubleSpinBox();
-    xwBox->setMinimum(-10.0f);
-    xwBox->setMaximum(10.f);
-    xwBox->setSingleStep(0.1f);
+    xwBox->setMinimum(-360.0f);
+    xwBox->setMaximum(360.f);
+    xwBox->setSingleStep(1.f);
     xwBox->setValue(0.f);
 
     lxw->addWidget(xwSlider);
@@ -117,14 +121,14 @@ void MainWindow::initialize() {
 
     yzSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
     yzSlider->setTickInterval(1);
-    yzSlider->setMinimum(-1000);
-    yzSlider->setMaximum(1000);
+    yzSlider->setMinimum(-36000);
+    yzSlider->setMaximum(36000);
     yzSlider->setValue(0);
 
     yzBox = new QDoubleSpinBox();
-    yzBox->setMinimum(-10.0f);
-    yzBox->setMaximum(10.f);
-    yzBox->setSingleStep(0.1f);
+    yzBox->setMinimum(-360.0f);
+    yzBox->setMaximum(360.f);
+    yzBox->setSingleStep(1.f);
     yzBox->setValue(0.f);
 
     lyz->addWidget(yzSlider);
@@ -137,15 +141,15 @@ void MainWindow::initialize() {
     
     ywSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
     ywSlider->setTickInterval(1);
-    ywSlider->setMinimum(-1000);
-    ywSlider->setMaximum(1000);
+    ywSlider->setMinimum(-36000);
+    ywSlider->setMaximum(36000);
     ywSlider->setValue(0);
 
     ywBox = new QDoubleSpinBox();
-    ywBox->setMinimum(-10.0f);
-    ywBox->setMaximum(10.f);
-    ywBox->setSingleStep(0.1f);
-    ywBox->setValue(100.f);
+    ywBox->setMinimum(-360.0f);
+    ywBox->setMaximum(360.f);
+    ywBox->setSingleStep(1.f);
+    ywBox->setValue(0.f);
 
     lyw->addWidget(ywSlider);
     lyw->addWidget(ywBox);
@@ -157,19 +161,44 @@ void MainWindow::initialize() {
 
     zwSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
     zwSlider->setTickInterval(1);
-    zwSlider->setMinimum(-1000);
-    zwSlider->setMaximum(1000);
+    zwSlider->setMinimum(-36000);
+    zwSlider->setMaximum(36000);
     zwSlider->setValue(0);
 
     zwBox = new QDoubleSpinBox();
-    zwBox->setMinimum(-10.0f);
-    zwBox->setMaximum(10.f);
-    zwBox->setSingleStep(0.1f);
-    zwBox->setValue(100.f);
+    zwBox->setMinimum(-360.0f);
+    zwBox->setMaximum(360.f);
+    zwBox->setSingleStep(1.f);
+    zwBox->setValue(0.f);
 
     lzw->addWidget(zwSlider);
     lzw->addWidget(zwBox);
     zwLayout->setLayout(lzw);
+
+    // Rotation Slider
+    QGroupBox *rotationLayout = new QGroupBox(); // horizonal w slider alignment
+    QHBoxLayout *lrotation = new QHBoxLayout();
+
+    rotationSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
+    rotationSlider->setTickInterval(1);
+    rotationSlider->setMinimum(0);
+    rotationSlider->setMaximum(18000);
+    rotationSlider->setValue(1);
+
+    rotationBox = new QDoubleSpinBox();
+    rotationBox->setMinimum(0.0f);
+    rotationBox->setMaximum(180.f);
+    rotationBox->setSingleStep(1.f);
+    rotationBox->setValue(1.f);
+
+    lrotation->addWidget(rotationSlider);
+    lrotation->addWidget(rotationBox);
+    rotationLayout->setLayout(lrotation);
+
+    // checkbox
+    rotateNegative = new QCheckBox();
+    rotateNegative->setText(QStringLiteral("Reverse Rotation"));
+    rotateNegative->setChecked(false);
 
     vLayout->addWidget(uploadFile);
     vLayout->addWidget(saveImage);
@@ -185,6 +214,10 @@ void MainWindow::initialize() {
     vLayout->addWidget(ywLayout);
     vLayout->addWidget(zw_label);
     vLayout->addWidget(zwLayout);
+    vLayout->addWidget(rotation_label);
+    vLayout->addWidget(rotationLayout);
+
+    vLayout->addWidget(rotateNegative);
 
     connectUIElements();
 
@@ -194,6 +227,7 @@ void MainWindow::initialize() {
     onValChangeyzBox(0.0f);
     onValChangeywBox(0.0f);
     onValChangezwBox(0.0f);
+    onValChangeRotationBox(1.0f);
 }
 
 void MainWindow::finish() {
@@ -210,6 +244,14 @@ void MainWindow::connectUIElements() {
     connectyz();
     connectyw();
     connectzw();
+    connectRotationSlider();
+    connectNegativeRotation();
+    connect(rayTracer, &RayTracer::xyRotationChanged, this, &MainWindow::updateXySlider);
+    connect(rayTracer, &RayTracer::xzRotationChanged, this, &MainWindow::updateXzSlider);
+    connect(rayTracer, &RayTracer::xwRotationChanged, this, &MainWindow::updateXwSlider);
+    connect(rayTracer, &RayTracer::yzRotationChanged, this, &MainWindow::updateYzSlider);
+    connect(rayTracer, &RayTracer::ywRotationChanged, this, &MainWindow::updateYwSlider);
+    connect(rayTracer, &RayTracer::zwRotationChanged, this, &MainWindow::updateZwSlider);
 }
 
 void MainWindow::connectUploadFile() {
@@ -254,6 +296,16 @@ void MainWindow::connectzw() {
     connect(zwSlider, &QSlider::valueChanged, this, &MainWindow::onValChangezwSlider);
     connect(zwBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
             this, &MainWindow::onValChangezwBox);
+}
+
+void MainWindow::connectRotationSlider() {
+    connect(rotationSlider, &QSlider::valueChanged, this, &MainWindow::onValChangeRotationSlider);
+    connect(rotationBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+            this, &MainWindow::onValChangeRotationBox);
+}
+
+void MainWindow::connectNegativeRotation() {
+    connect(rotateNegative, &QCheckBox::clicked, this, &MainWindow::onRotateNegative);
 }
 
 void MainWindow::onUploadFile() {
@@ -380,5 +432,59 @@ void MainWindow::onValChangezwBox(double newValue) {
     zwSlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
     settings.zw = zwBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangeRotationSlider(int newValue) {
+    //wSlider->setValue(newValue);
+    rotationBox->setValue(newValue/100.f);
+    settings.rotation = rotationBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onValChangeRotationBox(double newValue) {
+    rotationSlider->setValue(int(newValue*100.f));
+    //wBox->setValue(newValue);
+    settings.rotation = rotationBox->value();
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::onRotateNegative() {
+    settings.negative = !settings.negative;
+}
+
+void MainWindow::updateXySlider(double value) {
+    xySlider->setValue(int(value*100.f));
+    xyBox->setValue(value);
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::updateXzSlider(double value) {
+    xzSlider->setValue(int(value*100.f));
+    xzBox->setValue(value);
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::updateXwSlider(double value) {
+    xwSlider->setValue(int(value*100.f));
+    xwBox->setValue(value);
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::updateYzSlider(double value) {
+    yzSlider->setValue(int(value*100.f));
+    yzBox->setValue(value);
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::updateYwSlider(double value) {
+    ywSlider->setValue(int(value*100.f));
+    ywBox->setValue(value);
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::updateZwSlider(double value) {
+    zwSlider->setValue(int(value*100.f));
+    zwBox->setValue(value);
     rayTracer->settingsChanged(imageLabel);
 }

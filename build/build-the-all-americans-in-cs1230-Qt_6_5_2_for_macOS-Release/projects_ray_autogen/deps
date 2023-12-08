@@ -767,6 +767,7 @@ projects_ray_autogen/timestamp: \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/glm/vec3.hpp \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/glm/vec4.hpp \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/glm/vector_relational.hpp \
+	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/4dvecops/vectoroperations.cpp \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/bvh.cpp \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/bvh.h \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/kdtree.cpp \
@@ -800,6 +801,7 @@ projects_ray_autogen/timestamp: \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/utils/scenefilereader.h \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/utils/sceneparser.cpp \
 	/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/utils/sceneparser.h \
+	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/QElapsedTimer \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/q20memory.h \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/q20type_traits.h \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/qalgorithms.h \
@@ -829,6 +831,7 @@ projects_ray_autogen/timestamp: \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/qdarwinhelpers.h \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/qdatastream.h \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/qdebug.h \
+	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/qelapsedtimer.h \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/qexceptionhandling.h \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/qflags.h \
 	/Users/daviddoan/Qt/6.5.2/macos/lib/QtCore.framework/Versions/A/Headers/qfloat16.h \

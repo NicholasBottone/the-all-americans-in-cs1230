@@ -30,6 +30,8 @@ private:
     void connectyz();
     void connectyw();
     void connectzw();
+    void connectRotationSlider();
+    void connectNegativeRotation();
 
     RayTracer *rayTracer;
     AspectRatioWidget *aspectRatioWidget;
@@ -47,6 +49,10 @@ private:
     QDoubleSpinBox *ywBox;
     QSlider *zwSlider;
     QDoubleSpinBox *zwBox;
+    QSlider *rotationSlider;
+    QDoubleSpinBox *rotationBox;
+    QCheckBox *rotateNegative;
+
 
 private slots:
     void onUploadFile();
@@ -63,4 +69,13 @@ private slots:
     void onValChangeywBox(double newValue);
     void onValChangezwSlider(int newValue);
     void onValChangezwBox(double newValue);
+    void onValChangeRotationSlider(int newValue);
+    void onValChangeRotationBox(double newValue);
+    void onRotateNegative();
+    void updateXySlider(double newValue);
+    void updateXzSlider(double newValue);
+    void updateXwSlider(double newValue);
+    void updateYzSlider(double newValue);
+    void updateYwSlider(double newValue);
+    void updateZwSlider(double newValue);
 };
