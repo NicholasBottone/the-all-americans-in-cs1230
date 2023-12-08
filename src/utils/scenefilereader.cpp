@@ -638,11 +638,11 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         }
 
         QJsonArray translateArray = object["translate"].toArray();
-        if (translateArray.size() != 4) {
-            std::cout << "group translate must have 4 elements" << std::endl;
+        if (translateArray.size() != 4 && translateArray.size() != 3) {
+            std::cout << "group translate must have 3-4 elements" << std::endl;
             return false;
         }
-        if (!translateArray[0].isDouble() || !translateArray[1].isDouble() || !translateArray[2].isDouble() || !translateArray[3].isDouble()) {
+        if (!translateArray[0].isDouble() || !translateArray[1].isDouble() || !translateArray[2].isDouble() || (translateArray.size() == 4 && !translateArray[3].isDouble())) {
             std::cout << "group translate must contain floating-point values" << std::endl;
             return false;
         }
@@ -652,7 +652,8 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         translation->translate.x = translateArray[0].toDouble();
         translation->translate.y = translateArray[1].toDouble();
         translation->translate.z = translateArray[2].toDouble();
-        translation->translate.w = translateArray[3].toDouble();
+        if (translateArray.size() == 4)
+            translation->translate.w = translateArray[3].toDouble();
 
         node->transformations.push_back(translation);
     }
@@ -665,11 +666,11 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         }
 
         QJsonArray rotateArray = object["rotate"].toArray();
-        if (rotateArray.size() != 7) {
-            std::cout << "group rotate must have 7 elements" << std::endl;
+        if (rotateArray.size() != 7 && rotateArray.size() != 4) {
+            std::cout << "group rotate must have 4 or 7 elements" << std::endl;
             return false;
         }
-        if (!rotateArray[0].isDouble() || !rotateArray[1].isDouble() || !rotateArray[2].isDouble() || !rotateArray[3].isDouble() || !rotateArray[4].isDouble() || !rotateArray[5].isDouble() || !rotateArray[6].isDouble()) {
+        if (!rotateArray[0].isDouble() || !rotateArray[1].isDouble() || !rotateArray[2].isDouble() || !rotateArray[3].isDouble() || (rotateArray.size() == 7 && (!rotateArray[4].isDouble() || !rotateArray[5].isDouble() || !rotateArray[6].isDouble()))) {
             std::cout << "group rotate must contain floating-point values" << std::endl;
             return false;
         }
@@ -679,10 +680,16 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         rotation->rotate3.x = rotateArray[0].toDouble();
         rotation->rotate3.y = rotateArray[1].toDouble();
         rotation->rotate3.z = rotateArray[2].toDouble();
-        rotation->rotateW.x = rotateArray[3].toDouble();
-        rotation->rotateW.y = rotateArray[4].toDouble();
-        rotation->rotateW.z = rotateArray[5].toDouble();
-        rotation->angle = rotateArray[6].toDouble() * M_PI / 180.f;
+        if (rotateArray.size() == 7) {
+            rotation->rotateW.x = rotateArray[4].toDouble();
+            rotation->rotateW.y = rotateArray[5].toDouble();
+            rotation->rotateW.z = rotateArray[6].toDouble();
+        } else {
+            rotation->rotateW.x = 0;
+            rotation->rotateW.y = 0;
+            rotation->rotateW.z = 0;
+        }
+        rotation->angle = rotateArray[(rotateArray.size() == 7) ? 3 : 6].toDouble() * M_PI / 180.f;
 
         node->transformations.push_back(rotation);
     }
@@ -695,11 +702,11 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         }
 
         QJsonArray scaleArray = object["scale"].toArray();
-        if (scaleArray.size() != 4) {
-            std::cout << "group scale must have 4 elements" << std::endl;
+        if (scaleArray.size() != 4 && scaleArray.size() != 3) {
+            std::cout << "group scale must have 3-4 elements" << std::endl;
             return false;
         }
-        if (!scaleArray[0].isDouble() || !scaleArray[1].isDouble() || !scaleArray[2].isDouble() || !scaleArray[3].isDouble()) {
+        if (!scaleArray[0].isDouble() || !scaleArray[1].isDouble() || !scaleArray[2].isDouble() || (scaleArray.size() == 4 && !scaleArray[3].isDouble())) {
             std::cout << "group scale must contain floating-point values" << std::endl;
             return false;
         }
@@ -709,7 +716,8 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         scale->scale.x = scaleArray[0].toDouble();
         scale->scale.y = scaleArray[1].toDouble();
         scale->scale.z = scaleArray[2].toDouble();
-        scale->scale.w = scaleArray[3].toDouble();
+        if (scaleArray.size() == 4)
+            scale->scale.w = scaleArray[3].toDouble();
 
         node->transformations.push_back(scale);
     }
@@ -722,8 +730,8 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
         }
 
         QJsonArray matrixArray = object["matrix"].toArray();
-        if (matrixArray.size() != 5) {
-            std::cout << "group matrix must be 5x5" << std::endl;
+        if (matrixArray.size() != 5 && matrixArray.size() != 4) {
+            std::cout << "group matrix must be 4x4 or 5x5" << std::endl;
             return false;
         }
 
@@ -742,8 +750,8 @@ bool ScenefileReader::parseGroupData(const QJsonObject &object, SceneNode *node)
             }
 
             QJsonArray rowArray = row.toArray();
-            if (rowArray.size() != 5) {
-                std::cout << "group matrix must be 5x5" << std::endl;
+            if (rowArray.size() != 5 && rowArray.size() != 4) {
+                std::cout << "group matrix must be 4x4 or 5x5" << std::endl;
                 return false;
             }
 
