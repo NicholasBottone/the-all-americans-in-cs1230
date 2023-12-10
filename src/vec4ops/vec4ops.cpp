@@ -1,3 +1,5 @@
+#include <iostream>
+#include <ostream>
 #include <stdexcept>
 #include "vec4ops.h"
 #include "settings.h"
@@ -49,7 +51,8 @@ glm::mat4 Vec4Ops::getViewMatrix4(
 
     // calculate e3 basis vector, the transformation col of view matrix
     if (glm::distance(fromPoint, toPoint) < 0.0001f) {
-        throw std::runtime_error("fromPoint and toPoint are the same");
+        // throw std::runtime_error("fromPoint and toPoint are the same");
+        std::cout << "warn: fromPoint and toPoint are the same" << std::endl;
     }
     glm::vec4 e3 = glm::normalize(fromPoint - toPoint);
 

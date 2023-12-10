@@ -247,15 +247,6 @@ void MainWindow::initialize() {
 
 
     connectUIElements();
-
-    onValChangexyBox(0.0f);
-    onValChangexzBox(0.0f);
-    onValChangexwBox(0.0f);
-    onValChangeyzBox(0.0f);
-    onValChangeywBox(0.0f);
-    onValChangezwBox(0.0f);
-    onValChangeRotationBox(1.0f);
-    onValChangeWBox(0.0f);
 }
 
 void MainWindow::finish() {

@@ -7,7 +7,6 @@
 #include <QDoubleSpinBox>
 #include <QPushButton>
 #include <QLabel>
-// #include "realtime.h"
 #include "raytracer/raytracer.h"
 #include "utils/aspectratiowidget/aspectratiowidget.hpp"
 
