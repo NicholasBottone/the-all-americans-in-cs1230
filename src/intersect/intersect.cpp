@@ -7,6 +7,7 @@
 
 // TODO: implement mesh
 
+//updated to handle intersection in 4d
 glm::vec4 intersectCircle(
         glm::vec4 p,
         glm::vec4 d,
@@ -14,9 +15,9 @@ glm::vec4 intersectCircle(
 {
     // implicit: x^2 + y^2 + z^2 - r^2 = 0, all directions
     float radius = 0.5f;
-    float a = d.x*d.x + d.y*d.y + d.z*d.z;
-    float b = 2.f * (p.x*d.x + p.y*d.y + p.z*d.z);
-    float c = p.x*p.x + p.y*p.y + p.z*p.z - radius*radius;
+    float a = d.x*d.x + d.y*d.y + d.z*d.z + d[3] * d[3];
+    float b = 2.f * (p.x*d.x + p.y*d.y + p.z*d.z + p[3]*d[3]);
+    float c = p.x*p.x + p.y*p.y + p.z*p.z + p[3] * p[3] - radius*radius;
 
     float discriminant = b*b - 4*a*c;
     if (discriminant < 0) // no solution
@@ -47,12 +48,12 @@ glm::vec4 intersectCone(
         const RenderShapeData& shape)
 {
     float t = FINF;
-
-    // implicit: x^2 + y^2 - z^2 = 0, conic top
+    // updated to 4d
+    // x^2 + y^2 - z^2 - w^2= 0, conic top
     float radius = 0.5f;
-    float a = d.x*d.x + d.z*d.z - .25f*(d.y*d.y);
-    float b = 2.f*(p.x*d.x + p.z*d.z) - .5f*(p.y*d.y) + .25f*d.y;
-    float c = p.x*p.x + p.z*p.z - .25f*(p.y*p.y) + .25f*p.y - 1/16.f;
+    float a = d.x*d.x + d.z*d.z - .25f*(d.y*d.y) - .25f*(d[3]*d[3]);
+    float b = 2.f*(p.x*d.x + p.z*d.z) - .5f*(p.y*d.y) + .25f*d.y - .5f*(p[3]*d[3]) + .25f*d[3];
+    float c = p.x*p.x + p.z*p.z - .25f*(p.y*p.y) + .25f*p.y - .25f*(p[3]*p[3]) + .25f*p[3] - 1/8.f;
 
     float discriminant = b*b - 4*a*c;
     if (discriminant >= 0)
@@ -63,7 +64,8 @@ glm::vec4 intersectCone(
         auto p1Top = p + t1 * d;
         if (
                 t1 > 0 &&
-                p1Top.y >= -.5f && p1Top.y <= .5f)
+                p1Top.y >= -.5f && p1Top.y <= .5f &&
+                p1Top[3] >= -.5f && p1Top[3] <= .5f)
 
         {
             t = std::min(t1, t);
@@ -72,23 +74,34 @@ glm::vec4 intersectCone(
         auto p2Top = p + t2 * d;
         if (
                 t2 > 0 &&
-                p2Top.y >= -.5f && p2Top.y <= .5f)
+                p2Top.y >= -.5f && p2Top.y <= .5f &&
+                p2Top[3] >= -.5f && p2Top[3] <= .5f)
 
         {
             t = std::min(t2, t);
         }
     }
 
-
-    // implicit p_y + t*d_y = -.5f, top base
-    float tBase = (- .5f - p.y) / d.y;
-    auto pBase = p + tBase * d;
+    // x^2 + y^2 - z^2 = 0, base w.r.t. w axis
+    float twBase = (- .5f - p[3]) / d[3];
+    auto pwBase = p + twBase * d;
     if (
-            tBase > 0 &&
-            pBase.x*pBase.x + pBase.z*pBase.z <= radius*radius
+            twBase > 0 &&
+            pwBase.x*pwBase.x + pwBase.z*pwBase.z <= pwBase.y*pwBase.y
             )
     {
-        t = std::min(t, tBase);
+        t = std::min(t, twBase);
+    }
+
+    // x^2 + y^2 - z^2 = 0, base w.r.t. y axis
+    float tyBase = (- .5f - p.y) / d.y;
+    auto pyBase = p + tyBase * d;
+    if (
+        tyBase > 0 &&
+        pyBase.x*pyBase.x + pyBase.z*pyBase.z <= pyBase[3]*pyBase[3]
+        )
+    {
+        t = std::min(t, tyBase);
     }
 
     return t == FINF ? glm::vec4(0.f) : p + t*d;

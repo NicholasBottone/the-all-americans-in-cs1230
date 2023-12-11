@@ -58,3 +58,9 @@
 2109	2854	1702256900889672343	CMakeFiles/projects_ray.dir/src/vec4ops/rotations4d.cpp.o	7ae83c7dbbb3069c
 1846	3326	1702256901360458086	CMakeFiles/projects_ray.dir/src/accelerate/myqtconcurrent.cpp.o	edd9793557117a52
 3326	3465	1702256901503327682	projects_ray	86189a8842e154ef
+7	37	1702333804316350533	projects_ray_autogen/timestamp	90a86c673d4d5360
+7	37	1702333804316350533	projects_ray_autogen/mocs_compilation.cpp	90a86c673d4d5360
+7	37	1702333804316350533	/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Release/projects_ray_autogen/timestamp	90a86c673d4d5360
+7	37	1702333804316350533	/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/build/build-the-all-americans-in-cs1230-Qt_6_5_2_for_macOS-Release/projects_ray_autogen/mocs_compilation.cpp	90a86c673d4d5360
+40	646	1702333804921083630	CMakeFiles/projects_ray.dir/src/intersect/intersect.cpp.o	aea38d6800d3e2d7
+646	779	1702333805055335915	projects_ray	86189a8842e154ef
