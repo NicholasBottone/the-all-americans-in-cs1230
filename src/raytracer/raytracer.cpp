@@ -27,39 +27,39 @@ RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
 void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
     if (m_enableParallelism) {
         renderParallel(imageData, scene);
-    }
+    } else {
+        // naive rendering
+        Camera camera = scene.getCamera();
+        float cameraDepth = 1.f;
 
-    // naive rendering
-    Camera camera = scene.getCamera();
-    float cameraDepth = 1.f;
+        float viewplaneHeight = 2.f*cameraDepth*std::tan(camera.getHeightAngle() / 2.f);
+        float viewplaneWidth = cameraDepth*viewplaneHeight*((float)scene.width()/(float)scene.height());
 
-    float viewplaneHeight = 2.f*cameraDepth*std::tan(camera.getHeightAngle() / 2.f);
-    float viewplaneWidth = cameraDepth*viewplaneHeight*((float)scene.width()/(float)scene.height());
+        for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
+            for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
+                // FIXME: for now, use height as depth
+                for (int imageDepth = 0; imageDepth < scene.height(); imageDepth++) {
+                    // compute the ray
+                    float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
+                    float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
+                    float z = (imageDepth - scene.height()/2.f) * viewplaneHeight / scene.height();
+                    float camera4dDepth = 1;
 
-    for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
-        for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
-            // FIXME: for now, use height as depth
-            for (int imageDepth = 0; imageDepth < scene.height(); imageDepth++) {
-                // compute the ray
-                float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
-                float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
-                float z = (imageDepth - scene.height()/2.f) * viewplaneHeight / scene.height();
-                float camera4dDepth = 1;
+                    glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(x, y, z, 0.f), camera.getViewMatrix(), camera.getTranslationVector());
+                    glm::vec4 dWorld = glm::vec4(0.f, 0.f, 0.f, -1.f);
 
-                glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(x, y, z, 0.f), camera.getViewMatrix(), camera.getTranslationVector());
-                glm::vec4 dWorld = glm::vec4(0.f, 0.f, 0.f, -1.f);
+                    // get the pixel color
+                    glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
 
-                // get the pixel color
-                glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
-
-                // set the pixel color
-                int index = imageRow * scene.width() + imageCol;
-                imageData[index] = RGBA{
-                    (std::uint8_t) (pixelColor.r * 255.f),
-                    (std::uint8_t) (pixelColor.g * 255.f),
-                    (std::uint8_t) (pixelColor.b * 255.f),
-                    (std::uint8_t) (pixelColor.a * 255.f)
-                };
+                    // set the pixel color
+                    int index = imageRow * scene.width() + imageCol;
+                    imageData[index] = RGBA{
+                        (std::uint8_t) (pixelColor.r * 255.f),
+                        (std::uint8_t) (pixelColor.g * 255.f),
+                        (std::uint8_t) (pixelColor.b * 255.f),
+                        (std::uint8_t) (pixelColor.a * 255.f)
+                    };
+                }
             }
         }
     }
@@ -99,7 +99,7 @@ glm::vec4 RayTracer::getPixelFromRay(
         for (const RenderShapeData &shape : scene.getShapes()) {
             glm::vec4 pObject = shape.inverseCTM * pWorld;
             glm::vec4 dObject = glm::normalize(shape.inverseCTM * dWorld);
-
+            std::cout << "pObject: " << pObject.w << std::endl;
             glm::vec4 newIntersectionObj = findIntersection(pObject, dObject, shape);
             if (newIntersectionObj.w == 0) // no hit
             {
@@ -175,6 +175,11 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 
     if (!success) {
         std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
+        // return;
+        QImage image = QImage(576, 432, QImage::Format_RGBX8888);
+        image.fill(Qt::black);
+        RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+        imageLabel->setPixmap(QPixmap::fromImage(image));
         return;
     }
 
@@ -192,13 +197,26 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 
     QImage flippedImage = image.mirrored(false, false);
     // make the image larger
-    flippedImage = flippedImage.scaled(2*width, 2*height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
 
     m_imageLabel = imageLabel;
 }
 
 void RayTracer::settingsChanged(QLabel* imageLabel) {
+    bool success = SceneParser::parse(settings.sceneFilePath, m_metaData);
+
+    if (!success) {
+        std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
+        // return;
+        // render a blank image
+        QImage image = QImage(576, 432, QImage::Format_RGBX8888);
+        image.fill(Qt::black);
+        RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+        imageLabel->setPixmap(QPixmap::fromImage(image));
+        return;
+    }
+
     int width = 576;
     int height = 432;
 
@@ -210,7 +228,7 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     this->render(data, rtScene);
 
     QImage flippedImage = image.mirrored(false, false);
-    flippedImage = flippedImage.scaled(2*width, 2*height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
 }
 

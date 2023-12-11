@@ -4,6 +4,7 @@
 #include <glm/gtx/transform.hpp>
 #include <QImage>
 #include <iostream>
+#include "../settings.h"
 
 
 /**
@@ -36,17 +37,27 @@ TextureData loadTextureFromFile(const QString &file) {
 
 // helper to handle recursive creation of tree
 void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std::vector<SceneLightData> *lights, glm::mat4 currentCTM, glm::vec4 currentTranslation4d) {
+    if (currentNode->transformations.size() == 0) {
+        // ScenePa.rser::translate4(currentTranslation4d, glm::vec4(0.f, 0.f, 0.f, settings.w));
+        // convert currentTranslation4d to a 4x4 matrix
+        currentCTM = glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
+        currentCTM *= SceneParser::getRotationMatrix4(1.f, glm::vec3(settings.xy, settings.xz, settings.yz), glm::vec3(settings.xw, settings.yw, settings.zw));
+    }
+
+    SceneParser::translate4(currentTranslation4d, glm::vec4(0.f, 0.f, 0.f, settings.w));
+
     for (auto t : currentNode->transformations) {
         switch (t->type)
         {
         case TransformationType::TRANSFORMATION_TRANSLATE:
-            SceneParser::translate4(currentTranslation4d, t->translate);
-            break;
-        case TransformationType::TRANSFORMATION_SCALE:
-            SceneParser::scale4(currentCTM, t->scale);
+            SceneParser::translate4(currentTranslation4d, glm::vec4(t->translate.xyz(), 0.f));
+            // currentCTM = glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
             break;
         case TransformationType::TRANSFORMATION_ROTATE:
             currentCTM *= SceneParser::getRotationMatrix4(t->angle, t->rotate3, t->rotateW);
+            break;
+        case TransformationType::TRANSFORMATION_SCALE:
+            SceneParser::scale4(currentCTM, t->scale);
             break;
         case TransformationType::TRANSFORMATION_MATRIX:
             currentCTM *= glm::mat4(t->matrix);
@@ -58,6 +69,8 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
         }
     }
 
+    currentCTM *= glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
+    
 
     for(auto primitive : currentNode->primitives) {
         // primitive->material.textureData = loadTextureFromFile(QString::fromStdString(primitive->material.textureMap.filename));
@@ -144,25 +157,48 @@ bool SceneParser::parse(std::string filepath, RenderData &renderData) {
     return true;
 }
 
-glm::mat4 SceneParser::getRotationMatrix4(
-        float angle,
-        glm::vec3 axis3,
-        glm::vec3 axisW) {
-    // start with the normal rotation from the normal 3d axes
-    if (axis3.x > 0)
-        return Vec4Ops::getRotationMatrix4XY(angle);
-    else if (axis3.y > 0)
-        return Vec4Ops::getRotationMatrix4YZ(angle);
-    else if (axis3.z > 0)
-        return Vec4Ops::getRotationMatrix4ZX(angle);
-    else if (axisW.x > 0)
-        return Vec4Ops::getRotationMatrix4XW(angle);
-    else if (axisW.y > 0)
-        return Vec4Ops::getRotationMatrix4YW(angle);
-    else if (axisW.z > 0)
-        return Vec4Ops::getRotationMatrix4ZW(angle);
-    else
-        throw std::runtime_error("invalid axis");
+// glm::mat4 SceneParser::getRotationMatrix4(
+//         float angle,
+//         glm::vec3 axis3,
+//         glm::vec3 axisW) {
+//     // start with the normal rotation from the normal 3d axes
+//     if (axis3.x > 0)
+//         return Vec4Ops::getRotationMatrix4XY(angle);
+//     else if (axis3.y > 0)
+//         return Vec4Ops::getRotationMatrix4YZ(angle);
+//     else if (axis3.z > 0)
+//         return Vec4Ops::getRotationMatrix4ZX(angle);
+//     else if (axisW.x > 0)
+//         return Vec4Ops::getRotationMatrix4XW(angle);
+//     else if (axisW.y > 0)
+//         return Vec4Ops::getRotationMatrix4YW(angle);
+//     else if (axisW.z > 0)
+//         return Vec4Ops::getRotationMatrix4ZW(angle);
+//     else
+//         throw std::runtime_error("invalid axis");
+// }
+
+glm::mat4 SceneParser::getRotationMatrix4(float angle, glm::vec3 axis3, glm::vec3 axisW) {
+    glm::mat4 rotationMatrix3D = glm::mat4(1.0f); // Identity matrix
+
+    // convert axis3 and axisW to radians
+    axis3 = glm::radians(axis3);
+    axisW = glm::radians(axisW);
+
+    // Apply 3D rotations if any axis is non-zero
+    if (axis3.x != 0) rotationMatrix3D *= glm::rotate(axis3.x, glm::vec3(1, 0, 0));
+    if (axis3.y != 0) rotationMatrix3D *= glm::rotate(axis3.y, glm::vec3(0, 1, 0));
+    if (axis3.z != 0) rotationMatrix3D *= glm::rotate(axis3.z, glm::vec3(0, 0, 1));
+
+    glm::mat4 rotationMatrix4D = glm::mat4(1.0f); // Identity matrix
+
+    // Apply 4D rotations if any axis is non-zero
+    if (axisW.x != 0) rotationMatrix4D *= Vec4Ops::getRotationMatrix4XW(axisW.x);
+    if (axisW.y != 0) rotationMatrix4D *= Vec4Ops::getRotationMatrix4YW(axisW.y);
+    if (axisW.z != 0) rotationMatrix4D *= Vec4Ops::getRotationMatrix4ZW(axisW.z);
+
+    // Combine both 3D and 4D rotations
+    return rotationMatrix4D * rotationMatrix3D;
 }
 
 void SceneParser::translate4(

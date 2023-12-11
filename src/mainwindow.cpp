@@ -208,15 +208,15 @@ void MainWindow::initialize() {
     QHBoxLayout *lw = new QHBoxLayout();
 
     wSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
-    wSlider->setTickInterval(1);
-    wSlider->setMinimum(-5000);
-    wSlider->setMaximum(5000);
+    wSlider->setTickInterval(0.01);
+    wSlider->setMinimum(-500);
+    wSlider->setMaximum(500);
     wSlider->setValue(0);
 
     wBox = new QDoubleSpinBox();
-    wBox->setMinimum(-50.0f);
-    wBox->setMaximum(50.f);
-    wBox->setSingleStep(1.f);
+    wBox->setMinimum(-5.0f);
+    wBox->setMaximum(5.f);
+    wBox->setSingleStep(0.01f);
     wBox->setValue(0.f);
 
     lw->addWidget(wSlider);
@@ -247,6 +247,8 @@ void MainWindow::initialize() {
 
 
     connectUIElements();
+
+    onValChangeWSlider(0);
 }
 
 void MainWindow::finish() {
