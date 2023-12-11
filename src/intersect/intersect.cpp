@@ -114,7 +114,7 @@ glm::vec4 intersectCylinder(
 {
     float t = FINF;
 
-    // implicit: x^2 + z^2 = 0, y between -.5, 5 rectuangular side
+    // implicit: x^2 + z^2 = r^2, y + w between -.5, 5 rectuangular side
     float radius = 0.5f;
     float a = d.x*d.x + d.z*d.z;
     float b = 2.f * (p.x*d.x + p.z*d.z);
@@ -129,7 +129,9 @@ glm::vec4 intersectCylinder(
         auto p1Top = p + t1 * d;
         if (
         t1 > 0 &&
-        p1Top.y >= -.5f && p1Top.y <= .5f)
+        p1Top.y + p1Top[3] >= -.5f && p1Top.y + p1Top[3] <= .5f &&
+        p1Top.y >= -.5f && p1Top.y <= .5f &&
+        p1Top[3] >= -.5f && p1Top[3] <= .5f)
         {
             t = std::min(t1, t);
         }
@@ -137,32 +139,36 @@ glm::vec4 intersectCylinder(
         auto p2Top = p + t2 * d;
         if (
             t2 > 0 &&
-            p2Top.y >= -.5f && p2Top.y <= .5f)
+            p2Top.y + p2Top[3] >= -.5f && p2Top.y + p2Top[3] <= .5f &&
+            p2Top.y >= -.5f && p2Top.y <= .5f &&
+            p2Top[3] >= -.5f && p2Top[3] <= .5f)
         {
             t = std::min(t2, t);
         }
     }
 
 
-    // implicit p_y + t*d_y = -.5f, top base
-    float tTop = (.5f - p.y) / d.y;
+    // implicit y + w = .5f, top base
+    float tTop = (.5f - p.y - p.y) / (d[3] + d.y);
     auto pTop = p + tTop * d;
     if (
         tTop > 0 &&
-        pTop.x*pTop.x + pTop.z*pTop.z <= radius*radius
-    )
+        pTop.x*pTop.x + pTop.z*pTop.z <= radius*radius &&
+        pTop.y >= -.5f && pTop.y <= .5f &&
+        pTop[3] >= -.5f && pTop[3] <= .5f)
     {
         t = std::min(t, tTop);
     }
 
 
-    // implicit p_y + t*d_y = -.5f, top base
-    float tBase = (- .5f - p.y) / d.y;
+    // implicit p_y + t*d_y = -.5f, Bottom base
+    float tBase = (.5f - p.y - p.y) / (d[3] + d.y);
     auto pBase = p + tBase * d;
     if (
         tBase > 0 &&
-        pBase.x*pBase.x + pBase.z*pBase.z <= radius*radius
-    )
+        pBase.x*pBase.x + pBase.z*pBase.z <= radius*radius &&
+        pBase.y >= -.5f && pBase.y <= .5f &&
+        pBase[3] >= -.5f && pBase[3] <= .5f)
     {
         t = std::min(t, tBase);
     }
@@ -232,6 +238,29 @@ glm::vec4 intersectCube (
     if (tzmax < tmax)
     {
         tmax = tzmax;
+    }
+
+    // w-dir
+    float twmin = (-apothem - p[3]) / d[3];
+    float twmax = (apothem - p[3]) / d[3];
+
+    if (twmin > twmax)
+    {
+        std::swap(twmin, twmax);
+    }
+
+    if ((tmin > twmax) || (twmin > tmax))
+    {   // no hit
+        return glm::vec4(0.f);
+    }
+
+    if (twmin > tmin)
+    {
+        tmin = twmin;
+    }
+    if (twmax < tmax)
+    {
+        tmax = twmax;
     }
 
     if (tmin <= 0 && tmax <= 0) // both behind camera
