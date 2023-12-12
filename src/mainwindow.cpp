@@ -48,7 +48,7 @@ void MainWindow::initialize() {
     w_label->setFont(font);
 
     QLabel *rotation_label = new QLabel(); // Rotation label
-    rotation_label->setText("Rotation value:");
+    rotation_label->setText("Time value:");
     rotation_label->setFont(font);
     
 
@@ -190,9 +190,9 @@ void MainWindow::initialize() {
 
     rotationBox = new QDoubleSpinBox();
     rotationBox->setMinimum(0.0f);
-    rotationBox->setMaximum(180.f);
+    rotationBox->setMaximum(600.f);
     rotationBox->setSingleStep(1.f);
-    rotationBox->setValue(1.f);
+    rotationBox->setValue(settings.rotation);
 
     lrotation->addWidget(rotationSlider);
     lrotation->addWidget(rotationBox);
@@ -253,7 +253,7 @@ void MainWindow::initialize() {
 
 void MainWindow::finish() {
 //    realtime->finish();
-//    delete(realtime);
+//    delete(rayTracer);
 }
 
 void MainWindow::connectUIElements() {
@@ -273,6 +273,7 @@ void MainWindow::connectUIElements() {
     connect(rayTracer, &RayTracer::yzRotationChanged, this, &MainWindow::updateYzSlider);
     connect(rayTracer, &RayTracer::ywRotationChanged, this, &MainWindow::updateYwSlider);
     connect(rayTracer, &RayTracer::zwRotationChanged, this, &MainWindow::updateZwSlider);
+    connect(rayTracer, &RayTracer::rotationChanged, this, &MainWindow::updateRotationSlider);
     connectW();
 }
 
@@ -528,5 +529,11 @@ void MainWindow::updateYwSlider(double value) {
 void MainWindow::updateZwSlider(double value) {
     zwSlider->setValue(int(value*100.f));
     zwBox->setValue(value);
+    rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::updateRotationSlider(float value) {
+    rotationSlider->setValue(int(value*100.f));
+    rotationBox->setValue(value);
     rayTracer->settingsChanged(imageLabel);
 }

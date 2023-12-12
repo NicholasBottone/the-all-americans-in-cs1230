@@ -12,7 +12,7 @@ struct Settings {
     float xw = 0.f;
     float yw = 0.f;
     float zw = 0.f;
-    float rotation = 1.f;
+    float rotation = 0.f;
     bool negative = false;
     float w = 0.f;
 };

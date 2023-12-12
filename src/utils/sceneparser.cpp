@@ -38,9 +38,8 @@ TextureData loadTextureFromFile(const QString &file) {
 // helper to handle recursive creation of tree
 void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std::vector<SceneLightData> *lights, glm::mat4 currentCTM, glm::vec4 currentTranslation4d) {
     if (currentNode->transformations.size() == 0) {
-        // ScenePa.rser::translate4(currentTranslation4d, glm::vec4(0.f, 0.f, 0.f, settings.w));
-        // convert currentTranslation4d to a 4x4 matrix
-        currentCTM = glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
+        SceneParser::translate4(currentTranslation4d, glm::vec4(0.f, -0.0098f * settings.rotation, 0.f, settings.w));
+        // currentCTM = glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
         currentCTM *= SceneParser::getRotationMatrix4(1.f, glm::vec3(settings.xy, settings.xz, settings.yz), glm::vec3(settings.xw, settings.yw, settings.zw));
     }
 
@@ -74,14 +73,33 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
 
     for(auto primitive : currentNode->primitives) {
         // primitive->material.textureData = loadTextureFromFile(QString::fromStdString(primitive->material.textureMap.filename));
+        // float unitMass = 1.f;
+        // switch (primitive->type)
+        // {
+        // case PrimitiveType::PRIMITIVE_CUBE:
+        //     unitMass = 0.5f * 0.5f * 0.5f;
+        //     break;
+        // case PrimitiveType::PRIMITIVE_SPHERE:
+        //     unitMass = 4.f / 3.f * 3.14159f * 0.5f * 0.5f * 0.5f;
+        //     break;
+        // case PrimitiveType::PRIMITIVE_CONE:
+        //     unitMass = 1.f / 3.f * 3.14159f * 0.5f * 0.5f * 0.5f;
+        //     break;
+        // case PrimitiveType::PRIMITIVE_CYLINDER:
+        //     unitMass = 3.14159f * 0.5f * 0.5f * 0.5f;
+        //     break;
         RenderShapeData rsd = {
             .primitive = *primitive,
             .ctm = currentCTM,
             .translation4d = currentTranslation4d,
             .inverseCTM = glm::inverse(currentCTM),
             .inverseTranslation4d = -currentTranslation4d,
+            // .position = glm::vec4(0.f, 0.f, 0.f, 1.f),
+            // .velocity = glm::vec4(0.f, 0.f, 0.f, 0.f),
+            // .mass = unitMass,
         };
         shapes->push_back(rsd);
+        // }
     }
 
     // add the lights
