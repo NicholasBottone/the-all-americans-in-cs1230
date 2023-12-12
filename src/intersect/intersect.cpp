@@ -114,7 +114,7 @@ glm::vec4 intersectCylinder(
 {
     float t = FINF;
 
-    // implicit: x^2 + z^2 = r^2, y + w between -.5, 5 rectuangular side
+    // implicit: x^2 + z^2 = r^2, y + w between -.5, .5 rectuangular side
     float radius = 0.5f;
     float a = d.x*d.x + d.z*d.z;
     float b = 2.f * (p.x*d.x + p.z*d.z);
@@ -149,7 +149,7 @@ glm::vec4 intersectCylinder(
 
 
     // implicit y + w = .5f, top base
-    float tTop = (.5f - p.y - p.y) / (d[3] + d.y);
+    float tTop = (.5f - p.y - p[3]) / (d[3] + d.y);
     auto pTop = p + tTop * d;
     if (
         tTop > 0 &&
@@ -162,7 +162,7 @@ glm::vec4 intersectCylinder(
 
 
     // implicit p_y + t*d_y = -.5f, Bottom base
-    float tBase = (.5f - p.y - p.y) / (d[3] + d.y);
+    float tBase = (.5f - p.y - p[3]) / (d[3] + d.y);
     auto pBase = p + tBase * d;
     if (
         tBase > 0 &&

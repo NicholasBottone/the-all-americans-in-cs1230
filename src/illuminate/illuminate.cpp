@@ -2,23 +2,23 @@
 
 glm::vec4  RayTracer::illuminationFromPointLight(
         const SceneLightData &light,
-        glm::vec3 intersectionWorld,
-        glm::vec3 normalWorld,
-        glm::vec3  directionToCamera,
+        glm::vec4 intersectionWorld,
+        glm::vec4 normalWorld,
+        glm::vec4  directionToCamera,
         const RenderShapeData &shape,
         const RayTraceScene &scene
         )
 {
-    auto directionFromIntersectionToLight = light.pos.xyz() - intersectionWorld;
+    auto directionFromIntersectionToLight = light.pos - intersectionWorld;
     directionFromIntersectionToLight = glm::normalize(directionFromIntersectionToLight);
 
     // check if this light is blocked by an object
-    auto distanceToLight = glm::distance(light.pos.xyz(), intersectionWorld);
+    auto distanceToLight = glm::distance(light.pos, intersectionWorld);
     bool isShadow = RayTracer::isShadowed(
             light.pos,
             distanceToLight,
-            glm::vec4(directionFromIntersectionToLight, 0.f),
-            glm::vec4(intersectionWorld, 1.f),
+            glm::vec4(directionFromIntersectionToLight),
+            glm::vec4(intersectionWorld),
             scene);
     if (isShadow)
     {
@@ -45,20 +45,20 @@ glm::vec4  RayTracer::illuminationFromPointLight(
 
 glm::vec4  RayTracer::illuminationFromSpotLight(
         const SceneLightData &light,
-        glm::vec3 intersectionWorld,
-        glm::vec3 normalWorld,
-        glm::vec3 directionToCamera,
+        glm::vec4 intersectionWorld,
+        glm::vec4 normalWorld,
+        glm::vec4 directionToCamera,
         const RenderShapeData &shape,
         const RayTraceScene &scene
 )
 {
-    auto distance = glm::distance(light.pos.xyz(), intersectionWorld);
+    auto distance = glm::distance(light.pos, intersectionWorld);
 
     // calculate the angle from the shape to the spot light
-    auto directionFromIntersectionToLight = glm::normalize(light.pos.xyz() - intersectionWorld);
+    auto directionFromIntersectionToLight = glm::normalize(light.pos - intersectionWorld);
 
     // calculate intensity, based on angle. apply falloff if necessary
-    auto lightDirection = glm::normalize(light.dir.xyz());
+    auto lightDirection = glm::normalize(light.dir);
     // invert the direction of the intersection to light for dot product to work correctly
     auto cosTheta = glm::dot(-directionFromIntersectionToLight, lightDirection);
     auto theta = glm::acos(cosTheta);
@@ -87,12 +87,12 @@ glm::vec4  RayTracer::illuminationFromSpotLight(
     }
 
     // if the light is within the cone, see if it's a shadow
-    auto distanceToLight = glm::distance(light.pos.xyz(), intersectionWorld);
+    auto distanceToLight = glm::distance(light.pos, intersectionWorld);
     bool isShadow = RayTracer::isShadowed(
             light.pos,
             distanceToLight,
-            glm::vec4(directionFromIntersectionToLight, 0.f),
-            glm::vec4(intersectionWorld, 1.f),
+            glm::vec4(directionFromIntersectionToLight),
+            glm::vec4(intersectionWorld),
             scene);
     if (isShadow)
     {
@@ -119,9 +119,9 @@ glm::vec4  RayTracer::illuminationFromSpotLight(
 
 glm::vec4  RayTracer::illuminationFromDirectionalLight(
         const SceneLightData &light,
-        glm::vec3 intersectionWorld,
-        glm::vec3 normalWorld,
-        glm::vec3 directionToCamera,
+        glm::vec4 intersectionWorld,
+        glm::vec4 normalWorld,
+        glm::vec4 directionToCamera,
         const RenderShapeData &shape,
         const RayTraceScene &scene
 )
@@ -136,7 +136,7 @@ glm::vec4  RayTracer::illuminationFromDirectionalLight(
             light.pos,
             distanceToLight,
             directionFromIntersectionToLight,
-            glm::vec4(intersectionWorld, 1.f),
+            glm::vec4(intersectionWorld),
             scene);
     if (isShadow)
     {
@@ -160,9 +160,9 @@ glm::vec4  RayTracer::illuminationFromDirectionalLight(
 
 // Calculates the RGBA of a pixel from intersection infomation and globally-defined coefficients
 glm::vec4 RayTracer::illuminatePixel(
-        glm::vec3  intersectionWorld,
-        glm::vec3  normalWorld,
-        glm::vec3  directionToCamera,
+        glm::vec4  intersectionWorld,
+        glm::vec4  normalWorld,
+        glm::vec4  directionToCamera,
         const RenderShapeData& shape,
         const RayTraceScene &scene,
         int depth)
@@ -214,10 +214,10 @@ glm::vec4 RayTracer::illuminatePixel(
 glm::vec4 RayTracer::phong(
         glm::vec4 lightColor,
         float attenuation,
-        glm::vec3 directionFromIntersectionToLight,
-        glm::vec3 directionToCamera,
-        glm::vec3 intersectionWorld,
-        glm::vec3 normalWorld,
+        glm::vec4 directionFromIntersectionToLight,
+        glm::vec4 directionToCamera,
+        glm::vec4 intersectionWorld,
+        glm::vec4 normalWorld,
         const RenderShapeData &shape,
         const RayTraceScene &scene)
 {
@@ -232,11 +232,12 @@ glm::vec4 RayTracer::phong(
     if (dotDiffuse > 0) // ensure not facing away
     {
         auto diffuse = (kd * material.cDiffuse);
-        if (material.textureMap.isUsed)
-        {
-            glm::vec4 pObject = shape.inverseCTM * glm::vec4(intersectionWorld, 1.f);
-            diffuse = interpolateTexture(pObject, shape, diffuse);
-        }
+        // commenting out texture stuff bc 4d textures??????
+//        if (material.textureMap.isUsed)
+//        {
+//            glm::vec4 pObject = shape.inverseCTM * glm::vec4(intersectionWorld, 1.f);
+//            diffuse = interpolateTexture(pObject, shape, diffuse);
+//        }
         illumination += (attenuation * lightColor) * dotDiffuse * diffuse;
     }
 
@@ -256,9 +257,9 @@ glm::vec4 RayTracer::phong(
 // EXTRA CREDIT -> AREA LIGHT
 glm::vec4  RayTracer::illuminationFromAreaLight(
         const SceneLightData &light,
-        glm::vec3 intersectionWorld,
-        glm::vec3 normalWorld,
-        glm::vec3  directionToCamera,
+        glm::vec4 intersectionWorld,
+        glm::vec4 normalWorld,
+        glm::vec4  directionToCamera,
         const RenderShapeData &shape,
         const RayTraceScene &scene
 ) {
@@ -269,20 +270,20 @@ glm::vec4  RayTracer::illuminationFromAreaLight(
     float y = ((float) rand() / (float) RAND_MAX) * height - height / 2.f;
     glm::vec4 lightPosition = light.pos + glm::vec4(x, y, 0.f, 0.f);
 
-    auto directionFromIntersectionToLight = lightPosition.xyz() - intersectionWorld;
+    auto directionFromIntersectionToLight = lightPosition - intersectionWorld;
     directionFromIntersectionToLight = glm::normalize(directionFromIntersectionToLight);
 
     // check if this light is blocked by an object
-    auto distanceToLight = glm::distance(lightPosition.xyz(), intersectionWorld);
+    auto distanceToLight = glm::distance(lightPosition, intersectionWorld);
     bool isShadow = RayTracer::isShadowed(
             lightPosition,
             distanceToLight,
-            glm::vec4(directionFromIntersectionToLight, 0.f),
-            glm::vec4(intersectionWorld, 1.f),
+            glm::vec4(directionFromIntersectionToLight),
+            glm::vec4(intersectionWorld),
             scene);
     if (isShadow)
     {
-        // if this is a shadow, then shoow a ray to a random point in the light
+        // if this is a shadow, then show a ray to a random point in the light
         return glm::vec4(0.f);
     }
 

@@ -127,12 +127,9 @@ glm::vec4 RayTracer::getPixelFromRay(
         }
     }
 
-    glm::vec3 normalObject = getNormal(closestIntersectionObj, intersectedShape, scene);
-    glm::vec3 normalWorld =
-            (
-                    glm::inverse(glm::transpose(intersectedShape.ctm))
-                    * glm::vec4(normalObject, 0.f)
-            ).xyz();
+    glm::vec4 normalObject = glm::normalize(getNormal(closestIntersectionObj, intersectedShape, scene));
+    // update
+    glm::vec4 normalWorld = glm::inverse(glm::transpose(intersectedShape.ctm)) * glm::vec4(normalObject);
 
     return illuminatePixel(closestIntersectionWorld, normalWorld, -dWorld, intersectedShape, scene, depth);
 }

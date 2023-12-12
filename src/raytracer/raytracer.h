@@ -59,7 +59,7 @@ public:
         const RenderShapeData &shape,
         glm::vec4 illuminationToInterpolate);
 
-    glm::vec3 getNormal(
+    glm::vec4 getNormal(
             glm::vec4 intersectPointObject,
             const RenderShapeData &shape,
             const RayTraceScene &scene);
@@ -97,9 +97,9 @@ public:
             const RayTraceScene &scene,
             int depth);
     glm::vec4 illuminatePixel(
-            glm::vec3 intersectionWorld,
-            glm::vec3 normalWorld,
-            glm::vec3 directionToCamera,
+            glm::vec4 intersectionWorld,
+            glm::vec4 normalWorld,
+            glm::vec4 directionToCamera,
             const RenderShapeData &shape,
             const RayTraceScene &scene,
             int depth);
@@ -107,26 +107,26 @@ public:
 
     // shading, and helpers for each type of light
     glm::vec4
-    phong(glm::vec4 lightColor, float attenuation, glm::vec3 directionFromIntersectionToLight,
-          glm::vec3 directionToCamera,
-          glm::vec3 intersectionWorld, glm::vec3 normalWorld, const RenderShapeData &shape, const RayTraceScene &scene);
+    phong(glm::vec4 lightColor, float attenuation, glm::vec4 directionFromIntersectionToLight,
+          glm::vec4 directionToCamera,
+          glm::vec4 intersectionWorld, glm::vec4 normalWorld, const RenderShapeData &shape, const RayTraceScene &scene);
 
     glm::vec4
-    illuminationFromPointLight(const SceneLightData &light, glm::vec3 intersectionWorld, glm::vec3 normalWorld,
-                               glm::vec3 directionToCamera, const RenderShapeData &shape,
+    illuminationFromPointLight(const SceneLightData &light, glm::vec4 intersectionWorld, glm::vec4 normalWorld,
+                               glm::vec4 directionToCamera, const RenderShapeData &shape,
                                const RayTraceScene &scene);
 
-    glm::vec4 illuminationFromSpotLight(const SceneLightData &light, glm::vec3 intersectionWorld, glm::vec3 normalWorld,
-                                        glm::vec3 directionToCamera, const RenderShapeData &shape,
+    glm::vec4 illuminationFromSpotLight(const SceneLightData &light, glm::vec4 intersectionWorld, glm::vec4 normalWorld,
+                                        glm::vec4 directionToCamera, const RenderShapeData &shape,
                                         const RayTraceScene &scene);
 
     glm::vec4
-    illuminationFromDirectionalLight(const SceneLightData &light, glm::vec3 intersectionWorld, glm::vec3 normalWorld,
-                                     glm::vec3 directionToCamera, const RenderShapeData &shape,
+    illuminationFromDirectionalLight(const SceneLightData &light, glm::vec4 intersectionWorld, glm::vec4 normalWorld,
+                                     glm::vec4 directionToCamera, const RenderShapeData &shape,
                                      const RayTraceScene &scene);
 
-    glm::vec4 illuminationFromAreaLight(const SceneLightData &light, glm::vec3 intersectionWorld, glm::vec3 normalWorld,
-                                        glm::vec3 directionToCamera, const RenderShapeData &shape,
+    glm::vec4 illuminationFromAreaLight(const SceneLightData &light, glm::vec4 intersectionWorld, glm::vec4 normalWorld,
+                                        glm::vec4 directionToCamera, const RenderShapeData &shape,
                                         const RayTraceScene &scene);
 
 
