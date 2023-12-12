@@ -174,5 +174,6 @@ signals:
     void yzRotationChanged(float value);
     void ywRotationChanged(float value);
     void zwRotationChanged(float value);
+    void rotationChanged(float value);
 };
 

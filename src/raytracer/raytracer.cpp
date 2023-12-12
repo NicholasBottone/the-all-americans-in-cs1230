@@ -63,6 +63,7 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
             }
         }
     }
+    settings.rotation += 0.5f;
 }
 
 
@@ -230,6 +231,10 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     QImage flippedImage = image.mirrored(false, false);
     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
+    // QTimer::singleShot(3500, this, [this, imageLabel]() {
+    //     // This code will be executed after a 2-second delay
+    //     emit rotationChanged(settings.rotation);
+    // });
 }
 
 void RayTracer::keyPressEvent(QKeyEvent *event) {

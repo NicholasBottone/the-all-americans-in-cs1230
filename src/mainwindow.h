@@ -80,6 +80,7 @@ private slots:
     void updateYzSlider(double newValue);
     void updateYwSlider(double newValue);
     void updateZwSlider(double newValue);
+    void updateRotationSlider(float newValue);
     void onValChangeWSlider(int newValue);
     void onValChangeWBox(double newValue);
 };

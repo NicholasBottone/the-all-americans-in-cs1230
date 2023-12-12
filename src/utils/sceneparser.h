@@ -12,6 +12,9 @@ struct RenderShapeData {
     glm::vec4 translation4d; // appended to the right of the ctm (for 4d translation)
     glm::mat4 inverseCTM;
     glm::vec4 inverseTranslation4d; // appended to the right of the inverse ctm (for 4d translation)
+    glm::vec4 position;
+    glm::vec4 velocity;
+    float mass;
 };
 
 // Struct which contains all the data needed to render a scene

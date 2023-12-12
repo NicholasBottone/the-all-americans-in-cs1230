@@ -83,6 +83,18 @@ float intersectRegion(
     return tMin;
 }
 
+void updateAfterCollision(RenderShapeData& objA, RenderShapeData& objB) {
+    glm::vec3 vA_prime = ((objA.mass - objB.mass) * objA.velocity + 2 * objB.mass * objB.velocity) / (objA.mass + objB.mass);
+    glm::vec3 vB_prime = ((objB.mass - objA.mass) * objB.velocity + 2 * objA.mass * objA.velocity) / (objA.mass + objB.mass);
+
+    objA.velocity = glm::vec4(vA_prime, 0.f);
+    objB.velocity = glm::vec4(vB_prime, 0.f);
+    
+    objA.position += objA.velocity;
+    objB.position += objB.velocity;
+
+}
+
 float RayTracer::traverseBVH(
         glm::vec4 p,
         glm::vec4 d,
