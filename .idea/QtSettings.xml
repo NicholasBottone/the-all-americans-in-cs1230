@@ -12,6 +12,14 @@
             </PerProfileState>
           </value>
         </entry>
+        <entry key="Release">
+          <value>
+            <PerProfileState>
+              <option name="myQmlPath" value="$USER_HOME$/Qt/6.5.2/macos/./qml" />
+              <option name="myQtBinPath" value="$USER_HOME$/Qt/6.5.2/macos/bin" />
+            </PerProfileState>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
