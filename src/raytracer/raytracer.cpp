@@ -54,9 +54,10 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
             settings.currentTime++;
 //            settings.w++;
 
-            // update physics
+            // update physics for moving objects
             Physics::updateShapePositions(m_metaData.shapes);
             Physics::handleCollisions(m_metaData.shapes);
+
         } else { // done rendering
             // assemble the video
             saveFFMPEGVideo(settings.bulkOutputFolderPath);
@@ -173,7 +174,8 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
     m_imageData = reinterpret_cast<RGBA *>(image.bits());
 
     RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
-
+    // update the camera position
+    rtScene.m_camera.updateViewMatrix(m_metaData.cameraData);
     this->render(m_imageData, rtScene);
 
     QImage flippedImage = image.mirrored(false, false);
