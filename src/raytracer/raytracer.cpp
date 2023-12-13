@@ -145,12 +145,79 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
     // m_image = image;
 }
 
+// void RayTracer::settingsChanged(QLabel* imageLabel) {
+//     if (settings.sceneFilePath.size() == 0) {
+//         // no scene loaded
+//         m_image.fill(Qt::black);
+//         imageLabel->setPixmap(QPixmap::fromImage(m_image));
+//         m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
+//         return;
+//     }
+
+//     int width = 576;
+//     int height = 432;
+
+//     QImage image = QImage(width, height, QImage::Format_RGBX8888);
+//     image.fill(Qt::black);
+//     m_imageData = reinterpret_cast<RGBA *>(image.bits());
+
+//     RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
+//     Camera camera = rtScene.getCamera();
+//     if (m_controlPointIndex % 3 == 0) {
+//         m_controlPoints = camera.m_controlPoints;
+//     }
+
+//     auto P1 = m_controlPoints[m_controlPointIndex];
+//     auto P2 = m_controlPoints[m_controlPointIndex];
+//     auto P3 = m_controlPoints[m_controlPointIndex];
+//     auto P4 = m_controlPoints[m_controlPointIndex];
+
+//     glm::vec4 xa = getPt(P1, P2, settings.currentTime);
+//     glm::vec4 xb = getPt(P2, P3, settings.currentTime);
+//     glm::vec4 xc = getPt(P3, P4, settings.currentTime);
+
+//     // Calculate points on the lines between the above points
+//     glm::vec4 xm = getPt(xa, xb, settings.currentTime);
+//     glm::vec4 xn = getPt(xb, xc, settings.currentTime);
+
+//     // Calculate the final point on the Bezier curve
+//     glm::vec4 pointOnCurve = getPt(xm, xn, settings.currentTime);
+//     m_metaData.cameraData.pos = pointOnCurve;
+
+//     settings.xy += 4.f;
+//     if (m_controlPointIndex % 1 == 0) {
+//         settings.xz += 8.f;
+//     }
+//     if (m_controlPointIndex % 3 == 0){
+//         settings.yz += 8.f;
+//     }
+//     this->render(m_imageData, rtScene);
+
+//     QImage flippedImage = image.mirrored(false, false);
+//     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+//     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
+//     m_controlPointIndex++;
+
+    
+//     // QTimer::singleShot(3500, this, [this, imageLabel]() {
+//     //     // This code will be executed after a 2-second delay
+//     //     emit rotationChanged(settings.rotation);
+//     // });
+//     m_image = image;
+// }
+
 void RayTracer::settingsChanged(QLabel* imageLabel) {
-    if (settings.sceneFilePath.size() == 0) {
-        // no scene loaded
-        m_image.fill(Qt::black);
-        imageLabel->setPixmap(QPixmap::fromImage(m_image));
-        m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
+    bool success = SceneParser::parse(settings.sceneFilePath, m_metaData);
+
+    if (!success) {
+        std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
+        // return;
+        // render a blank image
+        QImage image = QImage(576, 432, QImage::Format_RGBX8888);
+        image.fill(Qt::black);
+        RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+        m_imageData = data;
+        imageLabel->setPixmap(QPixmap::fromImage(image));
         return;
     }
 
@@ -159,18 +226,18 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
 
     QImage image = QImage(width, height, QImage::Format_RGBX8888);
     image.fill(Qt::black);
-    m_imageData = reinterpret_cast<RGBA *>(image.bits());
+    RGBA *data = reinterpret_cast<RGBA *>(image.bits());
 
     RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
     Camera camera = rtScene.getCamera();
-    if (m_controlPointIndex % 3 == 0) {
+    if (settings.currentTime % 3 == 0) {
         m_controlPoints = camera.m_controlPoints;
     }
 
-    auto P1 = m_controlPoints[m_controlPointIndex];
-    auto P2 = m_controlPoints[m_controlPointIndex];
-    auto P3 = m_controlPoints[m_controlPointIndex];
-    auto P4 = m_controlPoints[m_controlPointIndex];
+    auto P1 = m_controlPoints[settings.currentTime];
+    auto P2 = m_controlPoints[settings.currentTime];
+    auto P3 = m_controlPoints[settings.currentTime];
+    auto P4 = m_controlPoints[settings.currentTime];
 
     glm::vec4 xa = getPt(P1, P2, settings.currentTime);
     glm::vec4 xb = getPt(P2, P3, settings.currentTime);
@@ -191,12 +258,12 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     if (m_controlPointIndex % 3 == 0){
         settings.yz += 8.f;
     }
-    this->render(m_imageData, rtScene);
+    this->render(data, rtScene);
 
     QImage flippedImage = image.mirrored(false, false);
     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
-    m_controlPointIndex++;
+    // m_controlPointIndex++;
 
     
     // QTimer::singleShot(3500, this, [this, imageLabel]() {
