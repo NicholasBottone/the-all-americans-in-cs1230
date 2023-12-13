@@ -2,6 +2,7 @@
 #include <QtConcurrent>
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #include "raytracer.h"
 #include "raytracescene.h"
 #include "settings.h"
@@ -43,17 +44,21 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
 
     if (settings.bulkOutputFolderPath.size() > 0) { // means we are doing bulk rendering
         // save the image to the bulk directory
-        std::string filePath = settings.bulkOutputFolderPath + QDir::separator().toLatin1() + std::to_string(settings.currentTime) + ".png";
+        std::string paddedTime = std::to_string(settings.currentTime);
+        paddedTime = std::string(4 - paddedTime.length(), '0') + paddedTime;
+        std::string filePath = settings.bulkOutputFolderPath + QDir::separator().toLatin1() + paddedTime + ".png";
         saveViewportImage(filePath);
         if (settings.currentTime < settings.maxTime) { // still more to render
             // render the next frame
             settings.currentTime++;
+            settings.w++;
             emit settingsChanged(m_imageLabel); // emit to allow the UI to update then render the next frame
         } else { // done rendering
             // assemble the video
             saveFFMPEGVideo(settings.bulkOutputFolderPath);
             settings.currentTime = 0;
             settings.bulkOutputFolderPath = "";
+            emit settingsChanged(m_imageLabel);
         }
     }
     emit cameraPositionChanged(m_metaData.cameraData.pos); 
@@ -207,7 +212,9 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 // }
 
 void RayTracer::settingsChanged(QLabel* imageLabel) {
-    bool success = SceneParser::parse(settings.sceneFilePath, m_metaData);
+    emit timeValueChanged(settings.currentTime);
+
+    bool success = SceneParser::parse(settings.sceneFilePath, m_metaData); // FIXME: this is a hack to get the camera position
 
     if (!success) {
         std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
@@ -218,8 +225,15 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
         RGBA *data = reinterpret_cast<RGBA *>(image.bits());
         m_imageData = data;
         imageLabel->setPixmap(QPixmap::fromImage(image));
-        return;
     }
+
+    // if (settings.sceneFilePath.size() == 0) {
+    //     // no scene loaded
+    //     m_image.fill(Qt::black);
+    //     imageLabel->setPixmap(QPixmap::fromImage(m_image));
+    //     m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
+    //     return;
+    // }
 
     int width = 576;
     int height = 432;
@@ -239,17 +253,17 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     auto P3 = m_controlPoints[settings.currentTime];
     auto P4 = m_controlPoints[settings.currentTime];
 
-    glm::vec4 xa = getPt(P1, P2, settings.currentTime);
-    glm::vec4 xb = getPt(P2, P3, settings.currentTime);
-    glm::vec4 xc = getPt(P3, P4, settings.currentTime);
+    // glm::vec4 xa = getPt(P1, P2, settings.currentTime);
+    // glm::vec4 xb = getPt(P2, P3, settings.currentTime);
+    // glm::vec4 xc = getPt(P3, P4, settings.currentTime);
 
-    // Calculate points on the lines between the above points
-    glm::vec4 xm = getPt(xa, xb, settings.currentTime);
-    glm::vec4 xn = getPt(xb, xc, settings.currentTime);
+    // // Calculate points on the lines between the above points
+    // glm::vec4 xm = getPt(xa, xb, settings.currentTime);
+    // glm::vec4 xn = getPt(xb, xc, settings.currentTime);
 
-    // Calculate the final point on the Bezier curve
-    glm::vec4 pointOnCurve = getPt(xm, xn, settings.currentTime);
-    m_metaData.cameraData.pos = pointOnCurve;
+    // // Calculate the final point on the Bezier curve
+    // glm::vec4 pointOnCurve = getPt(xm, xn, settings.currentTime);
+    // m_metaData.cameraData.pos = pointOnCurve;
 
     settings.xy += 4.f;
     if (m_controlPointIndex % 1 == 0) {

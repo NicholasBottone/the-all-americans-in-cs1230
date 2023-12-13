@@ -47,9 +47,9 @@ void MainWindow::initialize() {
     w_label->setText("W value:");
     w_label->setFont(font);
 
-    QLabel *curr_time_label = new QLabel(); // Current Time label
-    curr_time_label->setText("Curr Time: 0");
-    curr_time_label->setFont(font);
+    currTimeLabel = new QLabel(); // Current Time label
+    currTimeLabel->setText("Curr Time: 0");
+    currTimeLabel->setFont(font);
 
     QLabel *max_time_label = new QLabel(); // Max Time label
     max_time_label->setText("Max Time:");
@@ -250,7 +250,7 @@ void MainWindow::initialize() {
     vLayout->addWidget(zwLayout);
     vLayout->addWidget(w_label);
     vLayout->addWidget(wLayout);
-    vLayout->addWidget(curr_time_label);
+    vLayout->addWidget(currTimeLabel);
     vLayout->addWidget(max_time_label);
 
     vLayout->addWidget(maxTimeGroupBox);
@@ -287,6 +287,7 @@ void MainWindow::connectUIElements() {
     connect(rayTracer, &RayTracer::zwRotationChanged, this, &MainWindow::updateZwSlider);
     connect(rayTracer, &RayTracer::rotationChanged, this, &MainWindow::updateRotationSlider);
     // connect(rayTracer, &RayTracer::cameraPositionChanged, this, &MainWindow::updateCameraPosition);
+    connect(rayTracer, &RayTracer::timeValueChanged, this, &MainWindow::updateTimeValue);
     connectW();
 }
 
@@ -568,3 +569,7 @@ void MainWindow::updateRotationSlider(float value) {
 // void MainWindow::updateCameraPosition() {
 //     rayTracer->wSliderChanged(imageLabel);
 // }
+
+void MainWindow::updateTimeValue() {
+    currTimeLabel->setText("Curr Time: " + QString::number(settings.currentTime));
+}

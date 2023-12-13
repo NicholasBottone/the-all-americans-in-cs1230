@@ -56,6 +56,7 @@ private:
     QPushButton *rotateNegative;
     QSlider *wSlider;
     QDoubleSpinBox *wBox;
+    QLabel *currTimeLabel;
 
 
 private slots:
@@ -87,4 +88,5 @@ private slots:
     void onValChangeWSlider(int newValue);
     void onValChangeWBox(double newValue);
     // void updateCameraPosition();
+    void updateTimeValue();
 };
