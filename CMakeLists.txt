@@ -67,6 +67,8 @@ add_executable(${PROJECT_NAME}
         src/vec4ops/rotations4d.cpp
         src/vec4ops/transform4d.cpp
         src/vec4ops/vec4ops.h
+        src/physics/physics.cpp
+        src/physics/physics.h
 )
 
 # GLM: this creates its library and allows you to `#include "glm/..."`

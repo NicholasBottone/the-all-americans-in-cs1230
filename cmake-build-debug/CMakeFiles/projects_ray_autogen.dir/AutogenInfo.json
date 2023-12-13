@@ -416,6 +416,12 @@
 			null
 		],
 		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/physics/physics.h",
+			"MU",
+			"JMUJEY3N7L/moc_physics.cpp",
+			null
+		],
+		[
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/raytracer/raytracer.h",
 			"MU",
 			"SKZFJBACJG/moc_raytracer.cpp",
@@ -615,6 +621,11 @@
 		],
 		[
 			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/physics/physics.cpp",
 			"MU",
 			null
 		],

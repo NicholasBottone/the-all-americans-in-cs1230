@@ -43,6 +43,7 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "onUploadFile",
     "",
     "onSaveImage",
+    "onBulkRender",
     "onValChangexySlider",
     "newValue",
     "onValChangexyBox",
@@ -67,40 +68,43 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "updateZwSlider",
     "updateRotationSlider",
     "onValChangeWSlider",
-    "onValChangeWBox"
+    "onValChangeWBox",
+    "updateCameraPosition"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[58];
+    uint offsetsAndSizes[62];
     char stringdata0[11];
     char stringdata1[13];
     char stringdata2[1];
     char stringdata3[12];
-    char stringdata4[20];
-    char stringdata5[9];
-    char stringdata6[17];
-    char stringdata7[20];
-    char stringdata8[17];
-    char stringdata9[20];
-    char stringdata10[17];
-    char stringdata11[20];
-    char stringdata12[17];
-    char stringdata13[20];
-    char stringdata14[17];
-    char stringdata15[20];
-    char stringdata16[17];
-    char stringdata17[25];
-    char stringdata18[22];
-    char stringdata19[17];
-    char stringdata20[15];
+    char stringdata4[13];
+    char stringdata5[20];
+    char stringdata6[9];
+    char stringdata7[17];
+    char stringdata8[20];
+    char stringdata9[17];
+    char stringdata10[20];
+    char stringdata11[17];
+    char stringdata12[20];
+    char stringdata13[17];
+    char stringdata14[20];
+    char stringdata15[17];
+    char stringdata16[20];
+    char stringdata17[17];
+    char stringdata18[25];
+    char stringdata19[22];
+    char stringdata20[17];
     char stringdata21[15];
     char stringdata22[15];
     char stringdata23[15];
     char stringdata24[15];
     char stringdata25[15];
-    char stringdata26[21];
-    char stringdata27[19];
-    char stringdata28[16];
+    char stringdata26[15];
+    char stringdata27[21];
+    char stringdata28[19];
+    char stringdata29[16];
+    char stringdata30[21];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -110,36 +114,39 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(11, 12),  // "onUploadFile"
         QT_MOC_LITERAL(24, 0),  // ""
         QT_MOC_LITERAL(25, 11),  // "onSaveImage"
-        QT_MOC_LITERAL(37, 19),  // "onValChangexySlider"
-        QT_MOC_LITERAL(57, 8),  // "newValue"
-        QT_MOC_LITERAL(66, 16),  // "onValChangexyBox"
-        QT_MOC_LITERAL(83, 19),  // "onValChangexzSlider"
-        QT_MOC_LITERAL(103, 16),  // "onValChangexzBox"
-        QT_MOC_LITERAL(120, 19),  // "onValChangexwSlider"
-        QT_MOC_LITERAL(140, 16),  // "onValChangexwBox"
-        QT_MOC_LITERAL(157, 19),  // "onValChangeyzSlider"
-        QT_MOC_LITERAL(177, 16),  // "onValChangeyzBox"
-        QT_MOC_LITERAL(194, 19),  // "onValChangeywSlider"
-        QT_MOC_LITERAL(214, 16),  // "onValChangeywBox"
-        QT_MOC_LITERAL(231, 19),  // "onValChangezwSlider"
-        QT_MOC_LITERAL(251, 16),  // "onValChangezwBox"
-        QT_MOC_LITERAL(268, 24),  // "onValChangeMaxTimeSlider"
-        QT_MOC_LITERAL(293, 21),  // "onValChangeMaxTimeBox"
-        QT_MOC_LITERAL(315, 16),  // "onRotateNegative"
-        QT_MOC_LITERAL(332, 14),  // "updateXySlider"
-        QT_MOC_LITERAL(347, 14),  // "updateXzSlider"
-        QT_MOC_LITERAL(362, 14),  // "updateXwSlider"
-        QT_MOC_LITERAL(377, 14),  // "updateYzSlider"
-        QT_MOC_LITERAL(392, 14),  // "updateYwSlider"
-        QT_MOC_LITERAL(407, 14),  // "updateZwSlider"
-        QT_MOC_LITERAL(422, 20),  // "updateRotationSlider"
-        QT_MOC_LITERAL(443, 18),  // "onValChangeWSlider"
-        QT_MOC_LITERAL(462, 15)   // "onValChangeWBox"
+        QT_MOC_LITERAL(37, 12),  // "onBulkRender"
+        QT_MOC_LITERAL(50, 19),  // "onValChangexySlider"
+        QT_MOC_LITERAL(70, 8),  // "newValue"
+        QT_MOC_LITERAL(79, 16),  // "onValChangexyBox"
+        QT_MOC_LITERAL(96, 19),  // "onValChangexzSlider"
+        QT_MOC_LITERAL(116, 16),  // "onValChangexzBox"
+        QT_MOC_LITERAL(133, 19),  // "onValChangexwSlider"
+        QT_MOC_LITERAL(153, 16),  // "onValChangexwBox"
+        QT_MOC_LITERAL(170, 19),  // "onValChangeyzSlider"
+        QT_MOC_LITERAL(190, 16),  // "onValChangeyzBox"
+        QT_MOC_LITERAL(207, 19),  // "onValChangeywSlider"
+        QT_MOC_LITERAL(227, 16),  // "onValChangeywBox"
+        QT_MOC_LITERAL(244, 19),  // "onValChangezwSlider"
+        QT_MOC_LITERAL(264, 16),  // "onValChangezwBox"
+        QT_MOC_LITERAL(281, 24),  // "onValChangeMaxTimeSlider"
+        QT_MOC_LITERAL(306, 21),  // "onValChangeMaxTimeBox"
+        QT_MOC_LITERAL(328, 16),  // "onRotateNegative"
+        QT_MOC_LITERAL(345, 14),  // "updateXySlider"
+        QT_MOC_LITERAL(360, 14),  // "updateXzSlider"
+        QT_MOC_LITERAL(375, 14),  // "updateXwSlider"
+        QT_MOC_LITERAL(390, 14),  // "updateYzSlider"
+        QT_MOC_LITERAL(405, 14),  // "updateYwSlider"
+        QT_MOC_LITERAL(420, 14),  // "updateZwSlider"
+        QT_MOC_LITERAL(435, 20),  // "updateRotationSlider"
+        QT_MOC_LITERAL(456, 18),  // "onValChangeWSlider"
+        QT_MOC_LITERAL(475, 15),  // "onValChangeWBox"
+        QT_MOC_LITERAL(491, 20)   // "updateCameraPosition"
     },
     "MainWindow",
     "onUploadFile",
     "",
     "onSaveImage",
+    "onBulkRender",
     "onValChangexySlider",
     "newValue",
     "onValChangexyBox",
@@ -164,7 +171,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "updateZwSlider",
     "updateRotationSlider",
     "onValChangeWSlider",
-    "onValChangeWBox"
+    "onValChangeWBox",
+    "updateCameraPosition"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -176,7 +184,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      26,   14, // methods
+      28,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -184,60 +192,64 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  170,    2, 0x08,    1 /* Private */,
-       3,    0,  171,    2, 0x08,    2 /* Private */,
-       4,    1,  172,    2, 0x08,    3 /* Private */,
-       6,    1,  175,    2, 0x08,    5 /* Private */,
-       7,    1,  178,    2, 0x08,    7 /* Private */,
-       8,    1,  181,    2, 0x08,    9 /* Private */,
-       9,    1,  184,    2, 0x08,   11 /* Private */,
-      10,    1,  187,    2, 0x08,   13 /* Private */,
-      11,    1,  190,    2, 0x08,   15 /* Private */,
-      12,    1,  193,    2, 0x08,   17 /* Private */,
-      13,    1,  196,    2, 0x08,   19 /* Private */,
-      14,    1,  199,    2, 0x08,   21 /* Private */,
-      15,    1,  202,    2, 0x08,   23 /* Private */,
-      16,    1,  205,    2, 0x08,   25 /* Private */,
-      17,    1,  208,    2, 0x08,   27 /* Private */,
-      18,    1,  211,    2, 0x08,   29 /* Private */,
-      19,    0,  214,    2, 0x08,   31 /* Private */,
-      20,    1,  215,    2, 0x08,   32 /* Private */,
-      21,    1,  218,    2, 0x08,   34 /* Private */,
-      22,    1,  221,    2, 0x08,   36 /* Private */,
-      23,    1,  224,    2, 0x08,   38 /* Private */,
-      24,    1,  227,    2, 0x08,   40 /* Private */,
-      25,    1,  230,    2, 0x08,   42 /* Private */,
-      26,    1,  233,    2, 0x08,   44 /* Private */,
-      27,    1,  236,    2, 0x08,   46 /* Private */,
-      28,    1,  239,    2, 0x08,   48 /* Private */,
+       1,    0,  182,    2, 0x08,    1 /* Private */,
+       3,    0,  183,    2, 0x08,    2 /* Private */,
+       4,    0,  184,    2, 0x08,    3 /* Private */,
+       5,    1,  185,    2, 0x08,    4 /* Private */,
+       7,    1,  188,    2, 0x08,    6 /* Private */,
+       8,    1,  191,    2, 0x08,    8 /* Private */,
+       9,    1,  194,    2, 0x08,   10 /* Private */,
+      10,    1,  197,    2, 0x08,   12 /* Private */,
+      11,    1,  200,    2, 0x08,   14 /* Private */,
+      12,    1,  203,    2, 0x08,   16 /* Private */,
+      13,    1,  206,    2, 0x08,   18 /* Private */,
+      14,    1,  209,    2, 0x08,   20 /* Private */,
+      15,    1,  212,    2, 0x08,   22 /* Private */,
+      16,    1,  215,    2, 0x08,   24 /* Private */,
+      17,    1,  218,    2, 0x08,   26 /* Private */,
+      18,    1,  221,    2, 0x08,   28 /* Private */,
+      19,    1,  224,    2, 0x08,   30 /* Private */,
+      20,    0,  227,    2, 0x08,   32 /* Private */,
+      21,    1,  228,    2, 0x08,   33 /* Private */,
+      22,    1,  231,    2, 0x08,   35 /* Private */,
+      23,    1,  234,    2, 0x08,   37 /* Private */,
+      24,    1,  237,    2, 0x08,   39 /* Private */,
+      25,    1,  240,    2, 0x08,   41 /* Private */,
+      26,    1,  243,    2, 0x08,   43 /* Private */,
+      27,    1,  246,    2, 0x08,   45 /* Private */,
+      28,    1,  249,    2, 0x08,   47 /* Private */,
+      29,    1,  252,    2, 0x08,   49 /* Private */,
+      30,    0,  255,    2, 0x08,   51 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::Double,    5,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Double,    5,
-    QMetaType::Void, QMetaType::Float,    5,
-    QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::Double,    5,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Float,    6,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -254,6 +266,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'onUploadFile'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onSaveImage'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onBulkRender'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onValChangexySlider'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -325,7 +339,9 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'onValChangeWBox'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<double, std::false_type>
+        QtPrivate::TypeAndForceComplete<double, std::false_type>,
+        // method 'updateCameraPosition'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -338,30 +354,32 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->onUploadFile(); break;
         case 1: _t->onSaveImage(); break;
-        case 2: _t->onValChangexySlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 3: _t->onValChangexyBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 4: _t->onValChangexzSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 5: _t->onValChangexzBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 6: _t->onValChangexwSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 7: _t->onValChangexwBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 8: _t->onValChangeyzSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 9: _t->onValChangeyzBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 10: _t->onValChangeywSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 11: _t->onValChangeywBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 12: _t->onValChangezwSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 13: _t->onValChangezwBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 14: _t->onValChangeMaxTimeSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 15: _t->onValChangeMaxTimeBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 16: _t->onRotateNegative(); break;
-        case 17: _t->updateXySlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 18: _t->updateXzSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 19: _t->updateXwSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 20: _t->updateYzSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 21: _t->updateYwSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 22: _t->updateZwSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 23: _t->updateRotationSlider((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
-        case 24: _t->onValChangeWSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 25: _t->onValChangeWBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 2: _t->onBulkRender(); break;
+        case 3: _t->onValChangexySlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 4: _t->onValChangexyBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 5: _t->onValChangexzSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 6: _t->onValChangexzBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 7: _t->onValChangexwSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 8: _t->onValChangexwBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 9: _t->onValChangeyzSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 10: _t->onValChangeyzBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 11: _t->onValChangeywSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 12: _t->onValChangeywBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 13: _t->onValChangezwSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 14: _t->onValChangezwBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 15: _t->onValChangeMaxTimeSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 16: _t->onValChangeMaxTimeBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 17: _t->onRotateNegative(); break;
+        case 18: _t->updateXySlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 19: _t->updateXzSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 20: _t->updateXwSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 21: _t->updateYzSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 22: _t->updateYwSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 23: _t->updateZwSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 24: _t->updateRotationSlider((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
+        case 25: _t->onValChangeWSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 26: _t->onValChangeWBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 27: _t->updateCameraPosition(); break;
         default: ;
         }
     }
@@ -386,13 +404,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 26)
+        if (_id < 28)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 26;
+        _id -= 28;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 26)
+        if (_id < 28)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 26;
+        _id -= 28;
     }
     return _id;
 }

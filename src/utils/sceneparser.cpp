@@ -43,14 +43,11 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
     //     currentCTM *= SceneParser::getRotationMatrix4(1.f, glm::vec3(settings.xy, settings.xz, settings.yz), glm::vec3(settings.xw, settings.yw, settings.zw));
     // }
 
-    SceneParser::translate4(currentTranslation4d, glm::vec4(0.f, 0.f, 0.f, settings.w));
-
     for (auto t : currentNode->transformations) {
         switch (t->type)
         {
         case TransformationType::TRANSFORMATION_TRANSLATE:
-            SceneParser::translate4(currentTranslation4d, glm::vec4(t->translate.xyz(), 0.f));
-            // currentCTM = glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
+            SceneParser::translate4(currentTranslation4d, t->translate);
             break;
         case TransformationType::TRANSFORMATION_ROTATE:
             currentCTM *= SceneParser::getRotationMatrix4(t->angle, t->rotate3, t->rotateW);
@@ -60,7 +57,7 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
             break;
         case TransformationType::TRANSFORMATION_MATRIX:
             currentCTM *= glm::mat4(t->matrix);
-            currentTranslation4d *= glm::vec4(t->matrixRight4d); // TODO
+            currentTranslation4d += t->matrixRight4d;
             break;
         default:
             std::cout << "Invalid transformation type" << std::endl;
@@ -72,22 +69,6 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
     
 
     for(auto primitive : currentNode->primitives) {
-        // primitive->material.textureData = loadTextureFromFile(QString::fromStdString(primitive->material.textureMap.filename));
-        // float unitMass = 1.f;
-        // switch (primitive->type)
-        // {
-        // case PrimitiveType::PRIMITIVE_CUBE:
-        //     unitMass = 0.5f * 0.5f * 0.5f;
-        //     break;
-        // case PrimitiveType::PRIMITIVE_SPHERE:
-        //     unitMass = 4.f / 3.f * 3.14159f * 0.5f * 0.5f * 0.5f;
-        //     break;
-        // case PrimitiveType::PRIMITIVE_CONE:
-        //     unitMass = 1.f / 3.f * 3.14159f * 0.5f * 0.5f * 0.5f;
-        //     break;
-        // case PrimitiveType::PRIMITIVE_CYLINDER:
-        //     unitMass = 3.14159f * 0.5f * 0.5f * 0.5f;
-        //     break;
         RenderShapeData rsd = {
             .primitive = *primitive,
             .ctm = currentCTM,

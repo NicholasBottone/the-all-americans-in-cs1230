@@ -339,7 +339,7 @@
 			{
 				"command" : 7,
 				"file" : 0,
-				"line" : 75,
+				"line" : 77,
 				"parent" : 0
 			},
 			{
@@ -356,7 +356,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-Wno-deprecated-volatile -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fcolor-diagnostics"
+					"fragment" : "-Wno-deprecated-volatile -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fcolor-diagnostics"
 				}
 			],
 			"defines" : 
@@ -379,6 +379,10 @@
 				},
 				{
 					"backtrace" : 56,
+					"define" : "QT_NO_DEBUG"
+				},
+				{
+					"backtrace" : 56,
 					"define" : "QT_OPENGLWIDGETS_LIB"
 				},
 				{
@@ -397,14 +401,14 @@
 			"includes" : 
 			[
 				{
-					"path" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug"
+					"path" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release"
 				},
 				{
 					"path" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230"
 				},
 				{
 					"backtrace" : 0,
-					"path" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/include"
+					"path" : "/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/include"
 				},
 				{
 					"backtrace" : 57,
@@ -527,18 +531,19 @@
 				32,
 				34,
 				35,
-				36
+				36,
+				38
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"id" : "projects_ray_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "projects_ray_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "projects_ray_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "projects_ray::@6890427a1f51a3e7e1df",
@@ -547,7 +552,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-Wno-deprecated-volatile -g",
+				"fragment" : "-Wno-deprecated-volatile -O3 -DNDEBUG",
 				"role" : "flags"
 			},
 			{
@@ -670,7 +675,8 @@
 				32,
 				34,
 				35,
-				36
+				36,
+				38
 			]
 		},
 		{
@@ -689,21 +695,22 @@
 				18,
 				31,
 				33,
-				37
+				37,
+				39
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				38
+				40
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				39
+				41
 			]
 		}
 	],
@@ -713,7 +720,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/projects_ray_autogen/mocs_compilation.cpp",
+			"path" : "cmake-build-release/projects_ray_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -926,15 +933,26 @@
 			"sourceGroupIndex" : 1
 		},
 		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/physics/physics.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/physics/physics.h",
+			"sourceGroupIndex" : 1
+		},
+		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/projects_ray_autogen/timestamp",
+			"path" : "cmake-build-release/projects_ray_autogen/timestamp",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/projects_ray_autogen/timestamp.rule",
+			"path" : "cmake-build-release/projects_ray_autogen/timestamp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],

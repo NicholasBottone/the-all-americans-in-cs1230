@@ -10,6 +10,7 @@
 #include <QKeyEvent>
 #include <QTimerEvent>
 #include "vec4ops/vec4ops.h"
+#include "physics/physics.h"
 
 // RayTracer::RayTracer(const Config &config) : m_config(config) {}
 RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
@@ -51,7 +52,13 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
         if (settings.currentTime < settings.maxTime) { // still more to render
             // render the next frame
             settings.currentTime++;
-            settings.w++;
+            // settings.w++;
+
+            // update physics
+            Physics::updateShapePositions(m_metaData.shapes);
+            Physics::handleCollisions(m_metaData.shapes);
+
+
             emit settingsChanged(m_imageLabel); // emit to allow the UI to update then render the next frame
         } else { // done rendering
             // assemble the video
