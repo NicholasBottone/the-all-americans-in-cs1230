@@ -41,3 +41,9 @@
 6	34	1702453551761047603	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
 37	1350	1702453553072409034	CMakeFiles/projects_ray.dir/src/accelerate/myqtconcurrent.cpp.o	202e3ecc659447bc
 1350	1455	1702453553180119416	projects_ray	45fbfe11691b47a4
+11	41	1702455364512022871	projects_ray_autogen/timestamp	55fca76aac650d2f
+11	41	1702455364512022871	projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+11	41	1702455364512022871	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/timestamp	55fca76aac650d2f
+11	41	1702455364512022871	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+44	1223	1702455365689043417	CMakeFiles/projects_ray.dir/src/raytracer/raytracer.cpp.o	19b4d88ef40a6db1
+1224	1332	1702455365801121867	projects_ray	45fbfe11691b47a4

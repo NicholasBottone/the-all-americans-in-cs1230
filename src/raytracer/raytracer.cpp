@@ -30,44 +30,7 @@ RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
 
 // updated to use 4D
 void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
-    if (m_enableParallelism) {
-        renderParallel(imageData, scene);
-    } else {
-        // naive rendering
-        Camera camera = scene.getCamera();
-        float cameraDepth = 1.f;
-
-        float viewplaneHeight = 2.f*cameraDepth*std::tan(camera.getHeightAngle() / 2.f);
-        float viewplaneWidth = cameraDepth*viewplaneHeight*((float)scene.width()/(float)scene.height());
-
-        for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
-            for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
-                // FIXME: for now, use height as depth
-                for (int imageDepth = 0; imageDepth < scene.height(); imageDepth++) {
-                    // compute the ray
-                    float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
-                    float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
-                    float z = (imageDepth - scene.height()/2.f) * viewplaneHeight / scene.height();
-                    float camera4dDepth = 1;
-
-                    glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(x, y, z, 0.f), camera.getViewMatrix(), camera.getTranslationVector());
-                    glm::vec4 dWorld = glm::vec4(0.f, 0.f, 0.f, -1.f);
-
-                    // get the pixel color
-                    glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
-
-                    // set the pixel color
-                    int index = imageRow * scene.width() + imageCol;
-                    imageData[index] = RGBA{
-                        (std::uint8_t) (pixelColor.r * 255.f),
-                        (std::uint8_t) (pixelColor.g * 255.f),
-                        (std::uint8_t) (pixelColor.b * 255.f),
-                        (std::uint8_t) (pixelColor.a * 255.f)
-                    };
-                }
-            }
-        }
-    }
+    renderParallel(imageData, scene);
 
     if (settings.bulkOutputFolderPath.size() > 0) { // means we are doing bulk rendering
         // save the image to the bulk directory
@@ -137,37 +100,6 @@ glm::vec4 RayTracer::getPixelFromRay(
     glm::vec4 normalWorld = glm::inverse(glm::transpose(intersectedShape.ctm)) * glm::vec4(normalObject);
 
     return illuminatePixel(closestIntersectionWorld, normalWorld, -dWorld, intersectedShape, scene, depth);
-}
-
-// EXTRA CREDIT -> depth of field
-glm::vec4 RayTracer::secondaryRays(glm::vec4 pWorld, glm::vec4 dWorld, RayTraceScene &scene)
-{
-    auto inv = scene.getCamera().getInverseViewMatrix();
-    float focalLength = scene.getCamera().getFocalLength();
-    float aperture = scene.getCamera().getAperture();
-
-    glm::vec4 illumination(0.f);
-    glm::vec4 focalPoint = pWorld + focalLength * dWorld;
-
-    int TIMES = 500;
-    for (int i = 0; i < TIMES; i++) {
-        // generate a random number from -aperature to aperature
-        float rand1 = ((float) rand() / (float) RAND_MAX) * aperture;
-        rand1 *= (rand() % 2 == 0) ? 1 : -1;
-        // generate another number also inside the aperature lens
-        float rand2 = ((float) rand() / (float) RAND_MAX) * std::sqrt(aperture - rand1*rand1);
-        rand2 *= (rand() % 2 == 0) ? 1 : -1;
-        glm::vec4 randEye = (rand() % 2 == 0) ? glm::vec4(rand1, rand2, 0.f, 1.f) : glm::vec4(rand2, rand1, 0.f, 1.f);
-        // convert this random point to world space
-        glm::vec4 eyeWorld = inv * randEye;
-
-        // make the ray
-        glm::vec4 randomDir = glm::vec4(glm::normalize(focalPoint.xyz() - eyeWorld.xyz()), 0.f);
-
-        illumination += getPixelFromRay(eyeWorld, randomDir, scene, 0);
-    }
-
-    return illumination / (float) TIMES;
 }
 
 void RayTracer::sceneChanged(QLabel* imageLabel) {
