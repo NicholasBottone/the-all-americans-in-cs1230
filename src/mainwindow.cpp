@@ -26,22 +26,22 @@ void MainWindow::initialize() {
     font.setPointSize(12);
     font.setBold(true);
     QLabel *xy_label = new QLabel(); // XY label
-    xy_label->setText("XY value:");
+    xy_label->setText("Camera XY:");
     xy_label->setFont(font);
     QLabel *xz_label = new QLabel(); // XZ label
-    xz_label->setText("XZ value:");
+    xz_label->setText("Camera XZ:");
     xz_label->setFont(font);
     QLabel *xw_label = new QLabel(); // XW label
-    xw_label->setText("XW value:");
+    xw_label->setText("Camera XW:");
     xw_label->setFont(font);
     QLabel *yz_label = new QLabel(); // YZ label
-    yz_label->setText("YZ value:");
+    yz_label->setText("Camera YZ:");
     yz_label->setFont(font);
     QLabel *yw_label = new QLabel(); // YW label
-    yw_label->setText("YW value:");
+    yw_label->setText("Camera YW:");
     yw_label->setFont(font);
     QLabel *zw_label = new QLabel(); // ZW label
-    zw_label->setText("ZW value:");
+    zw_label->setText("Camera ZW:");
     zw_label->setFont(font);
     QLabel *w_label = new QLabel(); // W label
     w_label->setText("W value:");
@@ -526,6 +526,7 @@ void MainWindow::onRotateNegative() {
 void MainWindow::updateXySlider(double value) {
     xySlider->setValue(int(value*100.f));
     xyBox->setValue(value);
+    settings.xy = xyBox->value();
     rayTracer->settingsChanged(imageLabel);
 }
 

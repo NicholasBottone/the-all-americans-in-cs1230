@@ -181,7 +181,7 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
     QImage flippedImage = image.mirrored(false, false);
     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
-    m_controlPointIndex++;
+    // m_controlPointIndex++;
 
 
     // QTimer::singleShot(3500, this, [this, imageLabel]() {
