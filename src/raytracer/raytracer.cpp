@@ -111,6 +111,7 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
         std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
         m_image.fill(Qt::black);
         imageLabel->setPixmap(QPixmap::fromImage(m_image));
+        m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
         return;
     }
 
@@ -130,17 +131,11 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 }
 
 void RayTracer::settingsChanged(QLabel* imageLabel) {
-    bool success = SceneParser::parse(settings.sceneFilePath, m_metaData);
-
-    if (!success) {
-        std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
-        // return;
-        // render a blank image
-        QImage image = QImage(576, 432, QImage::Format_RGBX8888);
-        image.fill(Qt::black);
-        RGBA *data = reinterpret_cast<RGBA *>(image.bits());
-        m_imageData = data;
-        imageLabel->setPixmap(QPixmap::fromImage(image));
+    if (settings.sceneFilePath.size() == 0) {
+        // no scene loaded
+        m_image.fill(Qt::black);
+        imageLabel->setPixmap(QPixmap::fromImage(m_image));
+        m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
         return;
     }
 
@@ -149,10 +144,10 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
 
     QImage image = QImage(width, height, QImage::Format_RGBX8888);
     image.fill(Qt::black);
-    RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+    m_imageData = reinterpret_cast<RGBA *>(image.bits());
 
     RayTraceScene rtScene{ width, height, m_metaData };
-    this->render(data, rtScene);
+    this->render(m_imageData, rtScene);
 
     QImage flippedImage = image.mirrored(false, false);
     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
