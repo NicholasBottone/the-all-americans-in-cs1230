@@ -54,7 +54,3 @@ float Camera::getAperture() const {
     // Optional TODO: implement the getter or make your own design
     return m_aperture;
 }
-
-glm::vec3 Camera::getPos() const {
-    return m_pos;
-}

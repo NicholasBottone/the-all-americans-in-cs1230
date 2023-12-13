@@ -67,9 +67,12 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
     }
     QList<RGBA> pixels = QtConcurrent::blockingMapped(l, pixelRoutine);
     QtConcurrent::blockingMap(l, pixelRoutine);
-    int index = 0;
-    for (RGBA p : pixels) {
-        imageData[index++] = p;
+
+    // get the slice relating to z == 0 and set it into int the iamge data array
+    int currentSlice = 0;
+    int ptr = currentSlice * scene.width() * scene.height();
+    for (int i = 0; i < scene.width() * scene.height(); i++) {
+        imageData[i] = pixels[ptr + i];
     }
 
     if (m_enableAntiAliasing)

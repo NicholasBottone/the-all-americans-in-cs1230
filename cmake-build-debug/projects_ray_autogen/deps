@@ -449,10 +449,6 @@ projects_ray_autogen/timestamp: \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/glm/vec3.hpp \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/glm/vec4.hpp \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/glm/vector_relational.hpp \
-	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/rotations4d.cpp \
-	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/transform4d.cpp \
-	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/vec4operations.cpp \
-	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/4dvecops/vec4ops.h \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/accelerate/bvh.cpp \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/accelerate/bvh.h \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/accelerate/kdtree.cpp \
@@ -486,6 +482,10 @@ projects_ray_autogen/timestamp: \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/utils/scenefilereader.h \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/utils/sceneparser.cpp \
 	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/utils/sceneparser.h \
+	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/rotations4d.cpp \
+	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/transform4d.cpp \
+	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/vec4ops.cpp \
+	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/vec4ops.h \
 	/Users/sotech117/Library/Application\ Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake \
 	/Users/sotech117/Library/Application\ Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	/Users/sotech117/Library/Application\ Support/JetBrains/Toolbox/apps/CLion/ch-0/232.9921.42/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake \
