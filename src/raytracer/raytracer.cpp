@@ -99,7 +99,7 @@ glm::vec4 RayTracer::getPixelFromRay(
             continue;
         }
 
-        auto newIntersectionWorld = shape.ctm * newIntersectionObj;
+        auto newIntersectionWorld = Vec4Ops::transformPoint4(newIntersectionObj,shape.ctm,shape.translation4d);
         float newDist = glm::distance(newIntersectionWorld, pWorld);
         if (
                 newDist < minDist // closer intersection

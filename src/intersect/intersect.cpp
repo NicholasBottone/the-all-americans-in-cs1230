@@ -59,7 +59,7 @@ glm::vec4 intersectCone(
     isHit = false;
     float t = FINF;
     // updated to 4d
-    // x^2 + y^2 - z^2 - w^2= 0, conic top
+    // x^2 + z^2 - y^2 - w^2= 0, conic top
     float radius = 0.5f;
     float a = d.x*d.x + d.z*d.z - .25f*(d.y*d.y) - .25f*(d[3]*d[3]);
     float b = 2.f*(p.x*d.x + p.z*d.z) - .5f*(p.y*d.y) + .25f*d.y - .5f*(p[3]*d[3]) + .25f*d[3];
@@ -97,7 +97,8 @@ glm::vec4 intersectCone(
     auto pwBase = p + twBase * d;
     if (
             twBase > 0 &&
-            pwBase.x*pwBase.x + pwBase.z*pwBase.z <= pwBase.y*pwBase.y
+            pwBase.x*pwBase.x + pwBase.z*pwBase.z <= pwBase.y*pwBase.y -.25f &&
+            pwBase.y >= -.5f && pwBase.y <= .5f
             )
     {
         t = std::min(t, twBase);
@@ -108,7 +109,8 @@ glm::vec4 intersectCone(
     auto pyBase = p + tyBase * d;
     if (
         tyBase > 0 &&
-        pyBase.x*pyBase.x + pyBase.z*pyBase.z <= pyBase[3]*pyBase[3]
+        pyBase.x*pyBase.x + pyBase.z*pyBase.z <= pyBase[3]*pyBase[3] -.25f &&
+        pyBase[3] >= -.5f && pyBase[3] <= .5f
         )
     {
         t = std::min(t, tyBase);
