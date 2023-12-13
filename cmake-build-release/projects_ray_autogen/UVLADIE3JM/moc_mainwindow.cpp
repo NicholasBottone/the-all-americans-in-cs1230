@@ -69,7 +69,7 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "updateRotationSlider",
     "onValChangeWSlider",
     "onValChangeWBox",
-    "updateCameraPosition"
+    "updateTimeValue"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
@@ -104,7 +104,7 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata27[21];
     char stringdata28[19];
     char stringdata29[16];
-    char stringdata30[21];
+    char stringdata30[16];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -140,7 +140,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(435, 20),  // "updateRotationSlider"
         QT_MOC_LITERAL(456, 18),  // "onValChangeWSlider"
         QT_MOC_LITERAL(475, 15),  // "onValChangeWBox"
-        QT_MOC_LITERAL(491, 20)   // "updateCameraPosition"
+        QT_MOC_LITERAL(491, 15)   // "updateTimeValue"
     },
     "MainWindow",
     "onUploadFile",
@@ -172,7 +172,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "updateRotationSlider",
     "onValChangeWSlider",
     "onValChangeWBox",
-    "updateCameraPosition"
+    "updateTimeValue"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -340,7 +340,7 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'onValChangeWBox'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<double, std::false_type>,
-        // method 'updateCameraPosition'
+        // method 'updateTimeValue'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -379,7 +379,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 24: _t->updateRotationSlider((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
         case 25: _t->onValChangeWSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 26: _t->onValChangeWBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 27: _t->updateCameraPosition(); break;
+        case 27: _t->updateTimeValue(); break;
         default: ;
         }
     }
