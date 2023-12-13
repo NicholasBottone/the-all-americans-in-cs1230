@@ -18,6 +18,7 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
     float cameraDepth = 1.f;
     float viewplaneHeight = 2.f*cameraDepth*std::tan(camera.getHeightAngle() / 2.f);
     float viewplaneWidth = cameraDepth*viewplaneHeight*((float)scene.width()/(float)scene.height());
+    float viewplaneDepth = cameraDepth*viewplaneHeight * ((float)scene.depth() / (float)scene.height());
 
     QList<pixelRoutineArgs> l{};
     // for (int imageRow = 0; imageRow < scene.height(); imageRow++) {

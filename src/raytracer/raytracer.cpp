@@ -171,6 +171,7 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 
     int width = 576;
     int height = 432;
+    int depth = 500;
 
     // render the scene
     QImage image = QImage(width, height, QImage::Format_RGBX8888);
@@ -178,7 +179,7 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
     RGBA *data = reinterpret_cast<RGBA *>(image.bits());
 
 
-    RayTraceScene rtScene{ width, height, m_metaData };
+    RayTraceScene rtScene{ width, height,m_metaData, depth };
     this->render(data, rtScene);
 
     QImage flippedImage = image.mirrored(false, false);

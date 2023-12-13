@@ -14,9 +14,9 @@
 class RayTraceScene
 {
 public:
-    RayTraceScene(int width, int height, const RenderData &metaData);
+    RayTraceScene(int width, int height, const RenderData &metaData, int depth=500);
 
-    // The getter of the width of the scene
+// The getter of the width of the scene
     const int& width() const;
 
     // The getter of the height of the scene
@@ -39,4 +39,7 @@ private:
     Camera& m_camera;
     std::vector<RenderShapeData>m_shapes;
     std::vector<SceneLightData>m_lights;
+    int m_depth;
+
+    const int &depth() const;
 };

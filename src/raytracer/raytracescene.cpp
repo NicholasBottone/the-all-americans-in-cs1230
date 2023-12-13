@@ -4,12 +4,13 @@
 #include "raytracer.h"
 #include <iostream>
 
-RayTraceScene::RayTraceScene(int width, int height, const RenderData &metaData) :
+RayTraceScene::RayTraceScene(int width, int height, const RenderData &metaData, int depth) :
     m_camera(* new Camera(metaData.cameraData))
 {
     // Optional TODO: implement this. Store whatever you feel is necessary.
     m_width = width;
     m_height = height;
+    m_depth = depth;
     m_sceneGlobalData = metaData.globalData;
     m_shapes = metaData.shapes;
     m_lights = metaData.lights;
@@ -35,6 +36,12 @@ const int& RayTraceScene::width() const {
 const int& RayTraceScene::height() const {
     // Optional TODO: implement the getter or make your own design
     return m_height;
+}
+
+
+const int& RayTraceScene::depth() const {
+    // Optional TODO: implement the getter or make your own design
+    return m_depth;
 }
 
 const SceneGlobalData& RayTraceScene::getGlobalData() const {
