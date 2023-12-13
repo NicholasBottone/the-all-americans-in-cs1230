@@ -29,3 +29,15 @@
 1693	2445	1702452579001092270	CMakeFiles/projects_ray.dir/src/aliasing/filter.cpp.o	9dee6d99978c214
 1224	1917	1702452578473192908	CMakeFiles/projects_ray.dir/src/illuminate/shadow.cpp.o	976dc05943374640
 1917	3319	1702452579874611066	CMakeFiles/projects_ray.dir/src/accelerate/myqtconcurrent.cpp.o	202e3ecc659447bc
+6	34	1702453038917081702	projects_ray_autogen/timestamp	55fca76aac650d2f
+6	34	1702453038917081702	projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+6	34	1702453038917081702	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/timestamp	55fca76aac650d2f
+6	34	1702453038917081702	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+37	760	1702453039640098864	CMakeFiles/projects_ray.dir/src/illuminate/illuminate.cpp.o	36fb1526130d4f10
+760	869	1702453039751149956	projects_ray	45fbfe11691b47a4
+6	34	1702453551761047603	projects_ray_autogen/timestamp	55fca76aac650d2f
+6	34	1702453551761047603	projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+6	34	1702453551761047603	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/timestamp	55fca76aac650d2f
+6	34	1702453551761047603	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+37	1350	1702453553072409034	CMakeFiles/projects_ray.dir/src/accelerate/myqtconcurrent.cpp.o	202e3ecc659447bc
+1350	1455	1702453553180119416	projects_ray	45fbfe11691b47a4

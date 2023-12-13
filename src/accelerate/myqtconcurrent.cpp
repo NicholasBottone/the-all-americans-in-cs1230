@@ -52,7 +52,7 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
             float z = (imageDepth - scene.depth()/2.f) * viewplaneDepth / scene.depth();
 
             glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(0.f), camera.getViewMatrix(), camera.getTranslationVector());
-            glm::vec4 dWorld = Vec4Ops::transformDir4(glm::vec4(x, y, z, -1.0), camera.getViewMatrix());
+            glm::vec4 dWorld = glm::normalize(Vec4Ops::transformDir4(glm::vec4(x, y, z, -1.0), camera.getViewMatrix()));
 
              pixelRoutineArgs args{
                      pWorld,
