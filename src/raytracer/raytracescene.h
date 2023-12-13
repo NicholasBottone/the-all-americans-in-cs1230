@@ -28,18 +28,18 @@ public:
     const std::vector<SceneLightData> getLights() const;
 
     // The getter of the shared pointer to the camera instance of the scene
-    const Camera& getCamera() const;
+    const Camera getCamera() const;
 
     KdTree *m_kdTree;
     bvh *m_bvh;
 
     const int &depth() const;
 
+    Camera& m_camera;
 private:
     int m_width;
     int m_height;
     SceneGlobalData m_sceneGlobalData;
-    Camera& m_camera;
     std::vector<RenderShapeData>m_shapes;
     std::vector<SceneLightData>m_lights;
     int m_depth;

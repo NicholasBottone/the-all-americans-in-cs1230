@@ -57,7 +57,7 @@ const std::vector<SceneLightData> RayTraceScene::getLights() const {
     return m_lights;
 }
 
-const Camera& RayTraceScene::getCamera() const {
+const Camera RayTraceScene::getCamera() const {
     // Optional TODO: implement the getter or make your own design
     return m_camera;
 }
