@@ -83,49 +83,37 @@ glm::vec4 RayTracer::getPixelFromRay(
     glm::vec4 closestIntersectionWorld;
     RenderShapeData intersectedShape;
 
-    if (m_enableAcceleration)
-    {
-        float tWorld = traverseBVH(pWorld, dWorld, intersectedShape, scene.m_bvh);
-        if (tWorld == FINF)
+    float minDist = FINF;
+    // shoot a ray at each shape
+    for (const RenderShapeData &shape : scene.getShapes()) {
+        glm::vec4 pObject = Vec4Ops::inverseTransformPoint4(pWorld, shape.inverseCTM, shape.translation4d);
+        glm::vec4 dObject = glm::normalize(Vec4Ops::transformDir4(dWorld, shape.inverseCTM));
+        std::cout << "pObject: " << pObject.w << std::endl;
+        bool isHit = false;
+        glm::vec4 newIntersectionObj = findIntersection(pObject, dObject, shape, isHit);
+        if (!isHit) // no hit
         {
-            return glm::vec4(0.f);
+            continue;
         }
-        closestIntersectionWorld = pWorld + tWorld * dWorld;
-        closestIntersectionObj = intersectedShape.inverseCTM * closestIntersectionWorld;
+
+        auto newIntersectionWorld = shape.ctm * newIntersectionObj;
+        float newDist = glm::distance(newIntersectionWorld, pWorld);
+        if (
+                newDist < minDist // closer intersection
+                && !floatEquals(newDist, 0) // and not a self intersection
+                )
+        {
+            minDist = newDist;
+
+            intersectedShape = shape;
+            closestIntersectionObj = newIntersectionObj;
+            closestIntersectionWorld = newIntersectionWorld;
+        }
     }
-    else
+
+    if (minDist == FINF) // no hit
     {
-        float minDist = FINF;
-        // shoot a ray at each shape
-        for (const RenderShapeData &shape : scene.getShapes()) {
-            glm::vec4 pObject = shape.inverseCTM * pWorld;
-            glm::vec4 dObject = glm::normalize(shape.inverseCTM * dWorld);
-            std::cout << "pObject: " << pObject.w << std::endl;
-            glm::vec4 newIntersectionObj = findIntersection(pObject, dObject, shape);
-            if (newIntersectionObj.w == 0) // no hit
-            {
-                continue;
-            }
-
-            auto newIntersectionWorld = shape.ctm * newIntersectionObj;
-            float newDist = glm::distance(newIntersectionWorld, pWorld);
-            if (
-                    newDist < minDist // closer intersection
-                    && !floatEquals(newDist, 0) // and not a self intersection
-                    )
-            {
-                minDist = newDist;
-
-                intersectedShape = shape;
-                closestIntersectionObj = newIntersectionObj;
-                closestIntersectionWorld = newIntersectionWorld;
-            }
-        }
-
-        if (minDist == FINF) // no hit
-        {
-            return glm::vec4(0.f);
-        }
+        return glm::vec4(0.f);
     }
 
     glm::vec4 normalObject = glm::normalize(getNormal(closestIntersectionObj, intersectedShape, scene));

@@ -11,8 +11,11 @@
 glm::vec4 intersectCircle(
         glm::vec4 p,
         glm::vec4 d,
-        const RenderShapeData& shape)
+        const RenderShapeData& shape,
+        bool &isHit
+        )
 {
+    isHit = false;
     // implicit: x^2 + y^2 + z^2 - r^2 = 0, all directions
     float radius = 0.5f;
     float a = d.x*d.x + d.y*d.y + d.z*d.z + d[3] * d[3];
@@ -32,11 +35,14 @@ glm::vec4 intersectCircle(
         return glm::vec4(0.f);
     } else if (t1 <= 0) // t2 in front of camera
     {
+        isHit = true;
         return p + t2*d;
     } else if (t2 <= 0) // t1 in front of camera
     {
+        isHit = true;
         return p + t1*d;
     } else {
+        isHit = true;
         float t = std::min(t1, t2);
         return p + t*d; // want best intersection point
     }
@@ -289,17 +295,19 @@ glm::vec4 intersectCube (
 glm::vec4 RayTracer::findIntersection(
         glm::vec4 p,
         glm::vec4 d,
-        const RenderShapeData& shape)
+        const RenderShapeData& shape,
+        bool &isHit
+        )
 {
     switch(shape.primitive.type) {
         case PrimitiveType::PRIMITIVE_SPHERE:
-            return intersectCircle(p, d, shape);
+            return intersectCircle(p, d, shape, isHit);
         case PrimitiveType::PRIMITIVE_CONE:
-            return intersectCone(p, d, shape);
+            return intersectCone(p, d, shape, isHit);
         case PrimitiveType::PRIMITIVE_CYLINDER:
-            return intersectCylinder(p, d, shape);
+            return intersectCylinder(p, d, shape, isHit);
         case PrimitiveType::PRIMITIVE_CUBE:
-            return intersectCube(p, d, shape);
+            return intersectCube(p, d, shape, isHit);
         case PrimitiveType::PRIMITIVE_MESH:
             break;
     }
