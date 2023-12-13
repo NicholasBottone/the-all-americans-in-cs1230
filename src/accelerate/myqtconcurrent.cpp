@@ -56,10 +56,6 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
             // get the pixel color
             glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
 
-            if (pixelColor.r > 0) {
-                std::cout << "pixelColor.r: " << pixelColor.r << ", x" << imageCol << ", y" << imageRow << ", z" << imageDepth << std::endl;
-            }
-
             // set the pixel color
             int index = imageRow * scene.width() + imageCol;
             imageData[index] = RGBA{

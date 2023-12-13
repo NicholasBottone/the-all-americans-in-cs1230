@@ -56,8 +56,8 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "onValChangeywBox",
     "onValChangezwSlider",
     "onValChangezwBox",
-    "onValChangeRotationSlider",
-    "onValChangeRotationBox",
+    "onValChangeMaxTimeSlider",
+    "onValChangeMaxTimeBox",
     "onRotateNegative",
     "updateXySlider",
     "updateXzSlider",
@@ -89,8 +89,8 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata14[17];
     char stringdata15[20];
     char stringdata16[17];
-    char stringdata17[26];
-    char stringdata18[23];
+    char stringdata17[25];
+    char stringdata18[22];
     char stringdata19[17];
     char stringdata20[15];
     char stringdata21[15];
@@ -123,18 +123,18 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(214, 16),  // "onValChangeywBox"
         QT_MOC_LITERAL(231, 19),  // "onValChangezwSlider"
         QT_MOC_LITERAL(251, 16),  // "onValChangezwBox"
-        QT_MOC_LITERAL(268, 25),  // "onValChangeRotationSlider"
-        QT_MOC_LITERAL(294, 22),  // "onValChangeRotationBox"
-        QT_MOC_LITERAL(317, 16),  // "onRotateNegative"
-        QT_MOC_LITERAL(334, 14),  // "updateXySlider"
-        QT_MOC_LITERAL(349, 14),  // "updateXzSlider"
-        QT_MOC_LITERAL(364, 14),  // "updateXwSlider"
-        QT_MOC_LITERAL(379, 14),  // "updateYzSlider"
-        QT_MOC_LITERAL(394, 14),  // "updateYwSlider"
-        QT_MOC_LITERAL(409, 14),  // "updateZwSlider"
-        QT_MOC_LITERAL(424, 20),  // "updateRotationSlider"
-        QT_MOC_LITERAL(445, 18),  // "onValChangeWSlider"
-        QT_MOC_LITERAL(464, 15)   // "onValChangeWBox"
+        QT_MOC_LITERAL(268, 24),  // "onValChangeMaxTimeSlider"
+        QT_MOC_LITERAL(293, 21),  // "onValChangeMaxTimeBox"
+        QT_MOC_LITERAL(315, 16),  // "onRotateNegative"
+        QT_MOC_LITERAL(332, 14),  // "updateXySlider"
+        QT_MOC_LITERAL(347, 14),  // "updateXzSlider"
+        QT_MOC_LITERAL(362, 14),  // "updateXwSlider"
+        QT_MOC_LITERAL(377, 14),  // "updateYzSlider"
+        QT_MOC_LITERAL(392, 14),  // "updateYwSlider"
+        QT_MOC_LITERAL(407, 14),  // "updateZwSlider"
+        QT_MOC_LITERAL(422, 20),  // "updateRotationSlider"
+        QT_MOC_LITERAL(443, 18),  // "onValChangeWSlider"
+        QT_MOC_LITERAL(462, 15)   // "onValChangeWBox"
     },
     "MainWindow",
     "onUploadFile",
@@ -153,8 +153,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "onValChangeywBox",
     "onValChangezwSlider",
     "onValChangezwBox",
-    "onValChangeRotationSlider",
-    "onValChangeRotationBox",
+    "onValChangeMaxTimeSlider",
+    "onValChangeMaxTimeBox",
     "onRotateNegative",
     "updateXySlider",
     "updateXzSlider",
@@ -291,10 +291,10 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'onValChangezwBox'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<double, std::false_type>,
-        // method 'onValChangeRotationSlider'
+        // method 'onValChangeMaxTimeSlider'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        // method 'onValChangeRotationBox'
+        // method 'onValChangeMaxTimeBox'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<double, std::false_type>,
         // method 'onRotateNegative'
@@ -350,8 +350,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 11: _t->onValChangeywBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
         case 12: _t->onValChangezwSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 13: _t->onValChangezwBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
-        case 14: _t->onValChangeRotationSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 15: _t->onValChangeRotationBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 14: _t->onValChangeMaxTimeSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 15: _t->onValChangeMaxTimeBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
         case 16: _t->onRotateNegative(); break;
         case 17: _t->updateXySlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
         case 18: _t->updateXzSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
