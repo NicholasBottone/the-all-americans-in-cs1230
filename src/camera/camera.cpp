@@ -9,37 +9,11 @@ Camera::Camera(SceneCameraData cameraData) :
     m_focalLength(cameraData.focalLength),
     m_aperture(cameraData.aperture)
 {
-    // m_viewMatrix = Vec4Ops::getViewMatrix4(cameraData.pos, glm::vec4(0.f), cameraData.up, cameraData.look);
-    // m_translationVector = glm::vec4{-cameraData.pos.x, -cameraData.pos.y, -cameraData.pos.z, -cameraData.pos.w};
+     m_viewMatrix = Vec4Ops::getViewMatrix4(cameraData.look, cameraData.up, cameraData.over);
+     m_translationVector = -cameraData.pos;
 
-    // m_inverseViewMatrix = glm::inverse(m_viewMatrix);
-    // m_inverseTranslationVector = -m_translationVector;
-    glm::vec3 look3{cameraData.look.x, cameraData.look.y, cameraData.look.z};
-    glm::vec3 up3{cameraData.up.x, cameraData.up.y, cameraData.up.z};
-
-    // calculate new basis
-    glm::vec3 e0 = -glm::normalize(look3);
-    glm::vec3 e1 = glm::normalize(up3 - glm::dot(up3, e0) * e0);
-    glm::vec3 e2 = glm::cross(e1, e0);
-
-    glm::mat4 alignment
-    {
-        e2.x, e1.x, e0.x, 0.f,
-        e2.y, e1.y, e0.y, 0.f,
-        e2.z, e1.z, e0.z, 0.f,
-        0.f, 0.f, 0.f, 1.f
-    };
-    glm::mat4 translation
-    {
-        1.f, 0.f, 0.f, 0.f,
-        0.f, 1.f, 0.f, 0.f,
-        0.f, 0.f, 1.f, 0.f,
-        -cameraData.pos.x, -cameraData.pos.y, -cameraData.pos.z, 1.f
-    };
-    
-    m_viewMatrix = alignment * translation;
-
-    m_inverseViewMatrix = glm::inverse(m_viewMatrix);
+     m_inverseViewMatrix = glm::inverse(m_viewMatrix);
+     m_inverseTranslationVector = -m_translationVector;
 }
 
 

@@ -31,11 +31,11 @@ public:
 
     static glm::vec4 dot4(glm::vec4 u, glm::vec4 v);
 
-    static glm::mat4 getViewMatrix4(glm::vec4 fromPoint, glm::vec4 toPoint, glm::vec4 upVector, glm::vec4 lookVector);
-
     static glm::vec4 transformDir4(glm::vec4 dir4, glm::mat4 transformDirectionMatrix);
 
     static glm::vec4 inverseTransformDir4(glm::vec4 dir4, glm::mat4 inverseTransformDirectionMatrix);
+
+    static glm::mat4 getViewMatrix4(glm::vec4 upVector, glm::vec4 lookVector, glm::vec4 overVector);
 };
 
 #endif //PROJECTS_RAY_VEC4OPS_H

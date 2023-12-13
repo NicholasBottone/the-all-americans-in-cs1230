@@ -34,57 +34,29 @@ glm::vec4 Vec4Ops::dot4(
 }
 
 glm::mat4 Vec4Ops::getViewMatrix4(
-        glm::vec4 fromPoint,
-        glm::vec4 toPoint,
         glm::vec4 upVector,
-        glm::vec4 lookVector) {
+        glm::vec4 lookVector,
+        glm::vec4 overVector) {
+    // start with the e3 basis vector, the normalized look vector
+    glm::vec4 e3 = glm::normalize(lookVector);
 
-    // rotation matrices for each plane
-    glm::mat4 rotMatrixXY = getRotationMatrix4XY(glm::radians(settings.xy));
-    glm::mat4 rotMatrixXZ = getRotationMatrix4ZX(glm::radians(settings.xz));
-    glm::mat4 rotMatrixYZ = getRotationMatrix4YZ(glm::radians(settings.yz));
-    glm::mat4 rotMatrixXW = getRotationMatrix4XW(glm::radians(settings.xw));
-    glm::mat4 rotMatrixYW = getRotationMatrix4YW(glm::radians(settings.yw));
-    glm::mat4 rotMatrixZW = getRotationMatrix4ZW(glm::radians(settings.zw));
-
-    glm::mat4 combinedRotationMatrix = rotMatrixXY * rotMatrixYZ * rotMatrixXZ * rotMatrixXW * rotMatrixYW * rotMatrixZW;
-
-    // calculate e3 basis vector, the transformation col of view matrix
-    if (glm::distance(fromPoint, toPoint) < 0.0001f) {
-        // throw std::runtime_error("fromPoint and toPoint are the same");
-        std::cout << "warn: fromPoint and toPoint are the same" << std::endl;
-    }
-    glm::vec4 e3 = glm::normalize(fromPoint - toPoint);
-
-    // calculate e2 basis vector, from the combinatory cross of up and over with e3
-    glm::vec4 e2 = cross4(upVector, lookVector, e3);
-    e2 = glm::normalize(e2);
-    if (glm::distance(e2, glm::vec4{0, 0, 0, 0}) < 0.0001f) {
+    // calculate e0 basis vector, from the combinatory cross of up and over with e3
+    glm::vec4 e0 = cross4(upVector, overVector, e3);
+    e0 = glm::normalize(e0);
+    if (glm::distance(e0, glm::vec4{0, 0, 0, 0}) < 0.0001f) {
         throw std::runtime_error("invalid up vector");
     }
 
     // calculate e1 basis vector, from the cross of only the over vector
-    glm::vec4 e1 = cross4(lookVector, e3, e2);
+    glm::vec4 e1 = cross4(overVector, e3, e0);
     e1 = glm::normalize(e1);
     if (glm::distance(e1, glm::vec4{0, 0, 0, 0}) < 0.0001f) {
         throw std::runtime_error("invalid over vector");
     }
 
-    // calculate e0 basis vector, the 4d orthogonal vector to the other 3 bases
-    glm::vec4 e0 = cross4(e3, e2, e1);
-    e0 = glm::normalize(e0);
-
-    // Apply the combined rotation matrix to the view basis vectors
-    e0 = combinedRotationMatrix * e0;
-    e1 = combinedRotationMatrix * e1;
-    e2 = combinedRotationMatrix * e2;
-    e3 = combinedRotationMatrix * e3;
-
-    // Normalizing might be necessary after applying the rotation
-    e0 = glm::normalize(e0);
-    e1 = glm::normalize(e1);
+    // calculate e2 basis vector, the 4d orthogonal vector to the other 3 bases
+    glm::vec4 e2 = cross4(e3, e0, e1);
     e2 = glm::normalize(e2);
-    e3 = glm::normalize(e3);
 
-    return {e2, e1, e0, e3};
+    return {e0, e1, e2, e3};
 }
