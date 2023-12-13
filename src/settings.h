@@ -15,6 +15,9 @@ struct Settings {
     float rotation = 0.f;
     bool negative = false;
     float w = 0.f;
+    int currentTime = 0;
+    int maxTime = 0;
+    std::string bulkOutputFilePath;
 };
 
 

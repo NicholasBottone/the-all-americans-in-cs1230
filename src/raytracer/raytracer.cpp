@@ -68,7 +68,17 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
             }
         }
     }
-    settings.rotation += 0.5f;
+
+    if (settings.bulkOutputFilePath.size() > 0) { // means we are doing bulk rendering
+        // save the image to the bulk directory
+        std::string filePath = settings.bulkOutputFilePath + QDir::separator().toLatin1() + std::to_string(settings.currentTime) + ".png";
+        saveViewportImage(filePath);
+        if (settings.currentTime < settings.maxTime) { // still more to render
+            // render the next frame
+            settings.currentTime++;
+            emit settingsChanged(m_imageLabel); // emit to allow the UI to update then render the next frame
+        }
+    }
 }
 
 
@@ -197,6 +207,7 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
         QImage image = QImage(576, 432, QImage::Format_RGBX8888);
         image.fill(Qt::black);
         RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+        m_imageData = data;
         imageLabel->setPixmap(QPixmap::fromImage(image));
         return;
     }
@@ -288,3 +299,7 @@ void RayTracer::keyReleaseEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = false;
 }
 
+void RayTracer::saveViewportImage(std::string filePath) {
+    QImage image = QImage((uchar *) m_imageData, 576, 432, QImage::Format_RGBX8888);
+    image.save(QString::fromStdString(filePath));
+}
