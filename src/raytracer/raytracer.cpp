@@ -11,6 +11,8 @@
 #include <QTimerEvent>
 #include "vec4ops/vec4ops.h"
 #include "physics/physics.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>  // Include this header for glm::rotate
 
 // RayTracer::RayTracer(const Config &config) : m_config(config) {}
 RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
@@ -51,6 +53,58 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
         saveViewportImage(filePath);
         if (settings.currentTime < settings.maxTime) { // still more to render
             // render the next frame
+            if (m_enableCameraBezier) {
+                Camera camera = scene.getCamera();
+                if (settings.currentTime % 4 == 0) {
+                    m_controlPoints = camera.m_controlPoints;
+                }
+
+                auto time = (settings.currentTime % 60)/60.f;
+
+                auto P1 = m_controlPoints[0];
+                auto P2 = m_controlPoints[1];
+                auto P3 = m_controlPoints[2];
+                auto P4 = m_controlPoints[3];
+
+                glm::vec4 xa = getPt(P1, P2, time);
+                glm::vec4 xb = getPt(P2, P3, time);
+                glm::vec4 xc = getPt(P3, P4, time);
+
+                // Calculate points on the lines between the above points
+                glm::vec4 xm = getPt(xa, xb, time);
+                glm::vec4 xn = getPt(xb, xc, time);
+
+                // Calculate the final point on the Bezier curve
+                glm::vec4 pointOnCurve = getPt(xm, xn, time);
+                std::cout << "point on curve: " << pointOnCurve.x << ", " << pointOnCurve.y << ", " << pointOnCurve.z << ", " << pointOnCurve.w << std::endl;
+                std::cout << "camera pos" << m_metaData.cameraData.pos.x << ", " << m_metaData.cameraData.pos.y << ", " << m_metaData.cameraData.pos.z << ", " << m_metaData.cameraData.pos.w << std::endl;
+                
+                // rotate the camera about the origin
+                glm::vec4 cameraPos = m_metaData.cameraData.pos;
+                glm::vec4 cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(10.0f), glm::vec3(0.f, 1.f, 0.f)) * glm::vec4(cameraPos.x, cameraPos.y, 0.f, 1.f);
+
+                if (settings.currentTime % 2 == 0) {
+                    cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(2.0f), glm::vec3(1.f, 0.f, 0.f)) * cameraPosRotated;
+                }
+                cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(-3.0f), glm::vec3(1.f, 0.f, 0.f)) * cameraPosRotated;
+
+                // if (settings.currentTime % 3 == 0) {
+                //     cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(4.0f), glm::vec3(0.f, 0.f, 1.f)) * cameraPosRotated;
+                // }
+                // cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(-2.0f), glm::vec3(0.f, 0.f, 1.f)) * cameraPosRotated;
+
+                m_metaData.cameraData.pos = glm::vec4(cameraPosRotated.x, cameraPosRotated.y, cameraPos.z, 1.f);
+                // m_metaData.cameraData.pos = glm::vec4(pointOnCurve.x, pointOnCurve.y, pointOnCurve.z, 1.f);
+
+                settings.xy += 4.f;
+                // if (m_controlPointIndex % 1 == 0) {
+                //     settings.xz += 8.f;
+                // }
+                // if (m_controlPointIndex % 3 == 0){
+                //     settings.yz += 8.f;
+                // }
+
+            }
             settings.currentTime++;
 //            settings.w++;
 

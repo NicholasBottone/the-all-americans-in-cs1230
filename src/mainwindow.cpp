@@ -51,12 +51,12 @@ void MainWindow::initialize() {
     w_label->setFont(font);
 
     currTimeLabel = new QLabel(); // Current Time label
-    currTimeLabel->setText("Curr Time: 0");
+    currTimeLabel->setText("Curr Time: 0  Max Time:");
     currTimeLabel->setFont(font);
 
-    QLabel *max_time_label = new QLabel(); // Max Time label
-    max_time_label->setText("Max Time:");
-    max_time_label->setFont(font);
+    // QLabel *max_time_label = new QLabel(); // Max Time label
+    // max_time_label->setText("Max Time:");
+    // max_time_label->setFont(font);
     
 
     // Create file uploader for scene file
@@ -258,7 +258,7 @@ void MainWindow::initialize() {
 
 
     vLayout->addWidget(uploadFile);
-    vLayout->addWidget(saveImage);
+    // vLayout->addWidget(saveImage);
     vLayout->addWidget(xy_label);
     vLayout->addWidget(xyLayout);
     vLayout->addWidget(xz_label);
@@ -276,7 +276,7 @@ void MainWindow::initialize() {
     vLayout->addWidget(w_label);
     vLayout->addWidget(wLayout);
     vLayout->addWidget(currTimeLabel);
-    vLayout->addWidget(max_time_label);
+    // vLayout->addWidget(max_time_label);
 
     vLayout->addWidget(maxTimeGroupBox);
     vLayout->addWidget(bulkRender);
@@ -619,7 +619,8 @@ void MainWindow::updateRotationSlider(float value) {
 // }
 
 void MainWindow::updateTimeValue() {
-    currTimeLabel->setText("Curr Time: " + QString::number(settings.currentTime));
+    currTimeLabel->setText("Curr Time: " + QString::number(settings.currentTime) + "  Max Time:");
+    // rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::updateZSlider(double value) {
