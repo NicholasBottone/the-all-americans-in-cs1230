@@ -26,7 +26,8 @@ bool RayTracer::isShadowed(
         glm::vec4 pObject = s.inverseCTM * intersectionWorld;
 
         // see if there is an intersection
-        glm::vec4 newIntersectionObj = findIntersection(pObject, dObject, s);
+        bool isHit = false;
+        glm::vec4 newIntersectionObj = findIntersection(pObject, dObject, s, isHit);
 
         if (newIntersectionObj.w == 1.f) // hit!
         {

@@ -114,8 +114,8 @@ float RayTracer::traverseBVH(
             for (const auto &shape: current.shapes) {
                 glm::vec4 pObject = shape.shape.inverseCTM * p;
                 glm::vec4 dObject = glm::normalize(shape.shape.inverseCTM * d);
-
-                glm::vec4 intersection = findIntersection(pObject, dObject, shape.shape);
+                bool isHit = false;
+                glm::vec4 intersection = findIntersection(pObject, dObject, shape.shape, isHit);
                 if (intersection.w == 0.f) {
                     continue;
                 }

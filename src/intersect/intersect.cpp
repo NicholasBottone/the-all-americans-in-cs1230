@@ -51,8 +51,10 @@ glm::vec4 intersectCircle(
 glm::vec4 intersectCone(
         glm::vec4 p,
         glm::vec4 d,
-        const RenderShapeData& shape)
+        const RenderShapeData& shape, 
+        bool &isHit)
 {
+    isHit = false;
     float t = FINF;
     // updated to 4d
     // x^2 + y^2 - z^2 - w^2= 0, conic top
@@ -110,14 +112,22 @@ glm::vec4 intersectCone(
         t = std::min(t, tyBase);
     }
 
-    return t == FINF ? glm::vec4(0.f) : p + t*d;
+    if (t == FINF)
+    {
+        return glm::vec4(0.f);
+    } else {
+        isHit = true;
+        return p + t*d;
+    }
 }
 
 glm::vec4 intersectCylinder(
         glm::vec4 p,
         glm::vec4 d,
-        const RenderShapeData& shape)
+        const RenderShapeData& shape, 
+        bool &isHit)
 {
+    isHit = false;
     float t = FINF;
 
     // implicit: x^2 + z^2 = r^2, y + w between -.5, .5 rectuangular side
@@ -179,14 +189,22 @@ glm::vec4 intersectCylinder(
         t = std::min(t, tBase);
     }
 
-    return t == FINF ? glm::vec4(0.f) : p + t*d;
+    if (t == FINF)
+    {
+        return glm::vec4(0.f);
+    } else {
+        isHit = true;
+        return p + t*d;
+    }
 }
 
 glm::vec4 intersectCube (
         glm::vec4 p,
         glm::vec4 d,
-        const RenderShapeData& shape)
+        const RenderShapeData& shape, 
+        bool &isHit)
 {
+    isHit = false;
     // float t = FINF;
     float apothem = .5f;
 
@@ -274,9 +292,11 @@ glm::vec4 intersectCube (
         return glm::vec4(0.f);
     } else if (tmin > 0) // tmin in front of camera
     {
+        isHit = true;
         return p + tmin*d;
     } else if (tmin <= 0) // tmax in front of camera
     {
+        isHit = true;
         return p + tmax*d;
     }
 

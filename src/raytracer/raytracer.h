@@ -75,7 +75,8 @@ public:
     glm::vec4 findIntersection(
             glm::vec4 p,
             glm::vec4 d,
-            const RenderShapeData& shape);
+            const RenderShapeData& shape, 
+            bool& isHit);
 
     // utils
     static RGBA toRGBA(const glm::vec4 &illumination);
@@ -148,7 +149,7 @@ public:
     bool m_enableReflection    = true;
     bool m_enableRefraction    = false;
     bool m_enableTextureMap    = false;
-    bool m_enableAcceleration  = true;
+    bool m_enableAcceleration  = false;
     bool m_enableParallelism   = true;
     int m_maxRecursiveDepth   = 4;
     bool m_enableAntiAliasing = false;
