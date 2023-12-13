@@ -1,6 +1,7 @@
 //
 // Created by Michael Foiani on 12/13/23.
 //
+#include <iostream>
 #include "physics.h"
 
 bool Physics::checkForSphereCollision(RenderShapeData &currentShape, RenderShapeData &shape)
@@ -8,19 +9,20 @@ bool Physics::checkForSphereCollision(RenderShapeData &currentShape, RenderShape
     glm::vec4 currentCenter = currentShape.translation4d;
     glm::vec4 shapeCenter = shape.translation4d;
     // define a radius vector
-    glm::vec4 radiusVector = {.5f, 0, 0, 0};
-    glm::vec4 r1 = currentShape.ctm * radiusVector;
-    glm::vec4 r2 = shape.ctm * radiusVector;
+    float radius = .5;
     float distance = glm::distance(currentCenter, shapeCenter);
 
+    // std::cout << "distance: " << distance << std::endl;
+
     // update velocity
-    if (distance <= r1.x + r2.x)
+    if (distance <= radius + radius)
     {
-        currentShape.velocity = -currentShape.velocity;
-        shape.velocity = -shape.velocity;
+        currentShape.velocity *= -1.f;
+        // move a little in other direction so it doesn't flip again
+        currentShape.translation4d = currentShape.velocity;
     }
 
-    return distance <= r1.x + r2.x;
+    return distance <= radius + radius;
 }
 
 bool Physics::checkForConeCollision(RenderShapeData &currentShape, RenderShapeData &shape)

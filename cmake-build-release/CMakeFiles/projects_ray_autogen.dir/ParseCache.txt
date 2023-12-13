@@ -1713,8 +1713,8 @@
  mdp:/Users/sotech117/Qt/6.5.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qwidget.h
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/illuminate/illuminate.cpp
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/main.cpp
-/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/illuminate/reflect.cpp
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/intersect/intersect.cpp
+/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/illuminate/reflect.cpp
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/raytracer/raytracescene.cpp
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/mainwindow.cpp
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/settings.h
@@ -1727,8 +1727,8 @@
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/texture/texture.cpp
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/rotations4d.cpp
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/aliasing/filter.cpp
-/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/utils/scenefilereader.cpp
+/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/physics/physics.h
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/vec4ops/transform4d.cpp
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/intersect/normals.cpp
-/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/physics/physics.h
 /Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/physics/physics.cpp
+/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/src/utils/scenefilereader.cpp

@@ -52,7 +52,7 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
         if (settings.currentTime < settings.maxTime) { // still more to render
             // render the next frame
             settings.currentTime++;
-            settings.w++;
+            // settings.w++;
 
             // update physics
             Physics::updateShapePositions(m_metaData.shapes);
