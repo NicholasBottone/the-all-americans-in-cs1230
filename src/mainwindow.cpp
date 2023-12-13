@@ -209,13 +209,13 @@ void MainWindow::initialize() {
 
     wSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
     wSlider->setTickInterval(0.01);
-    wSlider->setMinimum(-500);
-    wSlider->setMaximum(500);
+    wSlider->setMinimum(-10000);
+    wSlider->setMaximum(10000);
     wSlider->setValue(0);
 
     wBox = new QDoubleSpinBox();
-    wBox->setMinimum(-5.0f);
-    wBox->setMaximum(5.f);
+    wBox->setMinimum(-100.0f);
+    wBox->setMaximum(100.f);
     wBox->setSingleStep(0.01f);
     wBox->setValue(0.f);
 
@@ -482,14 +482,16 @@ void MainWindow::onValChangeWSlider(int newValue) {
     //wSlider->setValue(newValue);
     wBox->setValue(newValue/100.f);
     settings.w = wBox->value();
-    rayTracer->settingsChanged(imageLabel);
+    // rayTracer->settingsChanged(imageLabel);
+    ray->wSliderChanged(imageLabel);
 }
 
 void MainWindow::onValChangeWBox(double newValue) {
     wSlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
     settings.w = wBox->value();
-    rayTracer->settingsChanged(imageLabel);
+    // rayTracer->settingsChanged(imageLabel);
+    ray->wSliderChanged(imageLabel);
 }
 
 void MainWindow::onRotateNegative() {

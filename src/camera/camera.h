@@ -38,6 +38,7 @@ public:
     glm::vec3 getPos() const;
 
     float cameraDepth = -1.f;
+    std::vector<glm::vec3> m_controlPoints;
 
 private:
     glm::mat4 m_viewMatrix;

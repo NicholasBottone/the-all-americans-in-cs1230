@@ -14,8 +14,13 @@ Camera::Camera(SceneCameraData cameraData) :
 
      m_inverseViewMatrix = glm::inverse(m_viewMatrix);
      m_inverseTranslationVector = -m_translationVector;
+     m_controlPoints = {
+        {cameraData.pos[0], cameraData.pos[1], cameraData.pos[2]},
+        {cameraData.pos[0], cameraData.pos[1] - 2.f, cameraData.pos[2] - 2.f},
+        {cameraData.pos[0] + 2.f, cameraData.pos[1] + 2.f, cameraData.pos[2] -2.f},
+        {cameraData.pos[0] + 2.f, cameraData.pos[1], cameraData.pos[2]}
+     };
 }
-
 
 glm::mat4 Camera::getViewMatrix() const {
     // Optional TODO: implement the getter or make your own design
@@ -54,3 +59,26 @@ float Camera::getAperture() const {
     // Optional TODO: implement the getter or make your own design
     return m_aperture;
 }
+
+// int getPt(glm::vec3 n1 , glm::vec3 n2 , float perc )
+// {
+//     int diff = n2 - n1;
+
+//     return n1 + ( diff * perc );
+// }  
+
+// for( float i = 0 ; i < 1 ; i += 0.01 )
+// {
+//     glm::vec3 xa = getPt(P1, P2, i);
+//     glm::vec3 xb = getPt(P2, P3, i);
+//     glm::vec3 xc = getPt(P3, P4, i);
+
+//     // Calculate points on the lines between the above points
+//     glm::vec3 xm = getPt(xa, xb, i);
+//     glm::vec3 xn = getPt(xb, xc, i);
+
+//     // Calculate the final point on the Bezier curve
+//     glm::vec3 pointOnCurve = getPt(xm, xn, i);
+
+    
+// }

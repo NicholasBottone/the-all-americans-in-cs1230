@@ -168,6 +168,15 @@ public:
     void keyReleaseEvent(QKeyEvent *event) override;
 
     glm::mat4 getRotationMatrix4(float angle, glm::vec3 axis3, glm::vec3 axisW);
+
+    RGBA *m_imageData;
+    RGBA *m_voxelBuffer;
+
+    int m_width;
+    int m_height;
+    int m_depth;
+
+    QImage m_image;
 signals:
     void xyRotationChanged(float value);
     void xzRotationChanged(float value);

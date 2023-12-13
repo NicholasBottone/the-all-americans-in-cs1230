@@ -21,6 +21,11 @@ RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
     m_keyMap[Qt::Key_5]       = false;
     m_keyMap[Qt::Key_6]       = false;
 
+    m_width = 576;
+    m_height = 432;
+    m_depth = 500;
+
+    m_image = QImage(m_width, m_height, QImage::Format_RGBX8888);
 }
 
 // updated to use 4D
@@ -161,33 +166,24 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 
     if (!success) {
         std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
-        // return;
-        QImage image = QImage(576, 432, QImage::Format_RGBX8888);
-        image.fill(Qt::black);
-        RGBA *data = reinterpret_cast<RGBA *>(image.bits());
-        imageLabel->setPixmap(QPixmap::fromImage(image));
+        m_image.fill(Qt::black);
+        imageLabel->setPixmap(QPixmap::fromImage(m_image));
         return;
     }
 
-    int width = 576;
-    int height = 432;
-    int depth = 500;
-
     // render the scene
-    QImage image = QImage(width, height, QImage::Format_RGBX8888);
-    image.fill(Qt::black);
-    RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+    m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
 
+    RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
+    this->render(m_imageData, rtScene);
 
-    RayTraceScene rtScene{ width, height,m_metaData, depth };
-    this->render(data, rtScene);
-
-    QImage flippedImage = image.mirrored(false, false);
+    QImage flippedImage = m_image.mirrored(false, false);
     // make the image larger
-    flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    flippedImage = flippedImage.scaled(m_width, m_height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
 
     m_imageLabel = imageLabel;
+    // m_image = image;
 }
 
 void RayTracer::settingsChanged(QLabel* imageLabel) {
@@ -221,6 +217,11 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     //     // This code will be executed after a 2-second delay
     //     emit rotationChanged(settings.rotation);
     // });
+    m_image = image;
+}
+
+void RayTracer::wSliderChanged(QLabel* imageLabel) {
+    
 }
 
 void RayTracer::keyPressEvent(QKeyEvent *event) {
