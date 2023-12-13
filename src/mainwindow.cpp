@@ -26,25 +26,25 @@ void MainWindow::initialize() {
     font.setPointSize(12);
     font.setBold(true);
     QLabel *xy_label = new QLabel(); // XY label
-    xy_label->setText("Camera XY:");
+    xy_label->setText("Rotation XY angle (J,L)");
     xy_label->setFont(font);
     QLabel *xz_label = new QLabel(); // XZ label
-    xz_label->setText("Camera XZ:");
+    xz_label->setText("Rotation XZ angle (I, M)");
     xz_label->setFont(font);
     QLabel *xw_label = new QLabel(); // XW label
-    xw_label->setText("Camera XW:");
+    xw_label->setText("Translate X (W,D)");
     xw_label->setFont(font);
     QLabel *yz_label = new QLabel(); // YZ label
-    yz_label->setText("Camera YZ:");
+    yz_label->setText("Rotation YZ angle (O, N):");
     yz_label->setFont(font);
     QLabel *yw_label = new QLabel(); // YW label
-    yw_label->setText("Camera YW:");
+    yw_label->setText("Translate Y (A, D)");
     yw_label->setFont(font);
     QLabel *zw_label = new QLabel(); // ZW label
-    zw_label->setText("Camera ZW:");
+    zw_label->setText("Translate W (R, F):");
     zw_label->setFont(font);
     QLabel *w_label = new QLabel(); // W label
-    w_label->setText("W value:");
+    w_label->setText("Vorex Depth:");
     w_label->setFont(font);
 
     currTimeLabel = new QLabel(); // Current Time label

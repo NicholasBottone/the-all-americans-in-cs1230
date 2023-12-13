@@ -12,8 +12,8 @@ struct Settings {
     float xw = 0.f;
     float yw = 0.f;
     float zw = 0.f;
-    float rotation = 0.f;
-    bool negative = false;
+    float rotation = 5.f;
+    float translation = .1f;
     float w = 0.f;
     int currentTime = 0;
     int maxTime = 0;

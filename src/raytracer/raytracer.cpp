@@ -270,59 +270,78 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 void RayTracer::keyPressEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = true;
     std::cout << "key pressed" << std::endl;
-    if (m_keyMap[Qt::Key_1]) {
+
+    // J and L for xy rotation
+    if (m_keyMap[Qt::Key_J]) {
         std::cout << "key 1" << std::endl;
-        if (settings.negative) {
-            settings.xy -= settings.rotation;
-        } else  {
             settings.xy += settings.rotation;
-        }
+        emit xyRotationChanged(settings.xy);
+    }
+    if (m_keyMap[Qt::Key_L]) {
+        settings.xy -= settings.rotation;
         emit xyRotationChanged(settings.xy);
     }
 
-    if (m_keyMap[Qt::Key_2]) {
-        if (settings.negative) {
-            settings.xz -= settings.rotation;
-        } else  {
-            settings.xz += settings.rotation;
-        }
+    // I and M for xz rotation
+    if (m_keyMap[Qt::Key_I]) {
+        settings.xz += settings.rotation;
+        emit xzRotationChanged(settings.xz);
+    }
+    if (m_keyMap[Qt::Key_M]) {
+        settings.xz -= settings.rotation;
         emit xzRotationChanged(settings.xz);
     }
 
-    if (m_keyMap[Qt::Key_3]) {
-        if (settings.negative) {
-            settings.xw -= settings.rotation;
-        } else  {
-            settings.xw += settings.rotation;
-        }
-        emit xwRotationChanged(settings.xw);
+    // O and N for yz rotation
+    if (m_keyMap[Qt::Key_O]) {
+        settings.yz += settings.rotation;
+        emit yzRotationChanged(settings.yz);
     }
-
-    if (m_keyMap[Qt::Key_4]) {
-        if (settings.negative) {
-            settings.yz -= settings.rotation;
-        } else  {
-            settings.yz += settings.rotation;
-        }
+    if (m_keyMap[Qt::Key_N]) {
+        settings.yz -= settings.rotation;
         emit yzRotationChanged(settings.yz);
     }
 
-    if (m_keyMap[Qt::Key_5]) {
-        if (settings.negative) {
-            settings.yw -= settings.rotation;
-        } else  {
-            settings.yw += settings.rotation;
-        }
+    // W and S for x translation
+    if (m_keyMap[Qt::Key_W]) {
+        settings.xw += settings.translation;
+        emit xwRotationChanged(settings.xw);
+    }
+    if (m_keyMap[Qt::Key_S]) {
+        settings.xw -= settings.translation;
+        emit xwRotationChanged(settings.xw);
+    }
+
+    // A and D for y translation
+    if (m_keyMap[Qt::Key_A]) {
+        settings.yw += settings.translation;
+        emit yzRotationChanged(settings.yw);
+    }
+    if (m_keyMap[Qt::Key_D]) {
+        settings.yw -= settings.translation;
         emit ywRotationChanged(settings.yw);
     }
 
-    if (m_keyMap[Qt::Key_6]) {
-        if (settings.negative) {
-            settings.zw -= settings.rotation;
-        } else  {
-            settings.zw += settings.rotation;
-        }
+    // TODO: add slider for z translation
+
+    // R & F for w translation using zw
+    if (m_keyMap[Qt::Key_R]) {
+        settings.zw += settings.translation;
         emit zwRotationChanged(settings.zw);
+    }
+    if (m_keyMap[Qt::Key_F]) {
+        settings.zw -= settings.translation;
+        emit zwRotationChanged(settings.zw);
+    }
+
+    // TODO: ONLY IF HAVE TIME, NOT NEEDED
+    // Space & V for vorex depth
+    if (m_keyMap[Qt::Key_Space]) {
+        settings.w += settings.rotation;
+
+    }
+    if (m_keyMap[Qt::Key_V]) {
+        settings.w -= settings.rotation;
     }
 }
 
