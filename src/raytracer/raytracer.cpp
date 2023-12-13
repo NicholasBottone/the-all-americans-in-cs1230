@@ -1,6 +1,7 @@
 #include <QList>
 #include <QtConcurrent>
 #include <iostream>
+#include <cstdlib>
 #include "raytracer.h"
 #include "raytracescene.h"
 #include "settings.h"
@@ -38,44 +39,7 @@ glm::vec4 getPt(glm::vec3 n1 , glm::vec3 n2 , float perc )
 
 // updated to use 4D
 void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
-    if (m_enableParallelism) {
-        renderParallel(imageData, scene);
-    } else {
-        // naive rendering
-        Camera camera = scene.getCamera();
-        float cameraDepth = 1.f;
-
-        float viewplaneHeight = 2.f*cameraDepth*std::tan(camera.getHeightAngle() / 2.f);
-        float viewplaneWidth = cameraDepth*viewplaneHeight*((float)scene.width()/(float)scene.height());
-
-        for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
-            for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
-                // FIXME: for now, use height as depth
-                for (int imageDepth = 0; imageDepth < scene.height(); imageDepth++) {
-                    // compute the ray
-                    float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
-                    float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
-                    float z = (imageDepth - scene.height()/2.f) * viewplaneHeight / scene.height();
-                    float camera4dDepth = 1;
-
-                    glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(x, y, z, 0.f), camera.getViewMatrix(), camera.getTranslationVector());
-                    glm::vec4 dWorld = glm::vec4(0.f, 0.f, 0.f, -1.f);
-
-                    // get the pixel color
-                    glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
-
-                    // set the pixel color
-                    int index = imageRow * scene.width() + imageCol;
-                    imageData[index] = RGBA{
-                        (std::uint8_t) (pixelColor.r * 255.f),
-                        (std::uint8_t) (pixelColor.g * 255.f),
-                        (std::uint8_t) (pixelColor.b * 255.f),
-                        (std::uint8_t) (pixelColor.a * 255.f)
-                    };
-                }
-            }
-        }
-    }
+    renderParallel(imageData, scene);
 
     if (settings.bulkOutputFolderPath.size() > 0) { // means we are doing bulk rendering
         // save the image to the bulk directory
@@ -85,6 +49,11 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
             // render the next frame
             settings.currentTime++;
             emit settingsChanged(m_imageLabel); // emit to allow the UI to update then render the next frame
+        } else { // done rendering
+            // assemble the video
+            saveFFMPEGVideo(settings.bulkOutputFolderPath);
+            settings.currentTime = 0;
+            settings.bulkOutputFolderPath = "";
         }
     }
     emit cameraPositionChanged(m_metaData.cameraData.pos); 
@@ -148,37 +117,6 @@ glm::vec4 RayTracer::getPixelFromRay(
     return illuminatePixel(closestIntersectionWorld, normalWorld, -dWorld, intersectedShape, scene, depth);
 }
 
-// EXTRA CREDIT -> depth of field
-glm::vec4 RayTracer::secondaryRays(glm::vec4 pWorld, glm::vec4 dWorld, RayTraceScene &scene)
-{
-    auto inv = scene.getCamera().getInverseViewMatrix();
-    float focalLength = scene.getCamera().getFocalLength();
-    float aperture = scene.getCamera().getAperture();
-
-    glm::vec4 illumination(0.f);
-    glm::vec4 focalPoint = pWorld + focalLength * dWorld;
-
-    int TIMES = 500;
-    for (int i = 0; i < TIMES; i++) {
-        // generate a random number from -aperature to aperature
-        float rand1 = ((float) rand() / (float) RAND_MAX) * aperture;
-        rand1 *= (rand() % 2 == 0) ? 1 : -1;
-        // generate another number also inside the aperature lens
-        float rand2 = ((float) rand() / (float) RAND_MAX) * std::sqrt(aperture - rand1*rand1);
-        rand2 *= (rand() % 2 == 0) ? 1 : -1;
-        glm::vec4 randEye = (rand() % 2 == 0) ? glm::vec4(rand1, rand2, 0.f, 1.f) : glm::vec4(rand2, rand1, 0.f, 1.f);
-        // convert this random point to world space
-        glm::vec4 eyeWorld = inv * randEye;
-
-        // make the ray
-        glm::vec4 randomDir = glm::vec4(glm::normalize(focalPoint.xyz() - eyeWorld.xyz()), 0.f);
-
-        illumination += getPixelFromRay(eyeWorld, randomDir, scene, 0);
-    }
-
-    return illumination / (float) TIMES;
-}
-
 void RayTracer::sceneChanged(QLabel* imageLabel) {
     // RenderData metaData;
     
@@ -188,6 +126,7 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
         std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
         m_image.fill(Qt::black);
         imageLabel->setPixmap(QPixmap::fromImage(m_image));
+        m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
         return;
     }
 
@@ -207,17 +146,11 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 }
 
 void RayTracer::settingsChanged(QLabel* imageLabel) {
-    bool success = SceneParser::parse(settings.sceneFilePath, m_metaData);
-
-    if (!success) {
-        std::cerr << "Error loading scene: \"" << settings.sceneFilePath << "\"" << std::endl;
-        // return;
-        // render a blank image
-        QImage image = QImage(576, 432, QImage::Format_RGBX8888);
-        image.fill(Qt::black);
-        RGBA *data = reinterpret_cast<RGBA *>(image.bits());
-        m_imageData = data;
-        imageLabel->setPixmap(QPixmap::fromImage(image));
+    if (settings.sceneFilePath.size() == 0) {
+        // no scene loaded
+        m_image.fill(Qt::black);
+        imageLabel->setPixmap(QPixmap::fromImage(m_image));
+        m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
         return;
     }
 
@@ -226,7 +159,7 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
 
     QImage image = QImage(width, height, QImage::Format_RGBX8888);
     image.fill(Qt::black);
-    RGBA *data = reinterpret_cast<RGBA *>(image.bits());
+    m_imageData = reinterpret_cast<RGBA *>(image.bits());
 
     RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
     Camera camera = rtScene.getCamera();
@@ -339,4 +272,13 @@ void RayTracer::keyReleaseEvent(QKeyEvent *event) {
 void RayTracer::saveViewportImage(std::string filePath) {
     QImage image = QImage((uchar *) m_imageData, 576, 432, QImage::Format_RGBX8888);
     image.save(QString::fromStdString(filePath));
+}
+
+void RayTracer::saveFFMPEGVideo(std::string filePath) {
+    std::string directory = filePath + QDir::separator().toLatin1();
+    std::string command = "ffmpeg -framerate 30 -pattern_type glob -i '" + directory + "*.png' -c:v libx264 -pix_fmt yuv420p '" + directory + "video.mp4'";
+    int result = std::system(command.c_str());
+    if (result != 0) {
+        std::cerr << "Failed to assemble video." << std::endl;
+    }
 }

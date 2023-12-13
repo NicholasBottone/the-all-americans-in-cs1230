@@ -94,9 +94,7 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
             .translation4d = currentTranslation4d,
             .inverseCTM = glm::inverse(currentCTM),
             .inverseTranslation4d = -currentTranslation4d,
-            // .position = glm::vec4(0.f, 0.f, 0.f, 1.f),
-            // .velocity = glm::vec4(0.f, 0.f, 0.f, 0.f),
-            // .mass = unitMass,
+            .velocity = primitive->velocity,
         };
         shapes->push_back(rsd);
         // }

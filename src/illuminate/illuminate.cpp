@@ -87,10 +87,10 @@ glm::vec4 RayTracer::illuminatePixel(
         }
     }
 
-    // auto incidentDir = -directionToCamera;
+     auto incidentDir = -directionToCamera;
     // recursive raytracing for the reflection and refraction (see reflect.cpp)
-    // illumination += refract(intersectionWorld, normalWorld, incidentDir, shape, scene, depth + 1);
-    // illumination += reflect(intersectionWorld, normalWorld, incidentDir, shape, scene, depth + 1);
+     illumination += refract(intersectionWorld, normalWorld, incidentDir, shape, scene, depth + 1);
+     illumination += reflect(intersectionWorld, normalWorld, incidentDir, shape, scene, depth + 1);
 
     return illumination;
 }

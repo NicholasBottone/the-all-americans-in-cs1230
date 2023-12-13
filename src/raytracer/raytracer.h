@@ -37,7 +37,7 @@ struct Config {
 
 class RayTracer : public QWidget
 {
-        Q_OBJECT
+    Q_OBJECT
 public:
     // constructor for the config
     RayTracer(QWidget *parent = nullptr);
@@ -178,6 +178,7 @@ public:
 
     QImage m_image;
     void saveViewportImage(std::string filename);
+    void saveFFMPEGVideo(std::string filename);
     void wSliderChanged(QLabel* imageLabel);
 
 //     Camera m_camera;
