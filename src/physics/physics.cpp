@@ -33,7 +33,7 @@ bool sphereCube(RenderShapeData *sphere, RenderShapeData *cube)
     else if (sphereCenter.w > maxes.w) distSquared -= (sphereCenter.w - maxes.w)*(sphereCenter.w - maxes.w);
 
     if (distSquared > 0) {
-        std::cout << "distanceSquared: " << distSquared << std::endl;
+        // std::cout << "distanceSquared: " << distSquared << std::endl;
 
         // update velocity of the objects
         sphere->velocity *= -1.f;
@@ -74,7 +74,7 @@ bool cubeCube(RenderShapeData *c1, RenderShapeData *c2) {
 
     bool intersect = xOverlap && yOverlap && zOverlap && wOverlap;
     if (intersect) {
-        std::cout << "intersect: " << intersect << std::endl;
+        // std::cout << "intersect: " << intersect << std::endl;
 
         // update velocity of the objects, based on math, assuming the objects are the same mass
         c1->velocity *= -1.f;
@@ -101,13 +101,13 @@ bool sphereSphere(RenderShapeData *s1, RenderShapeData *s2)
     // update velocity
     if (distance <= radius + radius)
     {
-        std::cout << "distance: " << distance << std::endl;
+//        std::cout << "distance: " << distance << std::endl;
         s1->velocity *= -1.f;
         s2->velocity *= -1.f;
 
         // print the new velocity
-        std::cout << "s1 velocity: " << s1->velocity.x << ", " << s1->velocity.y << ", " << s1->velocity.z << ", " << s1->velocity.w << std::endl;
-        std::cout << "s2 velocity: " << s2->velocity.x << ", " << s2->velocity.y << ", " << s2->velocity.z << ", " << s2->velocity.w << std::endl;
+//        std::cout << "s1 velocity: " << s1->velocity.x << ", " << s1->velocity.y << ", " << s1->velocity.z << ", " << s1->velocity.w << std::endl;
+//        std::cout << "s2 velocity: " << s2->velocity.x << ", " << s2->velocity.y << ", " << s2->velocity.z << ", " << s2->velocity.w << std::endl;
 
         // move the objects in new dir so they don't collide again
         s1->translation4d += s1->velocity * (1.1f);

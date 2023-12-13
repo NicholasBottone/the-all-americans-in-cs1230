@@ -266,7 +266,7 @@
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
