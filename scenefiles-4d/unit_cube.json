@@ -32,6 +32,21 @@
           "type": "directional",
           "color": [0.0, 0.0, 1.0],
           "direction": [-3.0, 3.0, 3.0, -3.0]
+        },
+        {
+          "type": "directional",
+          "color": [1.0, 0.0, 1.0],
+          "direction": [-3.0, -3.0, -3.0, -3.0]
+        },
+        {
+          "type": "directional",
+          "color": [1.0, 1.0, 0.0],
+          "direction": [-3.0, -3.0, 3.0, 3.0]
+        },
+        {
+          "type": "directional",
+          "color": [0.0, 1.0, 1.0],
+          "direction": [3.0, 3.0, -3.0, -3.0]
         }
       ]
     },
@@ -44,7 +59,7 @@
           "primitives": [
             {
               "type": "cube",
-              "diffuse": [1.0, 0.0, 1.0],
+              "diffuse": [1.0, 1.0, 1.0],
               "specular": [1.0, 1.0, 1.0],
               "shininess": 25.0,
               "velocity": [0.0, 0.0, 0.0, 0.0]
