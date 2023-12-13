@@ -1,6 +1,7 @@
 #include <QList>
 #include <QtConcurrent>
 #include <iostream>
+#include <cstdlib>
 #include "raytracer.h"
 #include "raytracescene.h"
 #include "settings.h"
@@ -40,6 +41,11 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
             // render the next frame
             settings.currentTime++;
             emit settingsChanged(m_imageLabel); // emit to allow the UI to update then render the next frame
+        } else { // done rendering
+            // assemble the video
+            saveFFMPEGVideo(settings.bulkOutputFolderPath);
+            settings.currentTime = 0;
+            settings.bulkOutputFolderPath = "";
         }
     }
 }
@@ -267,4 +273,13 @@ void RayTracer::keyReleaseEvent(QKeyEvent *event) {
 void RayTracer::saveViewportImage(std::string filePath) {
     QImage image = QImage((uchar *) m_imageData, 576, 432, QImage::Format_RGBX8888);
     image.save(QString::fromStdString(filePath));
+}
+
+void RayTracer::saveFFMPEGVideo(std::string filePath) {
+    std::string directory = filePath + QDir::separator().toLatin1();
+    std::string command = "ffmpeg -framerate 30 -pattern_type glob -i '" + directory + "*.png' -c:v libx264 -pix_fmt yuv420p '" + directory + "video.mp4'";
+    int result = std::system(command.c_str());
+    if (result != 0) {
+        std::cerr << "Failed to assemble video." << std::endl;
+    }
 }
