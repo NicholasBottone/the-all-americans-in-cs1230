@@ -410,84 +410,84 @@ void MainWindow::onValChangexySlider(int newValue) {
     //wSlider->setValue(newValue);
     xyBox->setValue(newValue/100.f);
     settings.xy = xyBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangexyBox(double newValue) {
     xySlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
     settings.xy = xyBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangexzSlider(int newValue) {
     //wSlider->setValue(newValue);
     xzBox->setValue(newValue/100.f);
     settings.xz = xzBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangexzBox(double newValue) {
     xzSlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
     settings.xz = xzBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangexwSlider(int newValue) {
     //wSlider->setValue(newValue);
     xwBox->setValue(newValue/100.f);
     settings.xw = xwBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangexwBox(double newValue) {
     xwSlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
     settings.xw = xwBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangeyzSlider(int newValue) {
     //wSlider->setValue(newValue);
     yzBox->setValue(newValue/100.f);
     settings.yz = yzBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangeyzBox(double newValue) {
     yzSlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
     settings.yz = yzBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangeywSlider(int newValue) {
     //wSlider->setValue(newValue);
     ywBox->setValue(newValue/100.f);
     settings.yw = ywBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangeywBox(double newValue) {
     ywSlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
     settings.yw = ywBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangezwSlider(int newValue) {
     //wSlider->setValue(newValue);
     zwBox->setValue(newValue/100.f);
     settings.zw = zwBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangezwBox(double newValue) {
     zwSlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
     settings.zw = zwBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangeMaxTimeSlider(int newValue) {
@@ -509,7 +509,6 @@ void MainWindow::onValChangeWSlider(int newValue) {
     wBox->setValue(newValue/100.f);
     settings.w = wBox->value();
     rayTracer->settingsChanged(imageLabel);
-    // ray->wSliderChanged(imageLabel);
 }
 
 void MainWindow::onValChangeWBox(double newValue) {
@@ -517,7 +516,6 @@ void MainWindow::onValChangeWBox(double newValue) {
     //wBox->setValue(newValue);
     settings.w = wBox->value();
     rayTracer->settingsChanged(imageLabel);
-    // ray->wSliderChanged(imageLabel);
 }
 
 void MainWindow::onRotateNegative() {
@@ -528,37 +526,37 @@ void MainWindow::onRotateNegative() {
 void MainWindow::updateXySlider(double value) {
     xySlider->setValue(int(value*100.f));
     xyBox->setValue(value);
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::updateXzSlider(double value) {
     xzSlider->setValue(int(value*100.f));
     xzBox->setValue(value);
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::updateXwSlider(double value) {
     xwSlider->setValue(int(value*100.f));
     xwBox->setValue(value);
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::updateYzSlider(double value) {
     yzSlider->setValue(int(value*100.f));
     yzBox->setValue(value);
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::updateYwSlider(double value) {
     ywSlider->setValue(int(value*100.f));
     ywBox->setValue(value);
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::updateZwSlider(double value) {
     zwSlider->setValue(int(value*100.f));
     zwBox->setValue(value);
-    // rayTracer->settingsChanged(imageLabel);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::updateRotationSlider(float value) {
