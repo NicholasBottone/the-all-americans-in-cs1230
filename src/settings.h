@@ -17,7 +17,7 @@ struct Settings {
     float w = 0.f;
     int currentTime = 0;
     int maxTime = 0;
-    std::string bulkOutputFilePath;
+    std::string bulkOutputFolderPath;
 };
 
 

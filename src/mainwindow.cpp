@@ -216,7 +216,7 @@ void MainWindow::initialize() {
     QHBoxLayout *lw = new QHBoxLayout();
 
     wSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
-    wSlider->setTickInterval(0.01);
+    wSlider->setTickInterval(1);
     wSlider->setMinimum(-10000);
     wSlider->setMaximum(10000);
     wSlider->setValue(0);
@@ -268,6 +268,7 @@ void MainWindow::finish() {
 void MainWindow::connectUIElements() {
     connectUploadFile();
     connectSaveImage();
+    connectBulkRender();
     connectxy();
     connectxz();
     connectxw();
@@ -292,6 +293,10 @@ void MainWindow::connectUploadFile() {
 
 void MainWindow::connectSaveImage() {
     connect(saveImage, &QPushButton::clicked, this, &MainWindow::onSaveImage);
+}
+
+void MainWindow::connectBulkRender() {
+    connect(bulkRender, &QPushButton::clicked, this, &MainWindow::onBulkRender);
 }
 
 void MainWindow::connectxy() {
@@ -381,6 +386,19 @@ void MainWindow::onSaveImage() {
                                                         .append(sceneName), tr("Image Files (*.png)"));
     std::cout << "Saving image to: \"" << filePath.toStdString() << "\"." << std::endl;
     rayTracer->saveViewportImage(filePath.toStdString());
+}
+
+void MainWindow::onBulkRender() {
+    // if (settings.sceneFilePath.empty()) {
+    //     std::cout << "No scene file loaded." << std::endl;
+    //     return;
+    // }
+    std::string sceneName = settings.sceneFilePath.substr(0, settings.sceneFilePath.find_last_of("."));
+    sceneName = sceneName.substr(sceneName.find_last_of("/")+1);
+    QString folderPath = QFileDialog::getExistingDirectory(this, tr("Select Directory for Bulk Render"),
+                                                           QDir::currentPath());
+    std::cout << "Setting bulk output path to: \"" << folderPath.toStdString() << "\"." << std::endl;
+    settings.bulkOutputFolderPath = folderPath.toStdString();
 }
 
 void MainWindow::onValChangexySlider(int newValue) {

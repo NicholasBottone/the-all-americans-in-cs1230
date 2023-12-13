@@ -23,6 +23,7 @@ private:
     void connectUIElements();
     void connectUploadFile();
     void connectSaveImage();
+    void connectBulkRender();
     void connectxy();
     void connectxz();
     void connectxw();
@@ -60,6 +61,7 @@ private:
 private slots:
     void onUploadFile();
     void onSaveImage();
+    void onBulkRender();
     void onValChangexySlider(int newValue);
     void onValChangexyBox(double newValue);
     void onValChangexzSlider(int newValue);
