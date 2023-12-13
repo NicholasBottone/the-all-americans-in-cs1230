@@ -2,6 +2,7 @@
 // Created by Michael Foiani on 11/4/23.
 //
 
+#include <iostream>
 #include "raytracer/raytracer.h"
 
 glm::vec4 getConeNormal(
@@ -11,7 +12,7 @@ glm::vec4 getConeNormal(
     {
         return {0.f, -1.f, 0.f, 0.f};
     }
-    if (RayTracer::floatEquals(intersectPointObject[3], -.5f)) // normal for w base
+    if (RayTracer::floatEquals(intersectPointObject.w, -.5f)) // normal for w base
     {
         return {0.f, 0.f, 0.f, -1.f};
     }
@@ -19,7 +20,7 @@ glm::vec4 getConeNormal(
     {
         return {0.f, 1.f, 0.f, 0.f};
     }
-    if (RayTracer::floatEquals(intersectPointObject[3], .5f)) // normal for w top
+    if (RayTracer::floatEquals(intersectPointObject.w, .5f)) // normal for w top
     {
         return {0.f, 0.f, 0.f, 1.f};
     }
@@ -81,11 +82,11 @@ glm::vec4 getCubeNormal(
     {
         return {0.f, 0.f, 1.f, 0.f};
     }
-    if (RayTracer::floatEquals(intersectPointObject[3], -.5f)) // neg w
+    if (RayTracer::floatEquals(intersectPointObject.w, -.5f)) // neg w
     {
         return {0.f, 0.f, 0.f, -1.f};
     }
-    if (RayTracer::floatEquals(intersectPointObject[3], .5f)) // pos w
+    if (RayTracer::floatEquals(intersectPointObject.w, .5f)) // pos w
     {
         return {0.f, 0.f, 0.f, 1.f};
     }

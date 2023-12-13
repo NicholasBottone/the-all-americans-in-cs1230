@@ -20,7 +20,12 @@
         {
           "type": "directional",
           "color": [1.0, 1.0, 1.0],
-          "direction": [-3.0, -2.0, -1.0]
+          "direction": [-3.0, 2.0, -1.0, 1.0]
+        },
+        {
+          "type": "directional",
+          "color": [1.0, 1.0, 1.0],
+          "direction": [3.0, -2.0, -3.0, 1.0]
         }
       ]
     },
