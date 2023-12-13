@@ -177,6 +177,7 @@ public:
     int m_depth;
 
     QImage m_image;
+    void saveViewportImage(std::string filename);
 signals:
     void xyRotationChanged(float value);
     void xzRotationChanged(float value);
