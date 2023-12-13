@@ -7,12 +7,14 @@
 
 void Camera::updateViewMatrix(SceneCameraData cameraData) {
     m_viewMatrix = Vec4Ops::getViewMatrix4(cameraData.look, cameraData.up, cameraData.over);
-    //  add settings.xy rotation
     m_viewMatrix = glm::rotate(m_viewMatrix, glm::radians(settings.xy), glm::vec3(0.f, 1.f, 0.f));
     m_viewMatrix = glm::rotate(m_viewMatrix, glm::radians(settings.yz), glm::vec3(1.f, 0.f, 0.f));
     m_viewMatrix = glm::rotate(m_viewMatrix, glm::radians(settings.xz), glm::vec3(0.f, 0.f, 1.f));
 
-    m_translationVector = -cameraData.pos;
+
+    // TODO: link sliders here. make them smaller changes since our objects are so small
+    glm::vec4 uiTranslation = glm::vec4(settings.xw, settings.yw, 0.f, settings.zw);
+    m_translationVector = -cameraData.pos + uiTranslation;
 
     m_inverseViewMatrix = glm::inverse(m_viewMatrix);
     m_inverseTranslationVector = -m_translationVector;

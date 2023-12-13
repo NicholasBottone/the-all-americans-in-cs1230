@@ -6,6 +6,7 @@
 #define PROJECTS_RAY_VEC4OPS_H
 
 #include <glm/glm.hpp>
+#include <vector>
 
 class Vec4Ops {
 public:
@@ -36,6 +37,8 @@ public:
     static glm::vec4 inverseTransformDir4(glm::vec4 dir4, glm::mat4 inverseTransformDirectionMatrix);
 
     static glm::mat4 getViewMatrix4(glm::vec4 upVector, glm::vec4 lookVector, glm::vec4 overVector);
+
+    static glm::mat4 getRotationMatrix4(std::vector<float> anglesRadians);
 };
 
 #endif //PROJECTS_RAY_VEC4OPS_H

@@ -72,3 +72,46 @@ glm::mat4 Vec4Ops::getRotationMatrix4ZW(
     result[1][1] = 1;
     return result;
 }
+
+glm::mat4 Vec4Ops::getRotationMatrix4(
+        std::vector<float> anglesRadians)
+{
+    // make the identity
+    glm::mat4 result = glm::mat4(0.f);
+    result[0][0] = 1.f;
+    result[1][1] = 1.f;
+    result[2][2] = 1.f;
+    result[3][3] = 1.f;
+
+    // apply the rotations, starting with the last angle, which corresponds to ZW
+    if (anglesRadians.size() != 6) {
+        throw std::runtime_error("invalid rotation angle array");
+    }
+    for (int i = 5; i >= 0; i--) {
+        switch (i) {
+            case 0:
+                result *= getRotationMatrix4XY(anglesRadians[i]) * result;
+                break;
+            case 1:
+                result *= getRotationMatrix4ZX(anglesRadians[i]) * result;
+                break;
+            case 2:
+                result *= getRotationMatrix4YZ(anglesRadians[i]) * result;
+                break;
+            case 3:
+                result *= getRotationMatrix4XW(anglesRadians[i]) * result;
+                break;
+            case 4:
+                result *= getRotationMatrix4YW(anglesRadians[i]) * result;
+                break;
+            case 5:
+                result *= getRotationMatrix4ZW(anglesRadians[i]) * result;
+                break;
+            default:
+                throw std::runtime_error("invalid rotation matrix");
+        }
+    }
+
+    return result;
+}
+
