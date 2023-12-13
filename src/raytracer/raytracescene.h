@@ -32,6 +32,9 @@ public:
 
     KdTree *m_kdTree;
     bvh *m_bvh;
+
+    const int &depth() const;
+
 private:
     int m_width;
     int m_height;
@@ -41,5 +44,4 @@ private:
     std::vector<SceneLightData>m_lights;
     int m_depth;
 
-    const int &depth() const;
 };

@@ -43,15 +43,14 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
     for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
         for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
             // FIXME: for now, use height as depth
-            for (int imageDepth = 0; imageDepth < scene.height(); imageDepth++) {
+            for (int imageDepth = 0; imageDepth < scene.depth(); imageDepth++) {
                 // compute the ray
                 float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
                 float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
-                float z = (imageDepth - scene.height()/2.f) * viewplaneHeight / scene.height();
-                float camera4dDepth = 1;
+                float z = (imageDepth - scene.width()/2.f) * viewplaneDepth / scene.width();
 
                 glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(0.f), camera.getViewMatrix(), camera.getTranslationVector());
-                glm::vec4 dWorld = Vec4Ops::inverseTransformDir4(glm::vec4(x, y, z, cameraDepth), camera.getViewMatrix());
+                glm::vec4 dWorld = Vec4Ops::inverseTransformDir4(glm::vec4(x, y, z, -1.0), camera.getViewMatrix());
                 // get the pixel color
                 glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
 
