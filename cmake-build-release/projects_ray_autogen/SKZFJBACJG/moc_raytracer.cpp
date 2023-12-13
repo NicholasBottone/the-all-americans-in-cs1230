@@ -51,11 +51,12 @@ static constexpr auto qt_meta_stringdata_CLASSRayTracerENDCLASS = QtMocHelpers::
     "rotationChanged",
     "cameraPositionChanged",
     "glm::vec3",
-    "timeValueChanged"
+    "timeValueChanged",
+    "zChanged"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSRayTracerENDCLASS_t {
-    uint offsetsAndSizes[26];
+    uint offsetsAndSizes[28];
     char stringdata0[10];
     char stringdata1[18];
     char stringdata2[1];
@@ -69,6 +70,7 @@ struct qt_meta_stringdata_CLASSRayTracerENDCLASS_t {
     char stringdata10[22];
     char stringdata11[10];
     char stringdata12[17];
+    char stringdata13[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSRayTracerENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -86,7 +88,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSRayTracerENDCLASS_t qt_meta_str
         QT_MOC_LITERAL(125, 15),  // "rotationChanged"
         QT_MOC_LITERAL(141, 21),  // "cameraPositionChanged"
         QT_MOC_LITERAL(163, 9),  // "glm::vec3"
-        QT_MOC_LITERAL(173, 16)   // "timeValueChanged"
+        QT_MOC_LITERAL(173, 16),  // "timeValueChanged"
+        QT_MOC_LITERAL(190, 8)   // "zChanged"
     },
     "RayTracer",
     "xyRotationChanged",
@@ -100,7 +103,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSRayTracerENDCLASS_t qt_meta_str
     "rotationChanged",
     "cameraPositionChanged",
     "glm::vec3",
-    "timeValueChanged"
+    "timeValueChanged",
+    "zChanged"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -112,23 +116,24 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSRayTracerENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       9,       // signalCount
+      10,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   68,    2, 0x06,    1 /* Public */,
-       4,    1,   71,    2, 0x06,    3 /* Public */,
-       5,    1,   74,    2, 0x06,    5 /* Public */,
-       6,    1,   77,    2, 0x06,    7 /* Public */,
-       7,    1,   80,    2, 0x06,    9 /* Public */,
-       8,    1,   83,    2, 0x06,   11 /* Public */,
-       9,    1,   86,    2, 0x06,   13 /* Public */,
-      10,    1,   89,    2, 0x06,   15 /* Public */,
-      12,    1,   92,    2, 0x06,   17 /* Public */,
+       1,    1,   74,    2, 0x06,    1 /* Public */,
+       4,    1,   77,    2, 0x06,    3 /* Public */,
+       5,    1,   80,    2, 0x06,    5 /* Public */,
+       6,    1,   83,    2, 0x06,    7 /* Public */,
+       7,    1,   86,    2, 0x06,    9 /* Public */,
+       8,    1,   89,    2, 0x06,   11 /* Public */,
+       9,    1,   92,    2, 0x06,   13 /* Public */,
+      10,    1,   95,    2, 0x06,   15 /* Public */,
+      12,    1,   98,    2, 0x06,   17 /* Public */,
+      13,    1,  101,    2, 0x06,   19 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Float,    3,
@@ -139,6 +144,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSRayTracerENDCLASS[] = {
     QMetaType::Void, QMetaType::Float,    3,
     QMetaType::Void, QMetaType::Float,    3,
     QMetaType::Void, 0x80000000 | 11,    3,
+    QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, QMetaType::Int,    3,
 
        0        // eod
@@ -179,6 +185,9 @@ Q_CONSTINIT const QMetaObject RayTracer::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<glm::vec3, std::false_type>,
         // method 'timeValueChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'zChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
@@ -199,6 +208,7 @@ void RayTracer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 6: _t->rotationChanged((*reinterpret_cast< std::add_pointer_t<float>>(_a[1]))); break;
         case 7: _t->cameraPositionChanged((*reinterpret_cast< std::add_pointer_t<glm::vec3>>(_a[1]))); break;
         case 8: _t->timeValueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 9: _t->zChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -266,6 +276,13 @@ void RayTracer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
                 return;
             }
         }
+        {
+            using _t = void (RayTracer::*)(int );
+            if (_t _q_method = &RayTracer::zChanged; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 9;
+                return;
+            }
+        }
     }
 }
 
@@ -288,13 +305,13 @@ int RayTracer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }
@@ -360,5 +377,12 @@ void RayTracer::timeValueChanged(int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);
+}
+
+// SIGNAL 9
+void RayTracer::zChanged(int _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 9, _a);
 }
 QT_WARNING_POP
