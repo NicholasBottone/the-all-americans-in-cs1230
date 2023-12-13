@@ -7,8 +7,8 @@
 #include "settings.h"
 
 struct pixelRoutineArgs {
-    glm::vec4 pCamera;
-    glm::vec4 dCamera;
+    glm::vec4 pWorld;
+    glm::vec4 dWorld;
     const RayTraceScene &scene;
     RayTracer *rt;
 };
@@ -44,7 +44,7 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
     // }
     for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
         for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
-            // FIXME: for now, use height as depth
+            // FIXME: for now, use W slider ad depth
             int imageDepth = (int) ((settings.w + 100.f) * (5.f / 2.f));
             // compute the ray
             float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
@@ -53,17 +53,14 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
 
             glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(0.f), camera.getViewMatrix(), camera.getTranslationVector());
             glm::vec4 dWorld = Vec4Ops::transformDir4(glm::vec4(x, y, z, -1.0), camera.getViewMatrix());
-            // get the pixel color
-            glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
 
-            // set the pixel color
-            int index = imageRow * scene.width() + imageCol;
-            imageData[index] = RGBA{
-                    (std::uint8_t) (pixelColor.r * 255.f),
-                    (std::uint8_t) (pixelColor.g * 255.f),
-                    (std::uint8_t) (pixelColor.b * 255.f),
-                    (std::uint8_t) (pixelColor.a * 255.f)
-            };
+             pixelRoutineArgs args{
+                     pWorld,
+                     dWorld,
+                     scene,
+                     this
+             };
+             l.append(args);
         }
     }
     QList<RGBA> pixels = QtConcurrent::blockingMapped(l, pixelRoutine);
@@ -72,8 +69,12 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
     // get the slice relating to z == 0 and set it into int the iamge data array
 
     // int currentSlice = settings.w + 100.f * (5.f / 2.f);
+    int index = 0;
+    for (RGBA p : pixels) {
+        imageData[index++] = p;
+    }
 
-    std::cout << " here " << std::endl;
+    std::cout << "done rendering" << std::endl;
 
     if (m_enableAntiAliasing)
     {
@@ -84,26 +85,10 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
 
 RGBA pixelRoutine(pixelRoutineArgs args)
 {
-    auto eyeCamera = args.pCamera;
-    auto pixelDirCamera = args.dCamera;
+    auto pWorld = args.pWorld;
+    auto dWorld = args.dWorld;
     auto scene = args.scene;
     auto rt = args.rt;
-
-    // convert camera space to world space
-    auto inv = scene.getCamera().getInverseViewMatrix();
-    glm::vec4 pWorld = inv * eyeCamera;
-    glm::vec4 dWorld = glm::normalize(inv * pixelDirCamera);
-
-    if (rt->m_enableDepthOfField)
-    {
-        // if we're doing depth of field, we need to shoot multiple rays, see camera.cpp
-        return RayTracer::toRGBA(rt->secondaryRays(pWorld, dWorld, scene));
-    }
-    if (rt->m_enableSuperSample)
-    {
-        // if we're doing super sampling, we need to shoot multiple rays, see raytracer.cpp
-        return rt->superSample(eyeCamera, pixelDirCamera, scene);
-    }
 
     // shoot ray!
     RGBA pixel = RayTracer::toRGBA(rt->getPixelFromRay(pWorld, dWorld, scene, 0));

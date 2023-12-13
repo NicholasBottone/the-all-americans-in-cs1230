@@ -32,6 +32,11 @@ glm::mat4 Camera::getInverseViewMatrix() const {
     return m_inverseViewMatrix;
 }
 
+glm::vec4 Camera::getPos() const {
+    // Optional TODO: implement the getter or make your own design
+    return m_pos;
+}
+
 glm::vec4 Camera::getTranslationVector() const {
     return m_translationVector;
 }

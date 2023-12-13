@@ -35,21 +35,21 @@ public:
     // You can ignore if you are not attempting to implement depth of field.
     float getAperture() const;
 
-    glm::vec3 getPos() const;
+    glm::vec4 getPos() const;
 
     float cameraDepth = -1.f;
     std::vector<glm::vec3> m_controlPoints;
 
 private:
-    glm::mat4 m_viewMatrix;
-    glm::mat4 m_inverseViewMatrix;
+    glm::mat4 m_viewMatrix{};
+    glm::mat4 m_inverseViewMatrix{};
     float m_heightAngle;
-    glm::vec3 m_pos;
+    glm::vec4 m_pos;
 
     float m_focalLength;
     float m_aperture;
 
-    glm::vec4 m_translationVector;
-    glm::vec4 m_inverseTranslationVector;
+    glm::vec4 m_translationVector{};
+    glm::vec4 m_inverseTranslationVector{};
 };
 
