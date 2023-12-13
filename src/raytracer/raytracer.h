@@ -178,6 +178,7 @@ public:
 
     QImage m_image;
     void saveViewportImage(std::string filename);
+    void wSliderChanged(QLabel* imageLabel);
 signals:
     void xyRotationChanged(float value);
     void xzRotationChanged(float value);
@@ -186,5 +187,6 @@ signals:
     void ywRotationChanged(float value);
     void zwRotationChanged(float value);
     void rotationChanged(float value);
+    void cameraPositionChanged(glm::vec3 value);
 };
 

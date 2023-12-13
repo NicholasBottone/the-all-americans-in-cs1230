@@ -274,6 +274,7 @@ void MainWindow::connectUIElements() {
     connect(rayTracer, &RayTracer::ywRotationChanged, this, &MainWindow::updateYwSlider);
     connect(rayTracer, &RayTracer::zwRotationChanged, this, &MainWindow::updateZwSlider);
     connect(rayTracer, &RayTracer::rotationChanged, this, &MainWindow::updateRotationSlider);
+    connect(rayTracer, &RayTracer::cameraPositionChanged, this, &MainWindow::updateCameraPosition);
     connectW();
 }
 
@@ -539,4 +540,8 @@ void MainWindow::updateRotationSlider(float value) {
     rotationSlider->setValue(int(value*100.f));
     rotationBox->setValue(value);
     // rayTracer->settingsChanged(imageLabel);
+}
+
+void MainWindow::updateCameraPosition() {
+    rayTracer->wSliderChanged(imageLabel);
 }

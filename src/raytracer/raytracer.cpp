@@ -232,9 +232,47 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     m_image = image;
 }
 
-// void RayTracer::wSliderChanged(QLabel* imageLabel) {
+glm::vec4 getPt(glm::vec3 n1 , glm::vec3 n2 , float perc )
+{
+    glm::vec3 diff = n2 - n1;
+
+    return glm::vec4(n1 + ( diff * perc ), 0.0f);
+} 
+
+void RayTracer::wSliderChanged(QLabel* imageLabel) { 
+    // auto P1 = cameraControlPoints[0];
+    // auto P2 = scene.getCamera().controlPoints[1];
+    // auto P3 = scene.getCamera().controlPoints[2];
+    // auto P4 = scene.getCamera().controlPoints[3];
+    // for( float i = 0 ; i < 1 ; i += 0.01 )
+    // {
+    //     glm::vec3 xa = getPt(P1, P2, i);
+    //     glm::vec3 xb = getPt(P2, P3, i);
+    //     glm::vec3 xc = getPt(P3, P4, i);
+
+    //     // Calculate points on the lines between the above points
+    //     glm::vec3 xm = getPt(xa, xb, i);
+    //     glm::vec3 xn = getPt(xb, xc, i);
+
+    //     // Calculate the final point on the Bezier curve
+    //     glm::vec3 pointOnCurve = getPt(xm, xn, i);
+
+    //     // update the camera position
+    //     m_metaData.cameraData.pos = pointOnCurve;
+    //     RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
+    //     this->render(m_imageData, rtScene);
+    //     QTimer::singleShot(3500, this, [this, imageLabel]() {
+    //         // This code will be executed after a 2-second delay
+    //         // emit rotationChanged(settings.rotation);
+    //         QImage flippedImage = m_image.mirrored(false, false);
+    //         flippedImage = flippedImage.scaled(m_width, m_height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    //         imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
+    //     });
+    // }
+
+    // emit cameraPositionChanged(m_metaData.cameraData.pos);
     
-// }
+}
 
 void RayTracer::keyPressEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = true;

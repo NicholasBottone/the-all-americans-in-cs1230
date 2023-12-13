@@ -83,4 +83,5 @@ private slots:
     void updateRotationSlider(float newValue);
     void onValChangeWSlider(int newValue);
     void onValChangeWBox(double newValue);
+    void updateCameraPosition();
 };

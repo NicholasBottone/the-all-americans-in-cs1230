@@ -60,25 +60,3 @@ float Camera::getAperture() const {
     return m_aperture;
 }
 
-// int getPt(glm::vec3 n1 , glm::vec3 n2 , float perc )
-// {
-//     int diff = n2 - n1;
-
-//     return n1 + ( diff * perc );
-// }  
-
-// for( float i = 0 ; i < 1 ; i += 0.01 )
-// {
-//     glm::vec3 xa = getPt(P1, P2, i);
-//     glm::vec3 xb = getPt(P2, P3, i);
-//     glm::vec3 xc = getPt(P3, P4, i);
-
-//     // Calculate points on the lines between the above points
-//     glm::vec3 xm = getPt(xa, xb, i);
-//     glm::vec3 xn = getPt(xb, xc, i);
-
-//     // Calculate the final point on the Bezier curve
-//     glm::vec3 pointOnCurve = getPt(xm, xn, i);
-
-    
-// }
