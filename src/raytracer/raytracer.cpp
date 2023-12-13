@@ -155,36 +155,38 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 }
 
  void RayTracer::settingsChanged(QLabel* imageLabel) {
-     if (settings.sceneFilePath.size() == 0) {
-         // no scene loaded
-         m_image.fill(Qt::black);
-         imageLabel->setPixmap(QPixmap::fromImage(m_image));
-         m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
-         return;
-     }
+    emit timeValueChanged(settings.currentTime);
 
-     int width = 576;
-     int height = 432;
+    if (settings.sceneFilePath.size() == 0) {
+        // no scene loaded
+        m_image.fill(Qt::black);
+        imageLabel->setPixmap(QPixmap::fromImage(m_image));
+        m_imageData = reinterpret_cast<RGBA *>(m_image.bits());
+        return;
+    }
 
-     QImage image = QImage(width, height, QImage::Format_RGBX8888);
-     image.fill(Qt::black);
-     m_imageData = reinterpret_cast<RGBA *>(image.bits());
+    int width = 576;
+    int height = 432;
 
-     RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
+    QImage image = QImage(width, height, QImage::Format_RGBX8888);
+    image.fill(Qt::black);
+    m_imageData = reinterpret_cast<RGBA *>(image.bits());
 
-     this->render(m_imageData, rtScene);
+    RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
 
-     QImage flippedImage = image.mirrored(false, false);
-     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
-     m_controlPointIndex++;
+    this->render(m_imageData, rtScene);
 
-    
-     // QTimer::singleShot(3500, this, [this, imageLabel]() {
-     //     // This code will be executed after a 2-second delay
-     //     emit rotationChanged(settings.rotation);
-     // });
-     m_image = image;
+    QImage flippedImage = image.mirrored(false, false);
+    flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
+    m_controlPointIndex++;
+
+
+    // QTimer::singleShot(3500, this, [this, imageLabel]() {
+    //     // This code will be executed after a 2-second delay
+    //     emit rotationChanged(settings.rotation);
+    // });
+    m_image = image;
  }
 
 //void RayTracer::settingsChanged(QLabel* imageLabel) {
@@ -333,7 +335,7 @@ void RayTracer::saveViewportImage(std::string filePath) {
 
 void RayTracer::saveFFMPEGVideo(std::string filePath) {
     std::string directory = filePath + QDir::separator().toLatin1();
-    std::string command = "ffmpeg -framerate 30 -pattern_type glob -i '" + directory + "*.png' -c:v libx264 -pix_fmt yuv420p '" + directory + "video.mp4'";
+    std::string command = "ffmpeg -framerate 24 -pattern_type glob -i '" + directory + "*.png' -c:v libx264 -pix_fmt yuv420p -crf 0 -y '" + directory + "video.mp4'";
     int result = std::system(command.c_str());
     if (result != 0) {
         std::cerr << "Failed to assemble video." << std::endl;
