@@ -41,6 +41,7 @@ struct SceneGlobalData {
     float kd; // Diffuse term
     float ks; // Specular term
     float kt; // Transparency; used for extra credit (refraction)
+    glm::vec4 gravity; // Acceleration due to gravity (as a 4d vector)
 };
 
 // Struct which contains raw parsed data fro a single light
@@ -80,8 +81,10 @@ struct SceneCameraData {
     glm::vec4 pos;
     glm::vec4 look;
     glm::vec4 up;
+    glm::vec4 over;
 
     float heightAngle; // The height angle of the camera in RADIANS
+    float depthAngle;  // The depth angle of the camera in RADIANS
 
     float aperture;    // Only applicable for depth of field
     float focalLength; // Only applicable for depth of field
@@ -157,6 +160,7 @@ struct ScenePrimitive {
     PrimitiveType type;
     SceneMaterial material;
     std::string meshfile; // Used for triangle meshes
+    glm::vec4 velocity; // Current velocity of the primitive
 };
 
 // Struct which contains data for a transformation.
