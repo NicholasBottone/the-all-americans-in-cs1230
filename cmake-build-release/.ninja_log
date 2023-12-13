@@ -42,3 +42,16 @@
 7	36	1702464992226344998	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
 39	409	1702464992597429036	CMakeFiles/projects_ray.dir/src/physics/physics.cpp.o	d5828f7344b43f3f
 409	519	1702464992707871087	projects_ray	3c6678764a94cd8d
+6	35	1702465057075152473	projects_ray_autogen/timestamp	55fca76aac650d2f
+6	35	1702465057075152473	projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+6	35	1702465057075152473	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/timestamp	55fca76aac650d2f
+6	35	1702465057075152473	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+38	388	1702465057425065475	CMakeFiles/projects_ray.dir/src/physics/physics.cpp.o	d5828f7344b43f3f
+38	1212	1702465058247656082	CMakeFiles/projects_ray.dir/src/raytracer/raytracer.cpp.o	19b4d88ef40a6db1
+1213	1316	1702465058354470688	projects_ray	3c6678764a94cd8d
+6	34	1702465108961701302	projects_ray_autogen/timestamp	55fca76aac650d2f
+6	34	1702465108961701302	projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+6	34	1702465108961701302	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/timestamp	55fca76aac650d2f
+6	34	1702465108961701302	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-release/projects_ray_autogen/mocs_compilation.cpp	55fca76aac650d2f
+37	379	1702465109304681709	CMakeFiles/projects_ray.dir/src/physics/physics.cpp.o	d5828f7344b43f3f
+379	483	1702465109409509551	projects_ray	3c6678764a94cd8d

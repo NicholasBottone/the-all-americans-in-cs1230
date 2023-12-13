@@ -19,7 +19,7 @@ bool Physics::checkForSphereCollision(RenderShapeData &currentShape, RenderShape
     {
         currentShape.velocity *= -1.f;
         // move a little in other direction so it doesn't flip again
-        currentShape.translation4d = currentShape.velocity;
+        currentShape.translation4d += currentShape.velocity;
     }
 
     return distance <= radius + radius;
