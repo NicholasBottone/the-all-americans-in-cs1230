@@ -13,7 +13,7 @@ glm::vec4 Vec4Ops::transformPoint4(glm::vec4 point4,  glm::mat4 transformDirecti
 glm::vec4 Vec4Ops::inverseTransformPoint4(glm::vec4 point4,  glm::mat4 inverseTransformDirectionMatrix, glm::vec4 inverseTranslationPointVector) {
     // do the direction then translation
     point4 += inverseTranslationPointVector;
-    point4 = inverseTranslationPointVector * point4;
+    point4 = inverseTransformDirectionMatrix * point4;
     return point4;
 }
 

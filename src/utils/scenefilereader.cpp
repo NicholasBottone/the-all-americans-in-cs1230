@@ -292,7 +292,7 @@ bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *no
             return false;
         }
         QJsonArray directionArray = lightData["direction"].toArray();
-        if (directionArray.size() != 3) {
+        if (directionArray.size() != 3 && directionArray.size() != 4) {
             std::cout << "directional light direction must be of size 3" << std::endl;
             return false;
         }
@@ -952,7 +952,7 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
     QStringList requiredFields = {"type"};
     QStringList optionalFields = {
         "meshFile", "ambient", "diffuse", "specular", "reflective", "transparent", "shininess", "ior",
-        "blend", "textureFile", "textureU", "textureV", "bumpMapFile", "bumpMapU", "bumpMapV"};
+        "blend", "textureFile", "textureU", "textureV", "bumpMapFile", "bumpMapU", "bumpMapV", "velocity"};
 
     QStringList allFields = requiredFields + optionalFields;
     for (auto field : prim.keys()) {

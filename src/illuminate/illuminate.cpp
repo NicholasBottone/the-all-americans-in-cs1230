@@ -1,3 +1,4 @@
+#include <iostream>
 #include "raytracer/raytracer.h"
 
 glm::vec4  RayTracer::illuminationFromPointLight(
