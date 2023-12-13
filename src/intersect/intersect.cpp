@@ -63,7 +63,7 @@ glm::vec4 intersectCone(
     float radius = 0.5f;
     float a = d.x*d.x + d.z*d.z - .25f*(d.y*d.y) - .25f*(d[3]*d[3]);
     float b = 2.f*(p.x*d.x + p.z*d.z) - .5f*(p.y*d.y) + .25f*d.y - .5f*(p[3]*d[3]) + .25f*d[3];
-    float c = p.x*p.x + p.z*p.z - .25f*(p.y*p.y) + .25f*p.y - .25f*(p[3]*p[3]) + .25f*p[3] - 1/8.f;
+    float c = p.x*p.x + p.z*p.z - .25f*(p.y*p.y) + .25f*p.y - .25f*(p[3]*p[3]) + .25f*p[3] - 1/16.f;
 
     float discriminant = b*b - 4*a*c;
     if (discriminant >= 0)
@@ -97,7 +97,7 @@ glm::vec4 intersectCone(
     auto pwBase = p + twBase * d;
     if (
             twBase > 0 &&
-            pwBase.x*pwBase.x + pwBase.z*pwBase.z <= pwBase.y*pwBase.y -.25f &&
+            pwBase.x*pwBase.x + pwBase.z*pwBase.z <= pwBase.y*pwBase.y + .25f &&
             pwBase.y >= -.5f && pwBase.y <= .5f
             )
     {
@@ -109,7 +109,7 @@ glm::vec4 intersectCone(
     auto pyBase = p + tyBase * d;
     if (
         tyBase > 0 &&
-        pyBase.x*pyBase.x + pyBase.z*pyBase.z <= pyBase[3]*pyBase[3] -.25f &&
+        pyBase.x*pyBase.x + pyBase.z*pyBase.z <= pyBase[3]*pyBase[3] +.25f &&
         pyBase[3] >= -.5f && pyBase[3] <= .5f
         )
     {
@@ -174,21 +174,23 @@ glm::vec4 intersectCylinder(
     if (
         tTop > 0 &&
         pTop.x*pTop.x + pTop.z*pTop.z <= radius*radius &&
-        pTop.y >= -.5f && pTop.y <= .5f &&
-        pTop[3] >= -.5f && pTop[3] <= .5f)
+        pTop.y >= -.5f && pTop.y <= .5f //&&
+//        pTop[3] >= -.5f && pTop[3] <= .5f
+        )
     {
         t = std::min(t, tTop);
     }
 
 
     // implicit p_y + t*d_y = -.5f, Bottom base
-    float tBase = (.5f - p.y - p[3]) / (d[3] + d.y);
+    float tBase = (-.5f - p.y - p[3]) / (d[3] + d.y);
     auto pBase = p + tBase * d;
     if (
         tBase > 0 &&
         pBase.x*pBase.x + pBase.z*pBase.z <= radius*radius &&
-        pBase.y >= -.5f && pBase.y <= .5f &&
-        pBase[3] >= -.5f && pBase[3] <= .5f)
+        pBase.y >= -.5f && pBase.y <= .5f //&&
+//        pBase[3] >= -.5f && pBase[3] <= .5f
+        )
     {
         t = std::min(t, tBase);
     }
