@@ -50,8 +50,7 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
                 float camera4dDepth = 1;
 
                 glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(0.f), camera.getViewMatrix(), camera.getTranslationVector());
-                glm::vec4 dWorld = Vec4Ops::transformDir4(glm::vec4(x, y, z, cameraDepth), camera.getViewMatrix());
-
+                glm::vec4 dWorld = Vec4Ops::inverseTransformDir4(glm::vec4(x, y, z, cameraDepth), camera.getViewMatrix());
                 // get the pixel color
                 glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
 

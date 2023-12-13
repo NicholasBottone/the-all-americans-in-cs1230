@@ -35,7 +35,7 @@ public:
 
     static glm::vec4 transformDir4(glm::vec4 dir4, glm::mat4 transformDirectionMatrix);
 
-    glm::vec4 inverseTransformDir4(glm::vec4 dir4, glm::mat4 inverseTransformDirectionMatrix);
+    static glm::vec4 inverseTransformDir4(glm::vec4 dir4, glm::mat4 inverseTransformDirectionMatrix);
 };
 
 #endif //PROJECTS_RAY_VEC4OPS_H
