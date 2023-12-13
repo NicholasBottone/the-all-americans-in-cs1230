@@ -47,7 +47,7 @@ void MainWindow::initialize() {
     z_label->setText("Translate Z (T, G):");
     z_label->setFont(font);
     QLabel *w_label = new QLabel(); // W label
-    w_label->setText("Vorex Depth:");
+    w_label->setText("Voxel Depth:");
     w_label->setFont(font);
 
     currTimeLabel = new QLabel(); // Current Time label
