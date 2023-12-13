@@ -10,7 +10,6 @@
 
 class Physics {
 public:
-
     static void updateShapePositions(std::vector<RenderShapeData> &shapes);
 
     static void handleCollisions(std::vector<RenderShapeData> &shapes);
