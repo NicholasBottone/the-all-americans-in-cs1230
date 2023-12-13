@@ -52,21 +52,20 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
         if (settings.currentTime < settings.maxTime) { // still more to render
             // render the next frame
             settings.currentTime++;
-            // settings.w++;
+            settings.w++;
 
             // update physics
             Physics::updateShapePositions(m_metaData.shapes);
             Physics::handleCollisions(m_metaData.shapes);
-
-
-            emit settingsChanged(m_imageLabel); // emit to allow the UI to update then render the next frame
         } else { // done rendering
             // assemble the video
             saveFFMPEGVideo(settings.bulkOutputFolderPath);
             settings.currentTime = 0;
             settings.bulkOutputFolderPath = "";
-            emit settingsChanged(m_imageLabel);
         }
+        QTimer::singleShot(0, this, [this]() {
+            settingsChanged(m_imageLabel);
+        });
     }
     emit cameraPositionChanged(m_metaData.cameraData.pos); 
 }

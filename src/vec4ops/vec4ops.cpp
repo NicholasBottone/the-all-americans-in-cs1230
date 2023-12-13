@@ -43,14 +43,14 @@ glm::mat4 Vec4Ops::getViewMatrix4(
     glm::vec4 e0 = cross4(upVector, overVector, e3);
     e0 = glm::normalize(e0);
     if (glm::isnan(e0[0]) || glm::isnan(e0[1]) || glm::isnan(e0[2]) || glm::isnan(e0[3])) {
-        throw std::runtime_error("invalid up vector");
+        // throw std::runtime_error("invalid up vector");
     }
 
     // calculate e1 basis vector, from the cross of only the over vector
     glm::vec4 e1 = cross4(overVector, e3, e0);
     e1 = glm::normalize(e1);
     if (glm::isnan(e1[0]) || glm::isnan(e1[1]) || glm::isnan(e1[2]) || glm::isnan(e1[3])) {
-        throw std::runtime_error("invalid over vector");
+        // throw std::runtime_error("invalid over vector");
     }
 
     // calculate e2 basis vector, the 4d orthogonal vector to the other 3 bases

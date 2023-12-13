@@ -403,6 +403,7 @@ void MainWindow::onBulkRender() {
                                                            QDir::currentPath());
     std::cout << "Setting bulk output path to: \"" << folderPath.toStdString() << "\"." << std::endl;
     settings.bulkOutputFolderPath = folderPath.toStdString();
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangexySlider(int newValue) {
