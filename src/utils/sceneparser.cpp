@@ -37,11 +37,11 @@ TextureData loadTextureFromFile(const QString &file) {
 
 // helper to handle recursive creation of tree
 void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std::vector<SceneLightData> *lights, glm::mat4 currentCTM, glm::vec4 currentTranslation4d) {
-    if (currentNode->transformations.size() == 0) {
-        SceneParser::translate4(currentTranslation4d, glm::vec4(0.f, -0.0098f * settings.rotation, 0.f, settings.w));
-        // currentCTM = glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
-        currentCTM *= SceneParser::getRotationMatrix4(1.f, glm::vec3(settings.xy, settings.xz, settings.yz), glm::vec3(settings.xw, settings.yw, settings.zw));
-    }
+    // if (currentNode->transformations.size() == 0) {
+    //     SceneParser::translate4(currentTranslation4d, glm::vec4(0.f, -0.0098f * settings.rotation, 0.f, settings.w));
+    //     // currentCTM = glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
+    //     currentCTM *= SceneParser::getRotationMatrix4(1.f, glm::vec3(settings.xy, settings.xz, settings.yz), glm::vec3(settings.xw, settings.yw, settings.zw));
+    // }
 
     SceneParser::translate4(currentTranslation4d, glm::vec4(0.f, 0.f, 0.f, settings.w));
 

@@ -26,6 +26,14 @@ RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
     m_depth = 500;
 
     m_image = QImage(m_width, m_height, QImage::Format_RGBX8888);
+//    m_camera = nullptr;
+}
+
+glm::vec4 getPt(glm::vec3 n1 , glm::vec3 n2 , float perc )
+{
+    glm::vec3 diff = n2 - n1;
+
+    return glm::vec4(n1 + ( diff * perc ), 0.0f);
 }
 
 // updated to use 4D
@@ -79,6 +87,7 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
             emit settingsChanged(m_imageLabel); // emit to allow the UI to update then render the next frame
         }
     }
+    emit cameraPositionChanged(m_metaData.cameraData.pos); 
 }
 
 
@@ -219,59 +228,49 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     image.fill(Qt::black);
     RGBA *data = reinterpret_cast<RGBA *>(image.bits());
 
-    RayTraceScene rtScene{ width, height, m_metaData };
+    RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
+    Camera camera = rtScene.getCamera();
+    if (m_controlPointIndex % 3 == 0) {
+        m_controlPoints = camera.m_controlPoints;
+    }
+
+    auto P1 = m_controlPoints[m_controlPointIndex];
+    auto P2 = m_controlPoints[m_controlPointIndex];
+    auto P3 = m_controlPoints[m_controlPointIndex];
+    auto P4 = m_controlPoints[m_controlPointIndex];
+
+    glm::vec4 xa = getPt(P1, P2, settings.currentTime);
+    glm::vec4 xb = getPt(P2, P3, settings.currentTime);
+    glm::vec4 xc = getPt(P3, P4, settings.currentTime);
+
+    // Calculate points on the lines between the above points
+    glm::vec4 xm = getPt(xa, xb, settings.currentTime);
+    glm::vec4 xn = getPt(xb, xc, settings.currentTime);
+
+    // Calculate the final point on the Bezier curve
+    glm::vec4 pointOnCurve = getPt(xm, xn, settings.currentTime);
+    m_metaData.cameraData.pos = pointOnCurve;
+
+    settings.xy += 4.f;
+    if (m_controlPointIndex % 1 == 0) {
+        settings.xz += 8.f;
+    }
+    if (m_controlPointIndex % 3 == 0){
+        settings.yz += 8.f;
+    }
     this->render(data, rtScene);
 
     QImage flippedImage = image.mirrored(false, false);
     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
+    m_controlPointIndex++;
+
+    
     // QTimer::singleShot(3500, this, [this, imageLabel]() {
     //     // This code will be executed after a 2-second delay
     //     emit rotationChanged(settings.rotation);
     // });
     m_image = image;
-}
-
-glm::vec4 getPt(glm::vec3 n1 , glm::vec3 n2 , float perc )
-{
-    glm::vec3 diff = n2 - n1;
-
-    return glm::vec4(n1 + ( diff * perc ), 0.0f);
-} 
-
-void RayTracer::wSliderChanged(QLabel* imageLabel) { 
-    // auto P1 = cameraControlPoints[0];
-    // auto P2 = scene.getCamera().controlPoints[1];
-    // auto P3 = scene.getCamera().controlPoints[2];
-    // auto P4 = scene.getCamera().controlPoints[3];
-    // for( float i = 0 ; i < 1 ; i += 0.01 )
-    // {
-    //     glm::vec3 xa = getPt(P1, P2, i);
-    //     glm::vec3 xb = getPt(P2, P3, i);
-    //     glm::vec3 xc = getPt(P3, P4, i);
-
-    //     // Calculate points on the lines between the above points
-    //     glm::vec3 xm = getPt(xa, xb, i);
-    //     glm::vec3 xn = getPt(xb, xc, i);
-
-    //     // Calculate the final point on the Bezier curve
-    //     glm::vec3 pointOnCurve = getPt(xm, xn, i);
-
-    //     // update the camera position
-    //     m_metaData.cameraData.pos = pointOnCurve;
-    //     RayTraceScene rtScene{ m_width, m_height, m_metaData, m_depth };
-    //     this->render(m_imageData, rtScene);
-    //     QTimer::singleShot(3500, this, [this, imageLabel]() {
-    //         // This code will be executed after a 2-second delay
-    //         // emit rotationChanged(settings.rotation);
-    //         QImage flippedImage = m_image.mirrored(false, false);
-    //         flippedImage = flippedImage.scaled(m_width, m_height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-    //         imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
-    //     });
-    // }
-
-    // emit cameraPositionChanged(m_metaData.cameraData.pos);
-    
 }
 
 void RayTracer::keyPressEvent(QKeyEvent *event) {

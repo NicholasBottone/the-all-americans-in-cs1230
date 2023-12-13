@@ -179,6 +179,10 @@ public:
     QImage m_image;
     void saveViewportImage(std::string filename);
     void wSliderChanged(QLabel* imageLabel);
+
+//     Camera m_camera;
+    std::vector<glm::vec3> m_controlPoints;
+    int m_controlPointIndex = 0;
 signals:
     void xyRotationChanged(float value);
     void xzRotationChanged(float value);

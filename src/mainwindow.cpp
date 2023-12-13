@@ -206,10 +206,12 @@ void MainWindow::initialize() {
     maxTimeLayout->addWidget(maxTimeSpinBox);
     maxTimeGroupBox->setLayout(maxTimeLayout);
 
-    // // checkbox
-    // rotateNegative = new QCheckBox();
-    // rotateNegative->setText(QStringLiteral("Reverse Rotation"));
-    // rotateNegative->setChecked(false);
+    // checkbox
+    // bulkRender = new QPushButton();
+    // bulkRender->setText(QStringLiteral("Bulk Render"));
+    rotateNegative = new QPushButton();
+    rotateNegative->setText(QStringLiteral("Render the Scene!"));
+    rotateNegative->setChecked(false);
 
     // w Slider
     QGroupBox *wLayout = new QGroupBox(); // horizontal w slider alignment
@@ -224,7 +226,7 @@ void MainWindow::initialize() {
     wBox = new QDoubleSpinBox();
     wBox->setMinimum(-100.0f);
     wBox->setMaximum(100.f);
-    wBox->setSingleStep(0.01f);
+    wBox->setSingleStep(0.1f);
     wBox->setValue(0.f);
 
     lw->addWidget(wSlider);
@@ -253,7 +255,7 @@ void MainWindow::initialize() {
 
     vLayout->addWidget(maxTimeGroupBox);
     vLayout->addWidget(bulkRender);
-    // vLayout->addWidget(rotateNegative);
+    vLayout->addWidget(rotateNegative);
 
     connectUIElements();
 
@@ -284,7 +286,7 @@ void MainWindow::connectUIElements() {
     connect(rayTracer, &RayTracer::ywRotationChanged, this, &MainWindow::updateYwSlider);
     connect(rayTracer, &RayTracer::zwRotationChanged, this, &MainWindow::updateZwSlider);
     connect(rayTracer, &RayTracer::rotationChanged, this, &MainWindow::updateRotationSlider);
-    connect(rayTracer, &RayTracer::cameraPositionChanged, this, &MainWindow::updateCameraPosition);
+    // connect(rayTracer, &RayTracer::cameraPositionChanged, this, &MainWindow::updateCameraPosition);
     connectW();
 }
 
@@ -343,7 +345,7 @@ void MainWindow::connectMaxTimeSlider() {
 }
 
 void MainWindow::connectNegativeRotation() {
-    connect(rotateNegative, &QCheckBox::clicked, this, &MainWindow::onRotateNegative);
+    connect(rotateNegative, &QPushButton::clicked, this, &MainWindow::onRotateNegative);
 }
 
 void MainWindow::connectW() {
@@ -563,6 +565,6 @@ void MainWindow::updateRotationSlider(float value) {
     rayTracer->settingsChanged(imageLabel);
 }
 
-void MainWindow::updateCameraPosition() {
-    rayTracer->wSliderChanged(imageLabel);
-}
+// void MainWindow::updateCameraPosition() {
+//     rayTracer->wSliderChanged(imageLabel);
+// }

@@ -2,6 +2,8 @@
 #include "camera.h"
 #include "vec4ops/vec4ops.h"
 #include "settings.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>  // Include this header for glm::rotate
 
 Camera::Camera(SceneCameraData cameraData) :
     m_pos(cameraData.pos),
@@ -10,6 +12,11 @@ Camera::Camera(SceneCameraData cameraData) :
     m_aperture(cameraData.aperture)
 {
      m_viewMatrix = Vec4Ops::getViewMatrix4(cameraData.look, cameraData.up, cameraData.over);
+    //  add settings.xy rotation
+     m_viewMatrix = glm::rotate(m_viewMatrix, glm::radians(settings.xy), glm::vec3(0.f, 1.f, 0.f));
+     m_viewMatrix = glm::rotate(m_viewMatrix, glm::radians(settings.yz), glm::vec3(1.f, 0.f, 0.f));
+     m_viewMatrix = glm::rotate(m_viewMatrix, glm::radians(settings.xz), glm::vec3(0.f, 0.f, 1.f));
+
      m_translationVector = -cameraData.pos;
 
      m_inverseViewMatrix = glm::inverse(m_viewMatrix);

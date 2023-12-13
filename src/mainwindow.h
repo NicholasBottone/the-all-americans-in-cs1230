@@ -53,7 +53,7 @@ private:
     QDoubleSpinBox *zwBox;
     QSlider *maxTimeSlider;
     QSpinBox *maxTimeSpinBox;
-    QCheckBox *rotateNegative;
+    QPushButton *rotateNegative;
     QSlider *wSlider;
     QDoubleSpinBox *wBox;
 
@@ -86,5 +86,5 @@ private slots:
     void updateRotationSlider(float newValue);
     void onValChangeWSlider(int newValue);
     void onValChangeWBox(double newValue);
-    void updateCameraPosition();
+    // void updateCameraPosition();
 };
