@@ -1,3 +1,4 @@
+#include <iostream>
 #include "raytracer/raytracer.h"
 
 /**
@@ -27,6 +28,7 @@ glm::vec4 intersectCircle(
     {
         return glm::vec4(0.f);
     }
+
 
     float t1 = (-b - std::sqrt(discriminant)) / (2.f*a);
     float t2 = (-b + std::sqrt(discriminant)) / (2.f*a);

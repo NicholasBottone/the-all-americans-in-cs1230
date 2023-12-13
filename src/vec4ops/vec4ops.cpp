@@ -37,7 +37,7 @@ glm::mat4 Vec4Ops::getViewMatrix4(
         glm::vec4 upVector,
         glm::vec4 overVector) {
     // start with the e3 basis vector, the normalized look vector
-    glm::vec4 e3 = glm::normalize(-lookVector);
+    glm::vec4 e3 = glm::normalize(lookVector);
 
     // calculate e0 basis vector, from the combinatory cross of up and over with e3
     glm::vec4 e0 = cross4(upVector, overVector, e3);
