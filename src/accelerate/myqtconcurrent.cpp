@@ -45,34 +45,29 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
     for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
         for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
             // FIXME: for now, use height as depth
-            for (int imageDepth = 0; imageDepth < scene.depth(); imageDepth++) {
-                // compute the ray
-                float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
-                float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
-                float z = (imageDepth - scene.depth()/2.f) * viewplaneDepth / scene.depth();
+            int imageDepth = (int) ((settings.w + 100.f) * (5.f / 2.f));
+            // compute the ray
+            float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
+            float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
+            float z = (imageDepth - scene.depth()/2.f) * viewplaneDepth / scene.depth();
 
-                glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(0.f), camera.getViewMatrix(), camera.getTranslationVector());
-                glm::vec4 dWorld = Vec4Ops::transformDir4(glm::vec4(x, y, z, -1.0), camera.getViewMatrix());
-                // get the pixel color
-                glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
+            glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(0.f), camera.getViewMatrix(), camera.getTranslationVector());
+            glm::vec4 dWorld = Vec4Ops::transformDir4(glm::vec4(x, y, z, -1.0), camera.getViewMatrix());
+            // get the pixel color
+            glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
 
-                if (pixelColor.r > 0) {
-                    std::cout << "pixelColor.r: " << pixelColor.r << ", x" << imageCol << ", y" << imageRow << ", z" << imageDepth << std::endl;
-                }
-
-                // set the pixel color
-                if (imageDepth == 250)
-                {
-                    int index = imageRow * scene.width() + imageCol;
-                    imageData[index] = RGBA{
-                            (std::uint8_t) (pixelColor.r * 255.f),
-                            (std::uint8_t) (pixelColor.g * 255.f),
-                            (std::uint8_t) (pixelColor.b * 255.f),
-                            (std::uint8_t) (pixelColor.a * 255.f)
-                    };
-                }
-
+            if (pixelColor.r > 0) {
+                std::cout << "pixelColor.r: " << pixelColor.r << ", x" << imageCol << ", y" << imageRow << ", z" << imageDepth << std::endl;
             }
+
+            // set the pixel color
+            int index = imageRow * scene.width() + imageCol;
+            imageData[index] = RGBA{
+                    (std::uint8_t) (pixelColor.r * 255.f),
+                    (std::uint8_t) (pixelColor.g * 255.f),
+                    (std::uint8_t) (pixelColor.b * 255.f),
+                    (std::uint8_t) (pixelColor.a * 255.f)
+            };
         }
     }
     QList<RGBA> pixels = QtConcurrent::blockingMapped(l, pixelRoutine);
