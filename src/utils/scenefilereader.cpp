@@ -149,7 +149,7 @@ bool ScenefileReader::readJSON() {
  */
 bool ScenefileReader::parseGlobalData(const QJsonObject &globalData) {
     QStringList requiredFields = {"ambientCoeff", "diffuseCoeff", "specularCoeff"};
-    QStringList optionalFields = {"transparentCoeff"};
+    QStringList optionalFields = {"transparentCoeff", "gravity"};
     QStringList allFields = requiredFields + optionalFields;
     for (auto field : globalData.keys()) {
         if (!allFields.contains(field)) {
@@ -449,7 +449,7 @@ bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *no
  */
 bool ScenefileReader::parseCameraData(const QJsonObject &cameraData) {
     QStringList requiredFields = {"position", "up", "heightAngle"};
-    QStringList optionalFields = {"aperture", "focalLength", "look", "focus"};
+    QStringList optionalFields = {"aperture", "focalLength", "look", "focus", "depthAngle", "over"};
     QStringList allFields = requiredFields + optionalFields;
     for (auto &field : cameraData.keys()) {
         if (!allFields.contains(field)) {
