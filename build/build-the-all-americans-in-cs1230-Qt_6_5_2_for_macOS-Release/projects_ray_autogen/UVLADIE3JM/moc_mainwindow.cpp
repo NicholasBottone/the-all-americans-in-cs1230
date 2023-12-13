@@ -69,11 +69,14 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "updateRotationSlider",
     "onValChangeWSlider",
     "onValChangeWBox",
-    "updateTimeValue"
+    "updateTimeValue",
+    "onValChangezSlider",
+    "onValChangezBox",
+    "updateZSlider"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[62];
+    uint offsetsAndSizes[68];
     char stringdata0[11];
     char stringdata1[13];
     char stringdata2[1];
@@ -105,6 +108,9 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata28[19];
     char stringdata29[16];
     char stringdata30[16];
+    char stringdata31[19];
+    char stringdata32[16];
+    char stringdata33[14];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -140,7 +146,10 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(435, 20),  // "updateRotationSlider"
         QT_MOC_LITERAL(456, 18),  // "onValChangeWSlider"
         QT_MOC_LITERAL(475, 15),  // "onValChangeWBox"
-        QT_MOC_LITERAL(491, 15)   // "updateTimeValue"
+        QT_MOC_LITERAL(491, 15),  // "updateTimeValue"
+        QT_MOC_LITERAL(507, 18),  // "onValChangezSlider"
+        QT_MOC_LITERAL(526, 15),  // "onValChangezBox"
+        QT_MOC_LITERAL(542, 13)   // "updateZSlider"
     },
     "MainWindow",
     "onUploadFile",
@@ -172,7 +181,10 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "updateRotationSlider",
     "onValChangeWSlider",
     "onValChangeWBox",
-    "updateTimeValue"
+    "updateTimeValue",
+    "onValChangezSlider",
+    "onValChangezBox",
+    "updateZSlider"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -184,7 +196,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      28,   14, // methods
+      31,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -192,34 +204,37 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  182,    2, 0x08,    1 /* Private */,
-       3,    0,  183,    2, 0x08,    2 /* Private */,
-       4,    0,  184,    2, 0x08,    3 /* Private */,
-       5,    1,  185,    2, 0x08,    4 /* Private */,
-       7,    1,  188,    2, 0x08,    6 /* Private */,
-       8,    1,  191,    2, 0x08,    8 /* Private */,
-       9,    1,  194,    2, 0x08,   10 /* Private */,
-      10,    1,  197,    2, 0x08,   12 /* Private */,
-      11,    1,  200,    2, 0x08,   14 /* Private */,
-      12,    1,  203,    2, 0x08,   16 /* Private */,
-      13,    1,  206,    2, 0x08,   18 /* Private */,
-      14,    1,  209,    2, 0x08,   20 /* Private */,
-      15,    1,  212,    2, 0x08,   22 /* Private */,
-      16,    1,  215,    2, 0x08,   24 /* Private */,
-      17,    1,  218,    2, 0x08,   26 /* Private */,
-      18,    1,  221,    2, 0x08,   28 /* Private */,
-      19,    1,  224,    2, 0x08,   30 /* Private */,
-      20,    0,  227,    2, 0x08,   32 /* Private */,
-      21,    1,  228,    2, 0x08,   33 /* Private */,
-      22,    1,  231,    2, 0x08,   35 /* Private */,
-      23,    1,  234,    2, 0x08,   37 /* Private */,
-      24,    1,  237,    2, 0x08,   39 /* Private */,
-      25,    1,  240,    2, 0x08,   41 /* Private */,
-      26,    1,  243,    2, 0x08,   43 /* Private */,
-      27,    1,  246,    2, 0x08,   45 /* Private */,
-      28,    1,  249,    2, 0x08,   47 /* Private */,
-      29,    1,  252,    2, 0x08,   49 /* Private */,
-      30,    0,  255,    2, 0x08,   51 /* Private */,
+       1,    0,  200,    2, 0x08,    1 /* Private */,
+       3,    0,  201,    2, 0x08,    2 /* Private */,
+       4,    0,  202,    2, 0x08,    3 /* Private */,
+       5,    1,  203,    2, 0x08,    4 /* Private */,
+       7,    1,  206,    2, 0x08,    6 /* Private */,
+       8,    1,  209,    2, 0x08,    8 /* Private */,
+       9,    1,  212,    2, 0x08,   10 /* Private */,
+      10,    1,  215,    2, 0x08,   12 /* Private */,
+      11,    1,  218,    2, 0x08,   14 /* Private */,
+      12,    1,  221,    2, 0x08,   16 /* Private */,
+      13,    1,  224,    2, 0x08,   18 /* Private */,
+      14,    1,  227,    2, 0x08,   20 /* Private */,
+      15,    1,  230,    2, 0x08,   22 /* Private */,
+      16,    1,  233,    2, 0x08,   24 /* Private */,
+      17,    1,  236,    2, 0x08,   26 /* Private */,
+      18,    1,  239,    2, 0x08,   28 /* Private */,
+      19,    1,  242,    2, 0x08,   30 /* Private */,
+      20,    0,  245,    2, 0x08,   32 /* Private */,
+      21,    1,  246,    2, 0x08,   33 /* Private */,
+      22,    1,  249,    2, 0x08,   35 /* Private */,
+      23,    1,  252,    2, 0x08,   37 /* Private */,
+      24,    1,  255,    2, 0x08,   39 /* Private */,
+      25,    1,  258,    2, 0x08,   41 /* Private */,
+      26,    1,  261,    2, 0x08,   43 /* Private */,
+      27,    1,  264,    2, 0x08,   45 /* Private */,
+      28,    1,  267,    2, 0x08,   47 /* Private */,
+      29,    1,  270,    2, 0x08,   49 /* Private */,
+      30,    0,  273,    2, 0x08,   51 /* Private */,
+      31,    1,  274,    2, 0x08,   52 /* Private */,
+      32,    1,  277,    2, 0x08,   54 /* Private */,
+      33,    1,  280,    2, 0x08,   56 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -250,6 +265,9 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void, QMetaType::Int,    6,
     QMetaType::Void, QMetaType::Double,    6,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Double,    6,
+    QMetaType::Void, QMetaType::Double,    6,
 
        0        // eod
 };
@@ -341,7 +359,16 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<double, std::false_type>,
         // method 'updateTimeValue'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onValChangezSlider'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'onValChangezBox'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<double, std::false_type>,
+        // method 'updateZSlider'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<double, std::false_type>
     >,
     nullptr
 } };
@@ -380,6 +407,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 25: _t->onValChangeWSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 26: _t->onValChangeWBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
         case 27: _t->updateTimeValue(); break;
+        case 28: _t->onValChangezSlider((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 29: _t->onValChangezBox((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
+        case 30: _t->updateZSlider((*reinterpret_cast< std::add_pointer_t<double>>(_a[1]))); break;
         default: ;
         }
     }
@@ -404,13 +434,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 28)
+        if (_id < 31)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 28;
+        _id -= 31;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 28)
+        if (_id < 31)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 28;
+        _id -= 31;
     }
     return _id;
 }

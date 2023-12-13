@@ -194,5 +194,6 @@ signals:
     void rotationChanged(float value);
     void cameraPositionChanged(glm::vec3 value);
     void timeValueChanged(int value);
+    void zChanged(int value);
 };
 

@@ -14,7 +14,7 @@ void Camera::updateViewMatrix(SceneCameraData cameraData) {
 
     // TODO: rename & link sliders here. also add one more for the fourth dimension.
     //  make them smaller intervals on the sliders since our objects are so small
-    glm::vec4 uiTranslation = glm::vec4(settings.xw, settings.yw, 0.f, settings.zw);
+    glm::vec4 uiTranslation = glm::vec4(settings.xw, settings.yw, settings.z, settings.zw);
     m_translationVector = -cameraData.pos + uiTranslation;
 
     m_inverseViewMatrix = glm::inverse(m_viewMatrix);

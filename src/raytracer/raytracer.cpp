@@ -323,6 +323,16 @@ void RayTracer::keyPressEvent(QKeyEvent *event) {
     }
 
     // TODO: add slider for z translation
+    // T and G for z translation
+    if (m_keyMap[Qt::Key_T]) {
+        settings.z += settings.translation;
+        emit zChanged(settings.zw);
+    }
+
+    if (m_keyMap[Qt::Key_G]) {
+        settings.z -= settings.translation;
+        emit zChanged(settings.zw);
+    }
 
     // R & F for w translation using zw
     if (m_keyMap[Qt::Key_R]) {

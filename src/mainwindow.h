@@ -33,6 +33,7 @@ private:
     void connectMaxTimeSlider();
     void connectNegativeRotation();
     void connectW();
+    void connectz();
 
     RayTracer *rayTracer;
     AspectRatioWidget *aspectRatioWidget;
@@ -57,6 +58,8 @@ private:
     QSlider *wSlider;
     QDoubleSpinBox *wBox;
     QLabel *currTimeLabel;
+    QSlider *zSlider;
+    QDoubleSpinBox *zBox;
 
 
 private slots:
@@ -89,4 +92,9 @@ private slots:
     void onValChangeWBox(double newValue);
     // void updateCameraPosition();
     void updateTimeValue();
+
+    void onValChangezSlider(int newValue);
+    void onValChangezBox(double newValue);
+    void updateZSlider(double newValue);
+
 };
