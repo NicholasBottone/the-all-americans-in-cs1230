@@ -3,6 +3,7 @@
 #include <QtConcurrent>
 #include "../raytracer/raytracer.h"
 #include "../vec4ops/vec4ops.h"
+#include "settings.h"
 
 struct pixelRoutineArgs {
     glm::vec4 pCamera;
@@ -69,6 +70,8 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
     QtConcurrent::blockingMap(l, pixelRoutine);
 
     // get the slice relating to z == 0 and set it into int the iamge data array
+
+    // int currentSlice = settings.w + 100.f * (5.f / 2.f);
     int currentSlice = 0;
     int ptr = currentSlice * scene.width() * scene.height();
     for (int i = 0; i < scene.width() * scene.height(); i++) {
