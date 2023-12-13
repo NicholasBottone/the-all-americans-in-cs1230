@@ -2,6 +2,7 @@
 #include <QList>
 #include <QtConcurrent>
 #include "../raytracer/raytracer.h"
+#include "../vec4ops/vec4ops.h"
 
 struct pixelRoutineArgs {
     glm::vec4 pCamera;
@@ -19,23 +20,50 @@ void RayTracer::renderParallel(RGBA *imageData, const RayTraceScene &scene)
     float viewplaneWidth = cameraDepth*viewplaneHeight*((float)scene.width()/(float)scene.height());
 
     QList<pixelRoutineArgs> l{};
+    // for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
+    //     for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
+    //         float xCameraSpace = viewplaneWidth *
+    //                              (-.5f + (imageCol + .5f) / scene.width());
+    //         float yCameraSpace = viewplaneHeight *
+    //                              (-.5f + (imageRow + .5f) / scene.height());
+
+    //         glm::vec4 pixelDirCamera{xCameraSpace, -yCameraSpace, -cameraDepth, 0.f}; //w=0 for dir
+    //         glm::vec4 eyeCamera{0.f, 0.f, 0.f, 1.f}; // w=1.f for point
+    //         pixelRoutineArgs args{
+    //                 eyeCamera,
+    //                 pixelDirCamera,
+    //                 scene,
+    //                 this
+    //         };
+    //         l.append(args);
+
+    //     }
+    // }
     for (int imageRow = 0; imageRow < scene.height(); imageRow++) {
         for (int imageCol = 0; imageCol < scene.width(); imageCol++) {
-            float xCameraSpace = viewplaneWidth *
-                                 (-.5f + (imageCol + .5f) / scene.width());
-            float yCameraSpace = viewplaneHeight *
-                                 (-.5f + (imageRow + .5f) / scene.height());
+            // FIXME: for now, use height as depth
+            for (int imageDepth = 0; imageDepth < scene.height(); imageDepth++) {
+                // compute the ray
+                float x = (imageCol - scene.width()/2.f) * viewplaneWidth / scene.width();
+                float y = (imageRow - scene.height()/2.f) * viewplaneHeight / scene.height();
+                float z = (imageDepth - scene.height()/2.f) * viewplaneHeight / scene.height();
+                float camera4dDepth = 1;
 
-            glm::vec4 pixelDirCamera{xCameraSpace, -yCameraSpace, -cameraDepth, 0.f}; //w=0 for dir
-            glm::vec4 eyeCamera{0.f, 0.f, 0.f, 1.f}; // w=1.f for point
-            pixelRoutineArgs args{
-                    eyeCamera,
-                    pixelDirCamera,
-                    scene,
-                    this
-            };
-            l.append(args);
+                glm::vec4 pWorld = Vec4Ops::transformPoint4(glm::vec4(0.f), camera.getViewMatrix(), camera.getTranslationVector());
+                glm::vec4 dWorld = Vec4Ops::transformVector4(glm::vec4(x, y, z, cameraDepth), camera.getViewMatrix());
 
+                // get the pixel color
+                glm::vec4 pixelColor = getPixelFromRay(pWorld, dWorld, scene, 0);
+
+                // set the pixel color
+                int index = imageRow * scene.width() + imageCol;
+                imageData[index] = RGBA{
+                    (std::uint8_t) (pixelColor.r * 255.f),
+                    (std::uint8_t) (pixelColor.g * 255.f),
+                    (std::uint8_t) (pixelColor.b * 255.f),
+                    (std::uint8_t) (pixelColor.a * 255.f)
+                };
+            }
         }
     }
     QList<RGBA> pixels = QtConcurrent::blockingMapped(l, pixelRoutine);
