@@ -195,6 +195,32 @@ bool ScenefileReader::parseGlobalData(const QJsonObject &globalData) {
             return false;
         }
     }
+    if (globalData.contains("gravity")) {
+        if (globalData["gravity"].isArray()) {
+            QJsonArray gravityArray = globalData["gravity"].toArray();
+            if (gravityArray.size() != 3 && gravityArray.size() != 4) {
+                std::cout << "globalData gravity must have 3-4 elements" << std::endl;
+                return false;
+            }
+            if (!gravityArray[0].isDouble() || !gravityArray[1].isDouble() || !gravityArray[2].isDouble() || (gravityArray.size() == 4 && !gravityArray[3].isDouble())) {
+                std::cout << "globalData gravity must contain floating-point values" << std::endl;
+                return false;
+            }
+            m_globalData.gravity.x = gravityArray[0].toDouble();
+            m_globalData.gravity.y = gravityArray[1].toDouble();
+            m_globalData.gravity.z = gravityArray[2].toDouble();
+            if (gravityArray.size() == 4) {
+                m_globalData.gravity.w = gravityArray[3].toDouble();
+            }
+            else {
+                m_globalData.gravity.w = 1.f;
+            }
+        }
+        else {
+            std::cout << "globalData gravity must be an array" << std::endl;
+            return false;
+        }
+    }
 
     return true;
 }
@@ -296,7 +322,7 @@ bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *no
             return false;
         }
         if (!attenuationArray[0].isDouble() || !attenuationArray[1].isDouble() || !attenuationArray[2].isDouble()) {
-            std::cout << "ppoint light attenuationCoeff must contain floating-point values" << std::endl;
+            std::cout << "point light attenuationCoeff must contain floating-point values" << std::endl;
             return false;
         }
         light->function.x = attenuationArray[0].toDouble();
@@ -376,14 +402,14 @@ bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *no
 
         // parse width
         if (!lightData["width"].isDouble()) {
-            std::cout << "arealight penumbra must be of type float" << std::endl;
+            std::cout << "area light penumbra must be of type float" << std::endl;
             return false;
         }
         light->width = lightData["width"].toDouble();
 
         // parse height
         if (!lightData["height"].isDouble()) {
-            std::cout << "arealight height must be of type float" << std::endl;
+            std::cout << "area light height must be of type float" << std::endl;
             return false;
         }
         light->height = lightData["height"].toDouble();
@@ -421,32 +447,32 @@ bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *no
 /**
  * Parse cameraData and fill in m_cameraData.
  */
-bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
+bool ScenefileReader::parseCameraData(const QJsonObject &cameraData) {
     QStringList requiredFields = {"position", "up", "heightAngle"};
     QStringList optionalFields = {"aperture", "focalLength", "look", "focus"};
     QStringList allFields = requiredFields + optionalFields;
-    for (auto &field : cameradata.keys()) {
+    for (auto &field : cameraData.keys()) {
         if (!allFields.contains(field)) {
             std::cout << "unknown field \"" << field.toStdString() << "\" on cameraData object" << std::endl;
             return false;
         }
     }
     for (auto &field : requiredFields) {
-        if (!cameradata.contains(field)) {
+        if (!cameraData.contains(field)) {
             std::cout << "missing required field \"" << field.toStdString() << "\" on cameraData object" << std::endl;
             return false;
         }
     }
 
     // Must have either look or focus, but not both
-    if (cameradata.contains("look") && cameradata.contains("focus")) {
+    if (cameraData.contains("look") && cameraData.contains("focus")) {
         std::cout << "cameraData cannot contain both \"look\" and \"focus\"" << std::endl;
         return false;
     }
 
     // Parse the camera data
-    if (cameradata["position"].isArray()) {
-        QJsonArray position = cameradata["position"].toArray();
+    if (cameraData["position"].isArray()) {
+        QJsonArray position = cameraData["position"].toArray();
         if (position.size() != 3 && position.size() != 4) {
             std::cout << "cameraData position must have 3-4 elements" << std::endl;
             return false;
@@ -470,8 +496,8 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
         return false;
     }
 
-    if (cameradata["up"].isArray()) {
-        QJsonArray up = cameradata["up"].toArray();
+    if (cameraData["up"].isArray()) {
+        QJsonArray up = cameraData["up"].toArray();
         if (up.size() != 3 && up.size() != 4) {
             std::cout << "cameraData up must have 3-4 elements" << std::endl;
             return false;
@@ -495,17 +521,17 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
         return false;
     }
 
-    if (cameradata["heightAngle"].isDouble()) {
-        m_cameraData.heightAngle = cameradata["heightAngle"].toDouble() * M_PI / 180.f;
+    if (cameraData["heightAngle"].isDouble()) {
+        m_cameraData.heightAngle = cameraData["heightAngle"].toDouble() * M_PI / 180.f;
     }
     else {
         std::cout << "cameraData heightAngle must be a floating-point value" << std::endl;
         return false;
     }
 
-    if (cameradata.contains("aperture")) {
-        if (cameradata["aperture"].isDouble()) {
-            m_cameraData.aperture = cameradata["aperture"].toDouble();
+    if (cameraData.contains("aperture")) {
+        if (cameraData["aperture"].isDouble()) {
+            m_cameraData.aperture = cameraData["aperture"].toDouble();
         }
         else {
             std::cout << "cameraData aperture must be a floating-point value" << std::endl;
@@ -513,9 +539,9 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
         }
     }
 
-    if (cameradata.contains("focalLength")) {
-        if (cameradata["focalLength"].isDouble()) {
-            m_cameraData.focalLength = cameradata["focalLength"].toDouble();
+    if (cameraData.contains("focalLength")) {
+        if (cameraData["focalLength"].isDouble()) {
+            m_cameraData.focalLength = cameraData["focalLength"].toDouble();
         }
         else {
             std::cout << "cameraData focalLength must be a floating-point value" << std::endl;
@@ -525,9 +551,9 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
 
     // Parse the look or focus
     // if the focus is specified, we will convert it to a look vector later
-    if (cameradata.contains("look")) {
-        if (cameradata["look"].isArray()) {
-            QJsonArray look = cameradata["look"].toArray();
+    if (cameraData.contains("look")) {
+        if (cameraData["look"].isArray()) {
+            QJsonArray look = cameraData["look"].toArray();
             if (look.size() != 3 && look.size() != 4) {
                 std::cout << "cameraData look must have 3-4 elements" << std::endl;
                 return false;
@@ -551,9 +577,9 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
             return false;
         }
     }
-    else if (cameradata.contains("focus")) {
-        if (cameradata["focus"].isArray()) {
-            QJsonArray focus = cameradata["focus"].toArray();
+    else if (cameraData.contains("focus")) {
+        if (cameraData["focus"].isArray()) {
+            QJsonArray focus = cameraData["focus"].toArray();
             if (focus.size() != 3 && focus.size() != 4) {
                 std::cout << "cameraData focus must have 3-4 elements" << std::endl;
                 return false;
@@ -578,9 +604,40 @@ bool ScenefileReader::parseCameraData(const QJsonObject &cameradata) {
         }
     }
 
+    if (cameraData.contains("depthAngle")) {
+        if (cameraData["depthAngle"].isDouble()) {
+            m_cameraData.depthAngle = cameraData["depthAngle"].toDouble() * M_PI / 180.f;
+        }
+        else {
+            std::cout << "cameraData depthAngle must be a floating-point value" << std::endl;
+            return false;
+        }
+    }
+
+    if (cameraData.contains("over") && cameraData["over"].isArray()) {
+        QJsonArray over = cameraData["over"].toArray();
+        if (over.size() != 3 && over.size() != 4) {
+            std::cout << "cameraData over must have 3-4 elements" << std::endl;
+            return false;
+        }
+        if (!over[0].isDouble() || !over[1].isDouble() || !over[2].isDouble() || (over.size() == 4 && !over[3].isDouble())) {
+            std::cout << "cameraData over must be a floating-point value" << std::endl;
+            return false;
+        }
+        m_cameraData.over.x = over[0].toDouble();
+        m_cameraData.over.y = over[1].toDouble();
+        m_cameraData.over.z = over[2].toDouble();
+        if (over.size() == 4) {
+            m_cameraData.over.w = over[3].toDouble();
+        }
+        else {
+            m_cameraData.over.w = 1.f;
+        }
+    }
+
     // Convert the focus point (stored in the look vector) into a
     // look vector from the camera position to that focus point.
-    if (cameradata.contains("focus")) {
+    if (cameraData.contains("focus")) {
         m_cameraData.look -= m_cameraData.pos;
     }
 
@@ -927,7 +984,7 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
     mat.cDiffuse.r = mat.cDiffuse.g = mat.cDiffuse.b = 1;
     node->primitives.push_back(primitive);
 
-    std::filesystem::path basepath = std::filesystem::path(file_name).parent_path().parent_path();
+    std::filesystem::path basePath = std::filesystem::path(file_name).parent_path().parent_path();
     if (primType == "sphere")
         primitive->type = PrimitiveType::PRIMITIVE_SPHERE;
     else if (primType == "cube")
@@ -948,7 +1005,7 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
         }
 
         std::filesystem::path relativePath(prim["meshFile"].toString().toStdString());
-        primitive->meshfile = (basepath / relativePath).string();
+        primitive->meshfile = (basePath / relativePath).string();
     }
     else {
         std::cout << "unknown primitive type \"" << primType << "\"" << std::endl;
@@ -1094,7 +1151,7 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
         }
         std::filesystem::path fileRelativePath(prim["textureFile"].toString().toStdString());
 
-        mat.textureMap.filename = (basepath / fileRelativePath).string();
+        mat.textureMap.filename = (basePath / fileRelativePath).string();
         mat.textureMap.repeatU = prim.contains("textureU") && prim["textureU"].isDouble() ? prim["textureU"].toDouble() : 1;
         mat.textureMap.repeatV = prim.contains("textureV") && prim["textureV"].isDouble() ? prim["textureV"].toDouble() : 1;
         mat.textureMap.isUsed = true;
@@ -1107,10 +1164,31 @@ bool ScenefileReader::parsePrimitive(const QJsonObject &prim, SceneNode *node) {
         }
         std::filesystem::path fileRelativePath(prim["bumpMapFile"].toString().toStdString());
 
-        mat.bumpMap.filename = (basepath / fileRelativePath).string();
+        mat.bumpMap.filename = (basePath / fileRelativePath).string();
         mat.bumpMap.repeatU = prim.contains("bumpMapU") && prim["bumpMapU"].isDouble() ? prim["bumpMapU"].toDouble() : 1;
         mat.bumpMap.repeatV = prim.contains("bumpMapV") && prim["bumpMapV"].isDouble() ? prim["bumpMapV"].toDouble() : 1;
         mat.bumpMap.isUsed = true;
+    }
+
+    if (prim.contains("velocity")) {
+        if (!prim["velocity"].isArray()) {
+            std::cout << "primitive velocity must be of type array" << std::endl;
+            return false;
+        }
+        QJsonArray velocityArray = prim["velocity"].toArray();
+        if (velocityArray.size() != 3 && velocityArray.size() != 4) {
+            std::cout << "primitive velocity array must be of size 3-4" << std::endl;
+            return false;
+        }
+
+        for (int i = 0; i < velocityArray.size(); i++) {
+            if (!velocityArray[i].isDouble()) {
+                std::cout << "primitive velocity must contain floating-point values" << std::endl;
+                return false;
+            }
+
+            primitive->velocity[i] = velocityArray[i].toDouble();
+        }
     }
 
     return true;
