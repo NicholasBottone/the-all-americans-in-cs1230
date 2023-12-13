@@ -65,7 +65,7 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
         }
     }
 
-    currentCTM *= glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
+    // currentCTM *= glm::translate(glm::mat4(1.0f), glm::vec3(currentTranslation4d));
     
 
     for(auto primitive : currentNode->primitives) {
@@ -74,11 +74,9 @@ void initTree(SceneNode* currentNode, std::vector<RenderShapeData> *shapes, std:
             .ctm = currentCTM,
             .translation4d = currentTranslation4d,
             .inverseCTM = glm::inverse(currentCTM),
-            .inverseTranslation4d = -currentTranslation4d,
             .velocity = primitive->velocity,
         };
         shapes->push_back(rsd);
-        // }
     }
 
     // add the lights

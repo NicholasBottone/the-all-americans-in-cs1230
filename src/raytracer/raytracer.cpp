@@ -91,7 +91,7 @@ glm::vec4 RayTracer::getPixelFromRay(
     float minDist = FINF;
     // shoot a ray at each shape
     for (const RenderShapeData &shape : scene.getShapes()) {
-        glm::vec4 pObject = Vec4Ops::inverseTransformPoint4(pWorld, shape.inverseCTM, shape.inverseTranslation4d);
+        glm::vec4 pObject = Vec4Ops::inverseTransformPoint4(pWorld, shape.inverseCTM, -shape.translation4d);
         glm::vec4 dObject = glm::normalize(Vec4Ops::inverseTransformDir4(dWorld, shape.inverseCTM));
 //        std::cout << "pObject: " << pObject.x << ", " << pObject.y << ", " << pObject.z << ", " << pObject.w << std::endl;
 //        std::cout << "dObject: " << dObject.x << ", " << dObject.y << ", " << dObject.z << ", " << dObject.w << std::endl;

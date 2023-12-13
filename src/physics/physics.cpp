@@ -73,6 +73,5 @@ void Physics::updateShapePositions(std::vector<RenderShapeData> &shapes)
     for (auto &shape : shapes)
     {
         shape.translation4d += shape.velocity;
-        shape.inverseTranslation4d -= shape.velocity;
     }
 }
