@@ -191,7 +191,7 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     if (m_controlPointIndex % 3 == 0){
         settings.yz += 8.f;
     }
-    this->render(data, rtScene);
+    this->render(m_imageData, rtScene);
 
     QImage flippedImage = image.mirrored(false, false);
     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);

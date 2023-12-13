@@ -9027,6 +9027,8 @@
 /Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/raytracer/raytracescene.h
 /Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/kdtree.cpp
 /Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/accelerate/bvh.h
+/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/illuminate/reflect.cpp
+/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/illuminate/illuminate.cpp
 /Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/mainwindow.h
  mmc:Q_OBJECT
  mdp:/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/mainwindow.h
@@ -9981,13 +9983,6 @@
  mdp:/Users/daviddoan/Qt/6.5.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qwidget.h
 /Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/aliasing/supersample.cpp
 /Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/mainwindow.cpp
-/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/illuminate/reflect.cpp
-/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/illuminate/illuminate.cpp
-/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/accelerate/kdtree.h
-/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/raytracer/raytracescene.cpp
-/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/settings.h
-/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/aliasing/supersample.cpp
-/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/vec4ops/rotations4d.cpp
 /Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/raytracer/raytracer.h
  mmc:Q_OBJECT
  mdp:/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/raytracer/raytracer.h
@@ -10916,4 +10911,9 @@
  mdp:/Users/lafayette_bussey/Qt/6.5.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsexports.h
  mdp:/Users/lafayette_bussey/Qt/6.5.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsglobal.h
  mdp:/Users/lafayette_bussey/Qt/6.5.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qwidget.h
+/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/settings.h
+/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/aliasing/supersample.cpp
+/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/vec4ops/rotations4d.cpp
+/Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/raytracer/raytracescene.cpp
+/Users/lafayette_bussey/Desktop/cs1230/the-all-americans-in-cs1230/src/accelerate/kdtree.h
 /Users/daviddoan/Desktop/Graphics/the-all-americans-in-cs1230/src/settings.cpp
