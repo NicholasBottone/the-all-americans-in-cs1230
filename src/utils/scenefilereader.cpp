@@ -292,7 +292,7 @@ bool ScenefileReader::parseLightData(const QJsonObject &lightData, SceneNode *no
             return false;
         }
         QJsonArray directionArray = lightData["direction"].toArray();
-        if (directionArray.size() != 3) {
+        if (directionArray.size() != 3 && directionArray.size() != 4) {
             std::cout << "directional light direction must be of size 3" << std::endl;
             return false;
         }

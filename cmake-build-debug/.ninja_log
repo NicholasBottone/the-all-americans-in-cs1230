@@ -60,3 +60,17 @@
 2556	3309	1702444375293640721	CMakeFiles/projects_ray.dir/src/accelerate/bvh.cpp.o	a8cce28f179d7603
 2214	3481	1702444375464470312	CMakeFiles/projects_ray.dir/src/accelerate/myqtconcurrent.cpp.o	5d42dc23cb8d46fc
 3481	3703	1702444375690641860	projects_ray	dac5017ee9a78855
+7	37	1702444844496049541	projects_ray_autogen/timestamp	d580242d2b9854b3
+7	37	1702444844496049541	projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
+7	37	1702444844496049541	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/timestamp	d580242d2b9854b3
+7	37	1702444844496049541	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
+41	925	1702444845378996168	CMakeFiles/projects_ray.dir/src/utils/scenefilereader.cpp.o	41959d435611c983
+41	1277	1702444845729950462	CMakeFiles/projects_ray.dir/src/accelerate/myqtconcurrent.cpp.o	5d42dc23cb8d46fc
+1277	1395	1702444845852646619	projects_ray	dac5017ee9a78855
+6	35	1702444900512329244	projects_ray_autogen/timestamp	d580242d2b9854b3
+6	35	1702444900512329244	projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
+6	35	1702444900512329244	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/timestamp	d580242d2b9854b3
+6	35	1702444900512329244	/Users/sotech117/Documents/master/graphics/the-all-americans-in-cs1230/cmake-build-debug/projects_ray_autogen/mocs_compilation.cpp	d580242d2b9854b3
+39	1001	1702444901472787935	CMakeFiles/projects_ray.dir/src/utils/scenefilereader.cpp.o	41959d435611c983
+39	1346	1702444901817273752	CMakeFiles/projects_ray.dir/src/accelerate/myqtconcurrent.cpp.o	5d42dc23cb8d46fc
+1346	1466	1702444901941031953	projects_ray	dac5017ee9a78855
