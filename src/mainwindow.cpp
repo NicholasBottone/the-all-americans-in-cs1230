@@ -47,9 +47,13 @@ void MainWindow::initialize() {
     w_label->setText("W value:");
     w_label->setFont(font);
 
-    QLabel *rotation_label = new QLabel(); // Rotation label
-    rotation_label->setText("Time value:");
-    rotation_label->setFont(font);
+    QLabel *curr_time_label = new QLabel(); // Current Time label
+    curr_time_label->setText("Curr Time: 0");
+    curr_time_label->setFont(font);
+
+    QLabel *max_time_label = new QLabel(); // Max Time label
+    max_time_label->setText("Max Time:");
+    max_time_label->setFont(font);
     
 
     // Create file uploader for scene file
@@ -59,7 +63,11 @@ void MainWindow::initialize() {
     saveImage = new QPushButton();
     saveImage->setText(QStringLiteral("Save image"));
 
-    QGroupBox *xyLayout = new QGroupBox(); // horizonal w slider alignment
+    // Select directory for bulk output
+    bulkRender = new QPushButton();
+    bulkRender->setText(QStringLiteral("Bulk Render"));
+
+    QGroupBox *xyLayout = new QGroupBox(); // horizontal w slider alignment
     QHBoxLayout *lxy = new QHBoxLayout();
 
     xySlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
@@ -79,7 +87,7 @@ void MainWindow::initialize() {
     xyLayout->setLayout(lxy);
 
     // XZ Slider
-    QGroupBox *xzLayout = new QGroupBox(); // horizonal w slider alignment
+    QGroupBox *xzLayout = new QGroupBox(); // horizontal w slider alignment
     QHBoxLayout *lxz = new QHBoxLayout();
 
     xzSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
@@ -99,7 +107,7 @@ void MainWindow::initialize() {
     xzLayout->setLayout(lxz);
 
     // XW Slider
-    QGroupBox *xwLayout = new QGroupBox(); // horizonal w slider alignment
+    QGroupBox *xwLayout = new QGroupBox(); // horizontal w slider alignment
     QHBoxLayout *lxw = new QHBoxLayout();
 
     xwSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
@@ -119,7 +127,7 @@ void MainWindow::initialize() {
     xwLayout->setLayout(lxw);
 
     // YZ Slider
-    QGroupBox *yzLayout = new QGroupBox(); // horizonal w slider alignment
+    QGroupBox *yzLayout = new QGroupBox(); // horizontal w slider alignment
     QHBoxLayout *lyz = new QHBoxLayout();
 
     yzSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
@@ -139,7 +147,7 @@ void MainWindow::initialize() {
     yzLayout->setLayout(lyz);
 
     // YW Slider
-    QGroupBox *ywLayout = new QGroupBox(); // horizonal w slider alignment
+    QGroupBox *ywLayout = new QGroupBox(); // horizontal w slider alignment
     QHBoxLayout *lyw = new QHBoxLayout();
     
     ywSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
@@ -159,7 +167,7 @@ void MainWindow::initialize() {
     ywLayout->setLayout(lyw);
 
     // ZW Slider
-    QGroupBox *zwLayout = new QGroupBox(); // horizonal w slider alignment
+    QGroupBox *zwLayout = new QGroupBox(); // horizontal w slider alignment
     QHBoxLayout *lzw = new QHBoxLayout();
 
     zwSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
@@ -178,37 +186,37 @@ void MainWindow::initialize() {
     lzw->addWidget(zwBox);
     zwLayout->setLayout(lzw);
 
-    // Rotation Slider
-    QGroupBox *rotationLayout = new QGroupBox(); // horizonal w slider alignment
-    QHBoxLayout *lrotation = new QHBoxLayout();
+    // Max Time Slider
+    QGroupBox *maxTimeGroupBox = new QGroupBox(); // horizontal 
+    QHBoxLayout *maxTimeLayout = new QHBoxLayout();
 
-    rotationSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
-    rotationSlider->setTickInterval(1);
-    rotationSlider->setMinimum(0);
-    rotationSlider->setMaximum(18000);
-    rotationSlider->setValue(1);
+    maxTimeSlider = new QSlider(Qt::Orientation::Horizontal);
+    maxTimeSlider->setTickInterval(1);
+    maxTimeSlider->setMinimum(0);
+    maxTimeSlider->setMaximum(18000);
+    maxTimeSlider->setValue(1);
 
-    rotationBox = new QDoubleSpinBox();
-    rotationBox->setMinimum(0.0f);
-    rotationBox->setMaximum(600.f);
-    rotationBox->setSingleStep(1.f);
-    rotationBox->setValue(settings.rotation);
+    maxTimeSpinBox = new QSpinBox();
+    maxTimeSpinBox->setMinimum(0);
+    maxTimeSpinBox->setMaximum(600);
+    maxTimeSpinBox->setSingleStep(1);
+    maxTimeSpinBox->setValue(settings.rotation);
 
-    lrotation->addWidget(rotationSlider);
-    lrotation->addWidget(rotationBox);
-    rotationLayout->setLayout(lrotation);
+    maxTimeLayout->addWidget(maxTimeSlider);
+    maxTimeLayout->addWidget(maxTimeSpinBox);
+    maxTimeGroupBox->setLayout(maxTimeLayout);
 
-    // checkbox
-    rotateNegative = new QCheckBox();
-    rotateNegative->setText(QStringLiteral("Reverse Rotation"));
-    rotateNegative->setChecked(false);
+    // // checkbox
+    // rotateNegative = new QCheckBox();
+    // rotateNegative->setText(QStringLiteral("Reverse Rotation"));
+    // rotateNegative->setChecked(false);
 
     // w Slider
-    QGroupBox *wLayout = new QGroupBox(); // horizonal w slider alignment
+    QGroupBox *wLayout = new QGroupBox(); // horizontal w slider alignment
     QHBoxLayout *lw = new QHBoxLayout();
 
     wSlider = new QSlider(Qt::Orientation::Horizontal); // XY value slider
-    wSlider->setTickInterval(0.01);
+    wSlider->setTickInterval(1);
     wSlider->setMinimum(-10000);
     wSlider->setMaximum(10000);
     wSlider->setValue(0);
@@ -240,11 +248,12 @@ void MainWindow::initialize() {
     vLayout->addWidget(zwLayout);
     vLayout->addWidget(w_label);
     vLayout->addWidget(wLayout);
-    vLayout->addWidget(rotation_label);
-    vLayout->addWidget(rotationLayout);
+    vLayout->addWidget(curr_time_label);
+    vLayout->addWidget(max_time_label);
 
-    vLayout->addWidget(rotateNegative);
-
+    vLayout->addWidget(maxTimeGroupBox);
+    vLayout->addWidget(bulkRender);
+    // vLayout->addWidget(rotateNegative);
 
     connectUIElements();
 
@@ -259,13 +268,14 @@ void MainWindow::finish() {
 void MainWindow::connectUIElements() {
     connectUploadFile();
     connectSaveImage();
+    connectBulkRender();
     connectxy();
     connectxz();
     connectxw();
     connectyz();
     connectyw();
     connectzw();
-    connectRotationSlider();
+    connectMaxTimeSlider();
     connectNegativeRotation();
     connect(rayTracer, &RayTracer::xyRotationChanged, this, &MainWindow::updateXySlider);
     connect(rayTracer, &RayTracer::xzRotationChanged, this, &MainWindow::updateXzSlider);
@@ -284,6 +294,10 @@ void MainWindow::connectUploadFile() {
 
 void MainWindow::connectSaveImage() {
     connect(saveImage, &QPushButton::clicked, this, &MainWindow::onSaveImage);
+}
+
+void MainWindow::connectBulkRender() {
+    connect(bulkRender, &QPushButton::clicked, this, &MainWindow::onBulkRender);
 }
 
 void MainWindow::connectxy() {
@@ -322,10 +336,10 @@ void MainWindow::connectzw() {
             this, &MainWindow::onValChangezwBox);
 }
 
-void MainWindow::connectRotationSlider() {
-    connect(rotationSlider, &QSlider::valueChanged, this, &MainWindow::onValChangeRotationSlider);
-    connect(rotationBox, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
-            this, &MainWindow::onValChangeRotationBox);
+void MainWindow::connectMaxTimeSlider() {
+    connect(maxTimeSlider, &QSlider::valueChanged, this, &MainWindow::onValChangeMaxTimeSlider);
+    connect(maxTimeSpinBox, static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, &MainWindow::onValChangeMaxTimeBox);
 }
 
 void MainWindow::connectNegativeRotation() {
@@ -361,24 +375,31 @@ void MainWindow::onUploadFile() {
 }
 
 void MainWindow::onSaveImage() {
-    if (settings.sceneFilePath.empty()) {
-        std::cout << "No scene file loaded." << std::endl;
-        return;
-    }
+    // if (settings.sceneFilePath.empty()) {
+    //     std::cout << "No scene file loaded." << std::endl;
+    //     return;
+    // }
     std::string sceneName = settings.sceneFilePath.substr(0, settings.sceneFilePath.find_last_of("."));
     sceneName = sceneName.substr(sceneName.find_last_of("/")+1);
     QString filePath = QFileDialog::getSaveFileName(this, tr("Save Image"),
                                                     QDir::currentPath()
                                                         .append(QDir::separator())
-                                                        .append("student_outputs")
-                                                        .append(QDir::separator())
-                                                        .append("lights-camera")
-                                                        .append(QDir::separator())
-                                                        .append("required")
-                                                        .append(QDir::separator())
                                                         .append(sceneName), tr("Image Files (*.png)"));
     std::cout << "Saving image to: \"" << filePath.toStdString() << "\"." << std::endl;
-//    realtime->saveViewportImage(filePath.toStdString());
+    rayTracer->saveViewportImage(filePath.toStdString());
+}
+
+void MainWindow::onBulkRender() {
+    // if (settings.sceneFilePath.empty()) {
+    //     std::cout << "No scene file loaded." << std::endl;
+    //     return;
+    // }
+    std::string sceneName = settings.sceneFilePath.substr(0, settings.sceneFilePath.find_last_of("."));
+    sceneName = sceneName.substr(sceneName.find_last_of("/")+1);
+    QString folderPath = QFileDialog::getExistingDirectory(this, tr("Select Directory for Bulk Render"),
+                                                           QDir::currentPath());
+    std::cout << "Setting bulk output path to: \"" << folderPath.toStdString() << "\"." << std::endl;
+    settings.bulkOutputFolderPath = folderPath.toStdString();
 }
 
 void MainWindow::onValChangexySlider(int newValue) {
@@ -465,18 +486,18 @@ void MainWindow::onValChangezwBox(double newValue) {
     // rayTracer->settingsChanged(imageLabel);
 }
 
-void MainWindow::onValChangeRotationSlider(int newValue) {
+void MainWindow::onValChangeMaxTimeSlider(int newValue) {
     //wSlider->setValue(newValue);
-    rotationBox->setValue(newValue/100.f);
-    settings.rotation = rotationBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    maxTimeSpinBox->setValue(newValue/100.f);
+    settings.maxTime = maxTimeSpinBox->value();
+    rayTracer->settingsChanged(imageLabel);
 }
 
-void MainWindow::onValChangeRotationBox(double newValue) {
-    rotationSlider->setValue(int(newValue*100.f));
+void MainWindow::onValChangeMaxTimeBox(double newValue) {
+    maxTimeSlider->setValue(int(newValue*100.f));
     //wBox->setValue(newValue);
-    settings.rotation = rotationBox->value();
-    // rayTracer->settingsChanged(imageLabel);
+    settings.rotation = maxTimeSpinBox->value();
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::onValChangeWSlider(int newValue) {
@@ -537,9 +558,9 @@ void MainWindow::updateZwSlider(double value) {
 }
 
 void MainWindow::updateRotationSlider(float value) {
-    rotationSlider->setValue(int(value*100.f));
-    rotationBox->setValue(value);
-    // rayTracer->settingsChanged(imageLabel);
+    maxTimeSlider->setValue(int(value*100.f));
+    maxTimeSpinBox->setValue(value);
+    rayTracer->settingsChanged(imageLabel);
 }
 
 void MainWindow::updateCameraPosition() {

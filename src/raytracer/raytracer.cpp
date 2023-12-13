@@ -69,9 +69,9 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
         }
     }
 
-    if (settings.bulkOutputFilePath.size() > 0) { // means we are doing bulk rendering
+    if (settings.bulkOutputFolderPath.size() > 0) { // means we are doing bulk rendering
         // save the image to the bulk directory
-        std::string filePath = settings.bulkOutputFilePath + QDir::separator().toLatin1() + std::to_string(settings.currentTime) + ".png";
+        std::string filePath = settings.bulkOutputFolderPath + QDir::separator().toLatin1() + std::to_string(settings.currentTime) + ".png";
         saveViewportImage(filePath);
         if (settings.currentTime < settings.maxTime) { // still more to render
             // render the next frame

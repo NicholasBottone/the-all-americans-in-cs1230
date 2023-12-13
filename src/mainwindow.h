@@ -23,13 +23,14 @@ private:
     void connectUIElements();
     void connectUploadFile();
     void connectSaveImage();
+    void connectBulkRender();
     void connectxy();
     void connectxz();
     void connectxw();
     void connectyz();
     void connectyw();
     void connectzw();
-    void connectRotationSlider();
+    void connectMaxTimeSlider();
     void connectNegativeRotation();
     void connectW();
 
@@ -37,6 +38,7 @@ private:
     AspectRatioWidget *aspectRatioWidget;
     QPushButton *uploadFile;
     QPushButton *saveImage;
+    QPushButton *bulkRender;
     QSlider *xySlider;
     QDoubleSpinBox *xyBox;
     QSlider *xzSlider;
@@ -49,8 +51,8 @@ private:
     QDoubleSpinBox *ywBox;
     QSlider *zwSlider;
     QDoubleSpinBox *zwBox;
-    QSlider *rotationSlider;
-    QDoubleSpinBox *rotationBox;
+    QSlider *maxTimeSlider;
+    QSpinBox *maxTimeSpinBox;
     QCheckBox *rotateNegative;
     QSlider *wSlider;
     QDoubleSpinBox *wBox;
@@ -59,6 +61,7 @@ private:
 private slots:
     void onUploadFile();
     void onSaveImage();
+    void onBulkRender();
     void onValChangexySlider(int newValue);
     void onValChangexyBox(double newValue);
     void onValChangexzSlider(int newValue);
@@ -71,8 +74,8 @@ private slots:
     void onValChangeywBox(double newValue);
     void onValChangezwSlider(int newValue);
     void onValChangezwBox(double newValue);
-    void onValChangeRotationSlider(int newValue);
-    void onValChangeRotationBox(double newValue);
+    void onValChangeMaxTimeSlider(int newValue);
+    void onValChangeMaxTimeBox(double newValue);
     void onRotateNegative();
     void updateXySlider(double newValue);
     void updateXzSlider(double newValue);
