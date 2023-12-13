@@ -221,9 +221,9 @@ void RayTracer::settingsChanged(QLabel* imageLabel) {
     m_image = image;
 }
 
-void RayTracer::wSliderChanged(QLabel* imageLabel) {
+// void RayTracer::wSliderChanged(QLabel* imageLabel) {
     
-}
+// }
 
 void RayTracer::keyPressEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = true;
