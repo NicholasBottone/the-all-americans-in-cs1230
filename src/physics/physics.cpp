@@ -4,19 +4,19 @@
 #include <iostream>
 #include "physics.h"
 
-bool sphereCube(RenderShapeData &sphere, RenderShapeData &cube)
+bool sphereCube(RenderShapeData *sphere, RenderShapeData *cube)
 {
     // get center of cube
-    glm::vec4 cubeCenter = cube.translation4d;
+    glm::vec4 cubeCenter = cube->translation4d;
     // get the width, height, depth, & yawl of cube's box
-    glm::vec4 cubeScales = glm::vec4(cube.ctm[0][0], cube.ctm[1][1], cube.ctm[2][2], cube.ctm[3][3]);
+    glm::vec4 cubeScales = glm::vec4(cube->ctm[0][0], cube->ctm[1][1], cube->ctm[2][2], cube->ctm[3][3]);
 
     // note: assumption that cube is axis aligned
     glm::vec4 maxes = cubeCenter + cubeScales / 2.f;
     glm::vec4 mins = cubeCenter - cubeScales / 2.f;
 
     // get the center of sphere
-    glm::vec4 sphereCenter = sphere.translation4d;
+    glm::vec4 sphereCenter = sphere->translation4d;
     // get radius of sphere
     // note: assumption that sphere is not scaled (TODO: make radius adaptive)
     float radius = .5f;
@@ -35,26 +35,26 @@ bool sphereCube(RenderShapeData &sphere, RenderShapeData &cube)
     if (distSquared > 0) {
         std::cout << "distanceSquared: " << distSquared << std::endl;
 
-        // update velocity of the objects, based on math, assuming the objects are the same mass
-        sphere.velocity *= -1.f;
-        cube.velocity *= -1.f;
+        // update velocity of the objects
+        sphere->velocity *= -1.f;
+        cube->velocity *= -1.f;
 
         // move the objects in new dir so they don't collide again
-        sphere.translation4d += sphere.velocity;
-        cube.translation4d += cube.velocity;
+        sphere->translation4d += sphere->velocity * (1.1f);
+        cube->translation4d += cube->velocity * (1.1f);
     }
 
     return distSquared > 0;
 }
 
-bool cubeCube(RenderShapeData &c1, RenderShapeData &c2) {
+bool cubeCube(RenderShapeData *c1, RenderShapeData *c2) {
     // get the width, height, depth, & yawl of cubes boxes
-    glm::vec4 cube1Scales = glm::vec4(c1.ctm[0][0], c1.ctm[1][1], c1.ctm[2][2], c1.ctm[3][3]);
-    glm::vec4 cube2Scales = glm::vec4(c2.ctm[0][0], c2.ctm[1][1], c2.ctm[2][2], c2.ctm[3][3]);
+    glm::vec4 cube1Scales = glm::vec4(c1->ctm[0][0], c1->ctm[1][1], c1->ctm[2][2], c1->ctm[3][3]);
+    glm::vec4 cube2Scales = glm::vec4(c2->ctm[0][0], c2->ctm[1][1], c2->ctm[2][2], c2->ctm[3][3]);
 
     // get the center of cubes
-    glm::vec4 cube1Center = c1.translation4d;
-    glm::vec4 cube2Center = c2.translation4d;
+    glm::vec4 cube1Center = c1->translation4d;
+    glm::vec4 cube2Center = c2->translation4d;
 
     // note: assumption that cube is axis aligned
     glm::vec4 cube1Maxes = cube1Center + cube1Scales / 2.f;
@@ -77,21 +77,21 @@ bool cubeCube(RenderShapeData &c1, RenderShapeData &c2) {
         std::cout << "intersect: " << intersect << std::endl;
 
         // update velocity of the objects, based on math, assuming the objects are the same mass
-        c1.velocity *= -1.f;
-        c1.velocity *= -1.f;
+        c1->velocity *= -1.f;
+        c2->velocity *= -1.f;
 
         // move the objects in new dir so they don't collide again
-        c1.translation4d += c2.velocity;
-        c1.translation4d += c2.velocity;
+        c1->translation4d += c1->velocity * (1.1f);
+        c2->translation4d += c2->velocity * (1.1f);
     }
 
     return intersect;
 }
 
-bool sphereSphere(RenderShapeData &s1, RenderShapeData &s2)
+bool sphereSphere(RenderShapeData *s1, RenderShapeData *s2)
 {
-    glm::vec4 currentCenter = s1.translation4d;
-    glm::vec4 shapeCenter = s2.translation4d;
+    glm::vec4 currentCenter = s1->translation4d;
+    glm::vec4 shapeCenter = s2->translation4d;
     // define a radius vector
     float radius = .5;
     float distance = glm::distance(currentCenter, shapeCenter);
@@ -102,20 +102,24 @@ bool sphereSphere(RenderShapeData &s1, RenderShapeData &s2)
     if (distance <= radius + radius)
     {
         std::cout << "distance: " << distance << std::endl;
-        s1.velocity *= -1.f;
-        s2.velocity *= -1.f;
+        s1->velocity *= -1.f;
+        s2->velocity *= -1.f;
+
+        // print the new velocity
+        std::cout << "s1 velocity: " << s1->velocity.x << ", " << s1->velocity.y << ", " << s1->velocity.z << ", " << s1->velocity.w << std::endl;
+        std::cout << "s2 velocity: " << s2->velocity.x << ", " << s2->velocity.y << ", " << s2->velocity.z << ", " << s2->velocity.w << std::endl;
 
         // move the objects in new dir so they don't collide again
-        s1.translation4d += s1.velocity;
-        s2.translation4d += s2.velocity;
+        s1->translation4d += s1->velocity * (1.1f);
+        s2->translation4d += s2->velocity * (1.1f);
     }
 
     return distance <= radius + radius;
 }
 
-bool Physics::checkForSphereCollision(RenderShapeData &currentShape, RenderShapeData &otherShape)
+bool Physics::checkForSphereCollision(RenderShapeData *currentShape, RenderShapeData *otherShape)
 {
-    switch (otherShape.primitive.type)
+    switch (otherShape->primitive.type)
     {
         case PrimitiveType::PRIMITIVE_CUBE:
             return sphereCube(currentShape, otherShape);
@@ -128,19 +132,19 @@ bool Physics::checkForSphereCollision(RenderShapeData &currentShape, RenderShape
     return false;
 }
 
-bool Physics::checkForConeCollision(RenderShapeData &currentShape, RenderShapeData &shape)
+bool Physics::checkForConeCollision(RenderShapeData *currentShape, RenderShapeData *otherShape)
 {
     return false;
 }
 
-bool Physics::checkForCylinderCollision(RenderShapeData &currentShape, RenderShapeData &shape)
+bool Physics::checkForCylinderCollision(RenderShapeData *currentShape, RenderShapeData *otherShape)
 {
     return false;
 }
 
-bool Physics::checkForCubeCollision(RenderShapeData &currentShape, RenderShapeData &otherShape)
+bool Physics::checkForCubeCollision(RenderShapeData *currentShape, RenderShapeData *otherShape)
 {
-    switch (otherShape.primitive.type)
+    switch (otherShape->primitive.type)
     {
         case PrimitiveType::PRIMITIVE_CUBE:
             return cubeCube(currentShape, otherShape);
@@ -154,12 +158,12 @@ bool Physics::checkForCubeCollision(RenderShapeData &currentShape, RenderShapeDa
 void Physics::handleCollisions(std::vector<RenderShapeData> &shapes) {
     for (int i = 0; i < shapes.size(); i++)
     {
-        auto shape = shapes[i];
+        auto shape = &shapes[i];
 
         for (int j = i + 1; j < shapes.size(); j++)
         {
-            auto otherShape = shapes[j];
-            switch (shape.primitive.type)
+            auto otherShape = &shapes[j];
+            switch (shape->primitive.type)
             {
                 case PrimitiveType::PRIMITIVE_CONE:
                     checkForConeCollision(shape, otherShape);
