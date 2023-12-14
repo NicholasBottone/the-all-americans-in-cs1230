@@ -11,6 +11,8 @@
 #include <QTimerEvent>
 #include "vec4ops/vec4ops.h"
 #include "physics/physics.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>  // Include this header for glm::rotate
 
 // RayTracer::RayTracer(const Config &config) : m_config(config) {}
 RayTracer::RayTracer(QWidget *parent) : QWidget(parent) {
@@ -51,6 +53,70 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
         saveViewportImage(filePath);
         if (settings.currentTime < settings.maxTime) { // still more to render
             // render the next frame
+            if (m_enableCameraBezier) {
+                Camera camera = scene.getCamera();
+                if (settings.currentTime % 4 == 0) {
+                    m_controlPoints = camera.m_controlPoints;
+                }
+
+                auto time = (settings.currentTime % 60)/60.f;
+
+                auto P1 = m_controlPoints[0];
+                auto P2 = m_controlPoints[1];
+                auto P3 = m_controlPoints[2];
+                auto P4 = m_controlPoints[3];
+
+                glm::vec4 xa = getPt(P1, P2, time);
+                glm::vec4 xb = getPt(P2, P3, time);
+                glm::vec4 xc = getPt(P3, P4, time);
+
+                // Calculate points on the lines between the above points
+                glm::vec4 xm = getPt(xa, xb, time);
+                glm::vec4 xn = getPt(xb, xc, time);
+
+                // Calculate the final point on the Bezier curve
+                glm::vec4 pointOnCurve = getPt(xm, xn, time);
+                // std::cout << "point on curve: " << pointOnCurve.x << ", " << pointOnCurve.y << ", " << pointOnCurve.z << ", " << pointOnCurve.w << std::endl;
+                // std::cout << "camera pos" << m_metaData.cameraData.pos.x << ", " << m_metaData.cameraData.pos.y << ", " << m_metaData.cameraData.pos.z << ", " << m_metaData.cameraData.pos.w << std::endl;
+                
+                // rotate the camera about the origin
+                glm::vec4 cameraPos = m_metaData.cameraData.pos;
+                if (settings.currentTime < 22) {
+                glm::vec4 cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(10.0f), glm::vec3(0.f, 1.f, 0.f)) * glm::vec4(cameraPos.x, cameraPos.y, 0.f, 1.f);
+
+                if (settings.currentTime % 2 == 0) {
+                    cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(2.0f), glm::vec3(1.f, 0.f, 0.f)) * cameraPosRotated;
+                }
+                cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(-3.0f), glm::vec3(1.f, 0.f, 0.f)) * cameraPosRotated;
+
+                // if (settings.currentTime % 3 == 0) {
+                //     cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(4.0f), glm::vec3(0.f, 0.f, 1.f)) * cameraPosRotated;
+                // }
+                // cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(-2.0f), glm::vec3(0.f, 0.f, 1.f)) * cameraPosRotated;
+
+                m_metaData.cameraData.pos = glm::vec4(cameraPosRotated.x, cameraPosRotated.y, cameraPos.z, 1.f);
+                }
+                // m_metaData.cameraData.pos = glm::vec4(pointOnCurve.x, pointOnCurve.y, pointOnCurve.z, 1.f);
+
+                settings.xy += 4.f;
+                if (settings.currentTime > 22) {
+                    settings.xy -= 4.f;
+                    settings.xz -= 2.f;
+                }
+                if (settings.currentTime % 1 == 0) {
+                    settings.xz += 2.f;
+                    if (settings.currentTime > 22) {
+                        settings.yz -= 2.f;
+                    }
+                }
+                if (settings.currentTime % 3 == 0){
+                    settings.xz -= 3.f;
+                    if (settings.currentTime > 2) {
+                        settings.xz += 3.f;
+                    }
+                }
+
+            }
             settings.currentTime++;
 //            settings.w++;
 
@@ -181,7 +247,7 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
     QImage flippedImage = image.mirrored(false, false);
     flippedImage = flippedImage.scaled(width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     imageLabel->setPixmap(QPixmap::fromImage(flippedImage));
-    m_controlPointIndex++;
+    // m_controlPointIndex++;
 
 
     // QTimer::singleShot(3500, this, [this, imageLabel]() {
@@ -270,59 +336,88 @@ void RayTracer::sceneChanged(QLabel* imageLabel) {
 void RayTracer::keyPressEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = true;
     std::cout << "key pressed" << std::endl;
-    if (m_keyMap[Qt::Key_1]) {
+
+    // J and L for xy rotation
+    if (m_keyMap[Qt::Key_J]) {
         std::cout << "key 1" << std::endl;
-        if (settings.negative) {
-            settings.xy -= settings.rotation;
-        } else  {
             settings.xy += settings.rotation;
-        }
+        emit xyRotationChanged(settings.xy);
+    }
+    if (m_keyMap[Qt::Key_L]) {
+        settings.xy -= settings.rotation;
         emit xyRotationChanged(settings.xy);
     }
 
-    if (m_keyMap[Qt::Key_2]) {
-        if (settings.negative) {
-            settings.xz -= settings.rotation;
-        } else  {
-            settings.xz += settings.rotation;
-        }
+    // I and M for xz rotation
+    if (m_keyMap[Qt::Key_I]) {
+        settings.xz += settings.rotation;
+        emit xzRotationChanged(settings.xz);
+    }
+    if (m_keyMap[Qt::Key_M]) {
+        settings.xz -= settings.rotation;
         emit xzRotationChanged(settings.xz);
     }
 
-    if (m_keyMap[Qt::Key_3]) {
-        if (settings.negative) {
-            settings.xw -= settings.rotation;
-        } else  {
-            settings.xw += settings.rotation;
-        }
-        emit xwRotationChanged(settings.xw);
+    // O and N for yz rotation
+    if (m_keyMap[Qt::Key_O]) {
+        settings.yz += settings.rotation;
+        emit yzRotationChanged(settings.yz);
     }
-
-    if (m_keyMap[Qt::Key_4]) {
-        if (settings.negative) {
-            settings.yz -= settings.rotation;
-        } else  {
-            settings.yz += settings.rotation;
-        }
+    if (m_keyMap[Qt::Key_N]) {
+        settings.yz -= settings.rotation;
         emit yzRotationChanged(settings.yz);
     }
 
-    if (m_keyMap[Qt::Key_5]) {
-        if (settings.negative) {
-            settings.yw -= settings.rotation;
-        } else  {
-            settings.yw += settings.rotation;
-        }
+    // W and S for x translation
+    if (m_keyMap[Qt::Key_W]) {
+        settings.xw += settings.translation;
+        emit xwRotationChanged(settings.xw);
+    }
+    if (m_keyMap[Qt::Key_S]) {
+        settings.xw -= settings.translation;
+        emit xwRotationChanged(settings.xw);
+    }
+
+    // A and D for y translation
+    if (m_keyMap[Qt::Key_A]) {
+        settings.yw += settings.translation;
+        emit yzRotationChanged(settings.yw);
+    }
+    if (m_keyMap[Qt::Key_D]) {
+        settings.yw -= settings.translation;
         emit ywRotationChanged(settings.yw);
     }
 
-    if (m_keyMap[Qt::Key_6]) {
-        if (settings.negative) {
-            settings.zw -= settings.rotation;
-        } else  {
-            settings.zw += settings.rotation;
-        }
+    // TODO: add slider for z translation
+    // T and G for z translation
+    if (m_keyMap[Qt::Key_T]) {
+        settings.z += settings.translation;
+        emit zChanged(settings.zw);
+    }
+
+    if (m_keyMap[Qt::Key_G]) {
+        settings.z -= settings.translation;
+        emit zChanged(settings.zw);
+    }
+
+    // R & F for w translation using zw
+    if (m_keyMap[Qt::Key_R]) {
+        settings.zw += settings.translation;
         emit zwRotationChanged(settings.zw);
+    }
+    if (m_keyMap[Qt::Key_F]) {
+        settings.zw -= settings.translation;
+        emit zwRotationChanged(settings.zw);
+    }
+
+    // TODO: ONLY IF HAVE TIME, NOT NEEDED
+    // Space & V for vorex depth
+    if (m_keyMap[Qt::Key_Space]) {
+        settings.w += settings.rotation;
+
+    }
+    if (m_keyMap[Qt::Key_V]) {
+        settings.w -= settings.rotation;
     }
 }
 

@@ -155,6 +155,7 @@ public:
     bool m_enableAntiAliasing = false;
     bool m_enableDepthOfField  = false;
     bool m_enableSuperSample   = false;
+    bool m_enableCameraBezier = true;
 
     void sceneChanged(QLabel* imageLabel);
     void settingsChanged(QLabel* imageLabel);
@@ -194,5 +195,6 @@ signals:
     void rotationChanged(float value);
     void cameraPositionChanged(glm::vec3 value);
     void timeValueChanged(int value);
+    void zChanged(int value);
 };
 
