@@ -76,11 +76,12 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
 
                 // Calculate the final point on the Bezier curve
                 glm::vec4 pointOnCurve = getPt(xm, xn, time);
-                std::cout << "point on curve: " << pointOnCurve.x << ", " << pointOnCurve.y << ", " << pointOnCurve.z << ", " << pointOnCurve.w << std::endl;
-                std::cout << "camera pos" << m_metaData.cameraData.pos.x << ", " << m_metaData.cameraData.pos.y << ", " << m_metaData.cameraData.pos.z << ", " << m_metaData.cameraData.pos.w << std::endl;
+                // std::cout << "point on curve: " << pointOnCurve.x << ", " << pointOnCurve.y << ", " << pointOnCurve.z << ", " << pointOnCurve.w << std::endl;
+                // std::cout << "camera pos" << m_metaData.cameraData.pos.x << ", " << m_metaData.cameraData.pos.y << ", " << m_metaData.cameraData.pos.z << ", " << m_metaData.cameraData.pos.w << std::endl;
                 
                 // rotate the camera about the origin
                 glm::vec4 cameraPos = m_metaData.cameraData.pos;
+                if (settings.currentTime < 22) {
                 glm::vec4 cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(10.0f), glm::vec3(0.f, 1.f, 0.f)) * glm::vec4(cameraPos.x, cameraPos.y, 0.f, 1.f);
 
                 if (settings.currentTime % 2 == 0) {
@@ -94,15 +95,26 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
                 // cameraPosRotated = glm::rotate(glm::mat4(1.f), glm::radians(-2.0f), glm::vec3(0.f, 0.f, 1.f)) * cameraPosRotated;
 
                 m_metaData.cameraData.pos = glm::vec4(cameraPosRotated.x, cameraPosRotated.y, cameraPos.z, 1.f);
+                }
                 // m_metaData.cameraData.pos = glm::vec4(pointOnCurve.x, pointOnCurve.y, pointOnCurve.z, 1.f);
 
                 settings.xy += 4.f;
-                // if (m_controlPointIndex % 1 == 0) {
-                //     settings.xz += 8.f;
-                // }
-                // if (m_controlPointIndex % 3 == 0){
-                //     settings.yz += 8.f;
-                // }
+                if (settings.currentTime > 22) {
+                    settings.xy -= 4.f;
+                    settings.xz -= 2.f;
+                }
+                if (settings.currentTime % 1 == 0) {
+                    settings.xz += 2.f;
+                    if (settings.currentTime > 22) {
+                        settings.yz -= 2.f;
+                    }
+                }
+                if (settings.currentTime % 3 == 0){
+                    settings.xz -= 3.f;
+                    if (settings.currentTime > 2) {
+                        settings.xz += 3.f;
+                    }
+                }
 
             }
             settings.currentTime++;
