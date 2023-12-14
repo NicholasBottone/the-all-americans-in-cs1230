@@ -155,7 +155,7 @@ public:
     bool m_enableAntiAliasing = false;
     bool m_enableDepthOfField  = false;
     bool m_enableSuperSample   = false;
-    bool m_enableCameraBezier = false;
+    bool m_enableCameraBezier = true;
 
     void sceneChanged(QLabel* imageLabel);
     void settingsChanged(QLabel* imageLabel);

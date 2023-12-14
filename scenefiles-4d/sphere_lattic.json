@@ -39,12 +39,12 @@
           "primitives": [
                 {
                 "type": "sphere",
-                "diffuse": [1.0, 0.0, 0.0],
+                "diffuse": [1.0, 1.0, 0.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -56,12 +56,12 @@
           "primitives": [
                 {
                 "type": "sphere",
-                "diffuse": [0.0, 1.0, 0.0],
+                "diffuse": [0.0, 1.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -72,13 +72,13 @@
           "scale": [1.0, 1.0, 1.0, 1.0],
           "primitives": [
                 {
-                "type": "sphere",
-                "diffuse": [0.0, 0.0, 1.0],
+                "type": "cylinder",
+                "diffuse": [0.0, 1.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -90,12 +90,12 @@
           "primitives": [
                 {
                 "type": "sphere",
-                "diffuse": [0.0, 0.0, 1.0],
+                "diffuse": [1.0, 0.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -112,7 +112,7 @@
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -124,13 +124,12 @@
           "primitives": [
                 {
                 "type": "sphere",
-                "diffuse": [0.0, 0.0, 1.0],
-                "specular":
-                [1.0, 1.0, 1.0],
+                "diffuse": [1.0, 0.0, 1.0],
+                "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -142,12 +141,12 @@
           "primitives": [
                 {
                 "type": "sphere",
-                "diffuse": [0.0, 0.0, 1.0],
+                "diffuse": [0.0, 1.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -159,12 +158,12 @@
           "primitives": [
                 {
                 "type": "sphere",
-                "diffuse": [0.0, 0.0, 1.0],
+                "diffuse": [1.0, 0.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -176,12 +175,12 @@
           "primitives": [
                 {
                 "type": "sphere",
-                "diffuse": [0.0, 0.0, 1.0],
+                "diffuse": [0.5, 1.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -198,7 +197,7 @@
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -209,13 +208,13 @@
           "scale": [1.0, 1.0, 1.0, 1.0],
           "primitives": [
                 {
-                "type": "sphere",
-                "diffuse": [0.0, 0.0, 1.0],
+                "type": "cube",
+                "diffuse": [0.0, 1.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
             }
             ]
@@ -226,13 +225,13 @@
           "scale": [1.0, 1.0, 1.0, 1.0],
           "primitives": [
                 {
-                "type": "sphere",
+                "type": "cone",
                 "diffuse": [0.0, 0.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
@@ -243,16 +242,50 @@
           "scale": [1.0, 1.0, 1.0, 1.0],
           "primitives": [
                 {
-                "type": "sphere",
+                "type": "cube",
                 "diffuse": [0.0, 0.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
                 "velocity": [0.0, 0.0, 0.0, 0.0],
                 "reflective": [0.6, 0.6, 0.6],
-                "transparent": [0.2, 0.2, 0.2],
+                "transparent": [0.8, 0.8, 0.8],
                 "ior": 1.01
                 }
             ]
+        },
+        {
+          "translate": [1.0, 0.0, 5.0, 0.0],
+          "rotate": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+          "scale": [1.0, 1.0, 1.0, 1.0],
+          "primitives": [
+            {
+              "type": "cylinder",
+              "diffuse": [0.0, 0.0, 1.0],
+              "specular": [1.0, 1.0, 1.0],
+              "shininess": 25.0,
+              "velocity": [0.0, 0.0, 0.0, 0.0],
+              "reflective": [0.6, 0.6, 0.6],
+              "transparent": [0.8, 0.8, 0.8],
+              "ior": 1.01
+            }
+          ]
+        },
+        {
+          "translate": [0.0, 4.0, 5.0, 0.0],
+          "rotate": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+          "scale": [1.0, 1.0, 1.0, 1.0],
+          "primitives": [
+            {
+              "type": "cylinder",
+              "diffuse": [0.0, 0.0, 1.0],
+              "specular": [1.0, 1.0, 1.0],
+              "shininess": 25.0,
+              "velocity": [0.0, 0.0, 0.0, 0.0],
+              "reflective": [0.6, 0.6, 0.6],
+              "transparent": [0.8, 0.8, 0.8],
+              "ior": 1.01
+            }
+          ]
         },
         {
           "translate": [2.0, 0.0, 4.0, 0.0],
@@ -260,7 +293,7 @@
           "scale": [1.0, 1.0, 1.0, 1.0],
           "primitives": [
                 {
-                "type": "sphere",
+                "type": "cube",
                 "diffuse": [0.0, 0.0, 1.0],
                 "specular": [1.0, 1.0, 1.0],
                 "shininess": 25.0,
