@@ -118,7 +118,7 @@ void RayTracer::render(RGBA *imageData, const RayTraceScene &scene) {
 
             }
             settings.currentTime++;
-//            settings.w++;
+            settings.w++;
 
             // update physics for moving objects
             Physics::updateShapePositions(m_metaData.shapes);

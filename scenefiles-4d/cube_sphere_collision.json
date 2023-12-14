@@ -4,7 +4,7 @@
     "ambientCoeff": 0.5,
     "diffuseCoeff": 0.5,
     "specularCoeff": 0.5,
-    "transparentCoeff": 0,
+    "transparentCoeff": 0.5,
     "gravity": [0.0, -0.0098, 0.0, 0.0]
   },
   "cameraData": {
@@ -42,7 +42,10 @@
               "diffuse": [1.0, 0.0, 0.0],
               "specular": [1.0, 1.0, 1.0],
               "shininess": 25.0,
-              "velocity": [0.0, 0.0, 0.0, 0.0]
+              "velocity": [0.0, 0.0, 0.0, 0.0],
+              "reflective": [0.6, 0.6, 0.6],
+              "transparent": [0.8, 0.8, 0.8],
+              "ior": 1.01
             }
           ]
         },
@@ -56,7 +59,10 @@
               "diffuse": [0.0, 1.0, 0.0],
               "specular": [1.0, 1.0, 1.0],
               "shininess": 25.0,
-              "velocity": [-0.1, 0.0, 0.0, -0.1]
+              "velocity": [-0.1, 0.0, 0.0, -0.1],
+              "reflective": [0.6, 0.6, 0.6],
+              "transparent": [0.8, 0.8, 0.8],
+              "ior": 1.01
             }
           ]
         }
