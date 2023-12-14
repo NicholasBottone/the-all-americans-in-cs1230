@@ -10,17 +10,17 @@
 
 class Physics {
 public:
-    static bool checkForSphereCollision(RenderShapeData &currentShape, RenderShapeData &shape);
-
-    static bool checkForConeCollision(RenderShapeData &currentShape, RenderShapeData &shape);
-
-    static bool checkForCylinderCollision(RenderShapeData &currentShape, RenderShapeData &shape);
-
-    static bool checkForCubeCollision(RenderShapeData &currentShape, RenderShapeData &shape);
-
     static void updateShapePositions(std::vector<RenderShapeData> &shapes);
 
     static void handleCollisions(std::vector<RenderShapeData> &shapes);
+
+    static bool checkForSphereCollision(RenderShapeData *currentShape, RenderShapeData *otherShape);
+
+    static bool checkForConeCollision(RenderShapeData *currentShape, RenderShapeData *otherShape);
+
+    static bool checkForCylinderCollision(RenderShapeData *currentShape, RenderShapeData *otherShape);
+
+    static bool checkForCubeCollision(RenderShapeData *currentShape, RenderShapeData *otherShape);
 };
 
 #endif //PROJECTS_RAY_PHYSICS_H

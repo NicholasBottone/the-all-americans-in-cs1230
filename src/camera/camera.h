@@ -40,6 +40,8 @@ public:
     float cameraDepth = -1.f;
     std::vector<glm::vec3> m_controlPoints;
 
+    void updateViewMatrix(SceneCameraData cameraData);
+
 private:
     glm::mat4 m_viewMatrix{};
     glm::mat4 m_inverseViewMatrix{};
@@ -51,5 +53,6 @@ private:
 
     glm::vec4 m_translationVector{};
     glm::vec4 m_inverseTranslationVector{};
+
 };
 

@@ -59,7 +59,7 @@ glm::vec4 intersectCone(
     isHit = false;
     float t = FINF;
     // updated to 4d
-    // x^2 + z^2 - y^2 - w^2= 0, conic top
+    // x^2 + z^2 - y^2 - w^2= r^2, conic top
     float radius = 0.5f;
     float a = d.x*d.x + d.z*d.z - .25f*(d.y*d.y) - .25f*(d[3]*d[3]);
     float b = 2.f*(p.x*d.x + p.z*d.z) - .5f*(p.y*d.y) + .25f*d.y - .5f*(p[3]*d[3]) + .25f*d[3];
@@ -104,12 +104,12 @@ glm::vec4 intersectCone(
         t = std::min(t, twBase);
     }
 
-    // x^2 + y^2 - z^2 = 0, base w.r.t. y axis
+    // x^2 + w^2 - z^2 = 0, base w.r.t. y axis
     float tyBase = (- .5f - p.y) / d.y;
     auto pyBase = p + tyBase * d;
     if (
         tyBase > 0 &&
-        pyBase.x*pyBase.x + pyBase.z*pyBase.z <= pyBase[3]*pyBase[3] +.25f &&
+        pyBase.x*pyBase.x + pyBase.z*pyBase.z <= pyBase[3]*pyBase[3] + .25f &&
         pyBase[3] >= -.5f && pyBase[3] <= .5f
         )
     {
@@ -134,11 +134,11 @@ glm::vec4 intersectCylinder(
     isHit = false;
     float t = FINF;
 
-    // implicit: x^2 + z^2 = r^2, y + w between -.5, .5 rectuangular side
+    // implicit: x^2 + z^2 - w/2 = r^2, y + w between -.5, .5
     float radius = 0.5f;
     float a = d.x*d.x + d.z*d.z;
-    float b = 2.f * (p.x*d.x + p.z*d.z);
-    float c = p.x*p.x + p.z*p.z - radius*radius;
+    float b = 2.f * (p.x*d.x + p.z*d.z) - .5f * d[3];
+    float c = p.x*p.x + p.z*p.z - .5f * p[3] - radius*radius;
 
     float discriminant = b*b - 4*a*c;
     if (discriminant >= 0)
@@ -149,9 +149,9 @@ glm::vec4 intersectCylinder(
         auto p1Top = p + t1 * d;
         if (
         t1 > 0 &&
-        p1Top.y + p1Top[3] >= -.5f && p1Top.y + p1Top[3] <= .5f &&
-        p1Top.y >= -.5f && p1Top.y <= .5f &&
-        p1Top[3] >= -.5f && p1Top[3] <= .5f)
+        p1Top.y + p1Top[3] >= -.5f && p1Top.y - p1Top[3] <= .5f &&
+        p1Top[3] >= -.5f && p1Top[3] <= .5f
+            )
         {
             t = std::min(t1, t);
         }
@@ -159,8 +159,7 @@ glm::vec4 intersectCylinder(
         auto p2Top = p + t2 * d;
         if (
             t2 > 0 &&
-            p2Top.y + p2Top[3] >= -.5f && p2Top.y + p2Top[3] <= .5f &&
-            p2Top.y >= -.5f && p2Top.y <= .5f &&
+            p2Top.y + p2Top[3] >= -.5f && p2Top.y - p2Top[3] <= .5f &&
             p2Top[3] >= -.5f && p2Top[3] <= .5f)
         {
             t = std::min(t2, t);
@@ -168,28 +167,27 @@ glm::vec4 intersectCylinder(
     }
 
 
-    // implicit y + w = .5f, top base
-    float tTop = (.5f - p.y - p[3]) / (d[3] + d.y);
+    // implicit y - w = .5f, top base
+
+    float tTop = (.5f - p.y + p[3]) / (d.y - d[3]);
     auto pTop = p + tTop * d;
     if (
         tTop > 0 &&
-        pTop.x*pTop.x + pTop.z*pTop.z <= radius*radius &&
-        pTop.y >= -.5f && pTop.y <= .5f //&&
-//        pTop[3] >= -.5f && pTop[3] <= .5f
+        pTop.x*pTop.x + pTop.z*pTop.z <= radius*radius + pTop[3]/2.f &&
+        pTop[3] >= -.5f && pTop[3] <= .5f
         )
     {
         t = std::min(t, tTop);
     }
 
 
-    // implicit p_y + t*d_y = -.5f, Bottom base
+    // implicit y + w = -.5f, Bottom base
     float tBase = (-.5f - p.y - p[3]) / (d[3] + d.y);
     auto pBase = p + tBase * d;
     if (
         tBase > 0 &&
-        pBase.x*pBase.x + pBase.z*pBase.z <= radius*radius &&
-        pBase.y >= -.5f && pBase.y <= .5f //&&
-//        pBase[3] >= -.5f && pBase[3] <= .5f
+        pBase.x*pBase.x + pBase.z*pBase.z <= radius*radius + pBase[3]/2.f &&
+        pBase[3] >= -.5f && pBase[3] <= .5f
         )
     {
         t = std::min(t, tBase);
